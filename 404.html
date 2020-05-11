@@ -6,21 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
-<meta name="author" content="">
+<meta name="author" content="Yitong Wang">
 <meta name="keywords" content="">
-<meta name="description" content="">
+<meta name="description" content="Hugo tranquilpeak theme demo">
 
 
-<meta property="og:description" content="">
+<meta property="og:description" content="Hugo tranquilpeak theme demo">
 <meta property="og:type" content="website">
 <meta property="og:title" content="404 Page not found">
 <meta name="twitter:title" content="404 Page not found">
-<meta property="og:url" content="http://example.org/404.html">
-<meta property="twitter:url" content="http://example.org/404.html">
-<meta property="og:site_name" content="My New Hugo Site">
-<meta property="og:description" content="">
-<meta name="twitter:description" content="">
-<meta property="og:locale" content="en">
+<meta property="og:url" content="https://example.org/404.html">
+<meta property="twitter:url" content="https://example.org/404.html">
+<meta property="og:site_name" content="Yitong Wang&#39;s Blog">
+<meta property="og:description" content="Hugo tranquilpeak theme demo">
+<meta name="twitter:description" content="Hugo tranquilpeak theme demo">
+<meta property="og:locale" content="en-us">
 
 
 <meta name="twitter:card" content="summary">
@@ -35,15 +35,18 @@
 
 
 
+  <meta property="og:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+  <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+
 
     <title>404 Page not found</title>
 
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="https://example.org/favicon.png">
     
 
     
 
-    <link rel="canonical" href="http://example.org/404.html">
+    <link rel="canonical" href="https://example.org/404.html">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -51,7 +54,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    <link rel="stylesheet" href="https://example.org/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
 
@@ -65,7 +68,7 @@
   <article class="post">
     <h1>404 Not Found</h1>
     <p>Sorry, but we couldn't find the page you're looking for.</p>
-    <p>Please head back <a href="/">home</a>.</p>
+    <p>Please head back <a href="https://example.org/">home</a>.</p>
   </article>
 </main>
     
@@ -75,9 +78,25 @@
       <i class="fa fa-remove"></i>
     </div>
     
-    <h4 id="about-card-name"></h4>
+      <img id="about-card-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Yitong Wang</h4>
+    
+      <div id="about-card-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></div>
     
     
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Graduate student of Computer Science in Washington University in St. Louis
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        US
+      </div>
     
   </div>
 </div>
@@ -85,14 +104,22 @@
     
 
     
+  
+    
+      <div id="cover" style="background-image:url('https://example.org/images/WechatIMG249.jpeg');"></div>
+    
+  
+
 
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+<script src="https://example.org/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
 <script lang="javascript">
@@ -108,6 +135,18 @@ function updateMinWidth() {
   var w3 = getComputedStyle(sidebar).getPropertyValue("left");
   main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
 }
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
 </script>
 
 

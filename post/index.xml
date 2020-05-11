@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Yitong Wang&#39;s Blog</title>
+    <link>https://example.org/post/</link>
+    <description>Recent content in Posts on Yitong Wang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 May 2020 15:19:37 -0500</lastBuildDate>
+    
+	<atom:link href="https://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to easily create a new post on your Hugo site </title>
+      <link>https://example.org/2020/05/how-to-easily-create-a-new-post-on-your-hugo-site/</link>
+      <pubDate>Sun, 10 May 2020 15:19:37 -0500</pubDate>
+      
+      <guid>https://example.org/2020/05/how-to-easily-create-a-new-post-on-your-hugo-site/</guid>
+      <description>Create your first post on your Hugo site in only 6 steps.</description>
+    </item>
+    
+  </channel>
+</rss>
