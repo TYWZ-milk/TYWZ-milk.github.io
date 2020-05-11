@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Yitong Wang&#39;s Blog</title>
-    <link>https://example.org/categories/</link>
+    <link>https://tywz-milk.github.io/categories/</link>
     <description>Recent content in Categories on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 May 2020 15:19:37 -0500</lastBuildDate>
     
-	<atom:link href="https://example.org/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tywz-milk.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>hugo</title>
-      <link>https://example.org/categories/hugo/</link>
+      <link>https://tywz-milk.github.io/categories/hugo/</link>
       <pubDate>Sun, 10 May 2020 15:19:37 -0500</pubDate>
       
-      <guid>https://example.org/categories/hugo/</guid>
+      <guid>https://tywz-milk.github.io/categories/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Notes</title>
-      <link>https://example.org/categories/notes/</link>
+      <link>https://tywz-milk.github.io/categories/notes/</link>
       <pubDate>Sun, 10 May 2020 15:19:37 -0500</pubDate>
       
-      <guid>https://example.org/categories/notes/</guid>
+      <guid>https://tywz-milk.github.io/categories/notes/</guid>
       <description></description>
     </item>
     

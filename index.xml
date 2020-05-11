@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Yitong Wang&#39;s Blog</title>
-    <link>https://example.org/</link>
+    <link>https://tywz-milk.github.io/</link>
     <description>Recent content on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 10 May 2020 15:19:37 -0500</lastBuildDate>
     
-	<atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tywz-milk.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How to easily create a new post on your Hugo site </title>
-      <link>https://example.org/2020/05/how-to-easily-create-a-new-post-on-your-hugo-site/</link>
+      <link>https://tywz-milk.github.io/2020/05/how-to-easily-create-a-new-post-on-your-hugo-site/</link>
       <pubDate>Sun, 10 May 2020 15:19:37 -0500</pubDate>
       
-      <guid>https://example.org/2020/05/how-to-easily-create-a-new-post-on-your-hugo-site/</guid>
+      <guid>https://tywz-milk.github.io/2020/05/how-to-easily-create-a-new-post-on-your-hugo-site/</guid>
       <description>Create your first post on your Hugo site in only 6 steps.</description>
     </item>
     
