@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Yitong Wang">
+<meta name="keywords" content="Leetcode, two pointers">
+<meta name="description" content="Some Leetcode problems can be solved by two pointers effectively">
+
+
+<meta property="og:description" content="Some Leetcode problems can be solved by two pointers effectively">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode-Two Pointers">
+<meta name="twitter:title" content="Leetcode-Two Pointers">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+<meta property="og:site_name" content="Yitong Wang&#39;s Blog">
+<meta property="og:description" content="Some Leetcode problems can be solved by two pointers effectively">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by two pointers effectively">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-05-11T16:31:51">
+  
+  
+    <meta property="article:modified_time" content="2020-05-11T16:31:51">
+  
+  
+  
+    
+      <meta property="article:section" content="Leetcode">
+    
+  
+  
+    
+      <meta property="article:tag" content="Leetcode">
+    
+      <meta property="article:tag" content="two pointers">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
+  <meta property="twitter:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
+
+
+
+
+
+  <meta property="og:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+  <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+
+
+    <title>Leetcode-Two Pointers</title>
+
+    <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://tywz-milk.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://tywz-milk.github.io/">Yitong Wang&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://tywz-milk.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://tywz-milk.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Yitong Wang</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/TYWZ-milk" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/yitong-wang-849047182" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Leetcode-Two Pointers
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-11T16:31:51-05:00">
+        
+  
+  
+  
+  
+    11 May 2020
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://tywz-milk.github.io/categories/leetcode">Leetcode</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <aside>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#167-two-sum-ii---input-array-is-sorted-easy">167. Two Sum II - Input array is sorted (Easy)</a></li>
+    <li><a href="#633-sum-of-square-numbers-easy">633. Sum of Square Numbers (Easy)</a></li>
+    <li><a href="#345-reverse-vowels-of-a-string-easy">345. Reverse Vowels of a String (Easy)</a></li>
+    <li><a href="#680-valid-palindrome-ii-easy">680. Valid Palindrome II (Easy)</a></li>
+    <li><a href="#88-merge-sorted-array-easy">88. Merge Sorted Array (Easy)</a></li>
+    <li><a href="#141-linked-list-cycle-easy">141. Linked List Cycle (Easy)</a></li>
+    <li><a href="#524-longest-word-in-dictionary-through-deleting-medium">524. Longest Word in Dictionary through Deleting (Medium)</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+              </aside>
+              <blockquote>
+<p>Reference: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8F%8C%E6%8C%87%E9%92%88.md">Link</a></p>
+</blockquote>
+<h2 id="167-two-sum-ii---input-array-is-sorted-easy">167. Two Sum II - Input array is sorted (Easy)</h2>
+<p>I think this is the simplest problem which can be solved by two pointers, so I don&rsquo;t explain how to solve this problem. Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/">link</a>.</p>
+<h2 id="633-sum-of-square-numbers-easy">633. Sum of Square Numbers (Easy)</h2>
+<p>This problem is easy too. But you need to pay attention to the initial value of two pointers. One is 0, the other is Math.sqrt(target). Time complexity is O(Math.sqrt(target)). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/sum-of-square-numbers/">link</a>.</p>
+<h2 id="345-reverse-vowels-of-a-string-easy">345. Reverse Vowels of a String (Easy)</h2>
+<p>If you know a problem can be solved by two pointers, the solution will be very intuitive. This problem is easy too. You just need to start from the left and right until you find two vowels.
+Time complexity is O(n). Space complexity is O(n). Here is the <a href="https://leetcode.com/problems/reverse-vowels-of-a-string/submissions/">link</a>.</p>
+<h2 id="680-valid-palindrome-ii-easy">680. Valid Palindrome II (Easy)</h2>
+<p>This problem is a little bit more hard than first three problems. You should use two pointers and greedy to solve this problem. If you find somewhere cannot build a palindrome, you should check (left+1,right) and (left,right-1).
+If at least one of these two substrings is a palindrome, then the whole string could be a palindrome. Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/valid-palindrome-ii/">link</a>.</p>
+<h2 id="88-merge-sorted-array-easy">88. Merge Sorted Array (Easy)</h2>
+<p>This problem is very easy if you create a new array as your answer. But the problem requires us to use the origin array as the answer. Therefore, we need to be careful about the initial value of two pointers.
+In this problem, the initial value of two pointers should be right of these two arrays. You cannot start from the left. You will override nums1 and lose data if you start from the left.
+Time complexity is O(m+n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/merge-sorted-array/">link</a>.</p>
+<h2 id="141-linked-list-cycle-easy">141. Linked List Cycle (Easy)</h2>
+<p>Well, I didn&rsquo;t find I could use two pointers to solve this problem when I first tried to solve it. The leetcode gives a details explanation.</p>
+<blockquote>
+<p>The space complexity can be reduced to O(1) by considering two pointers at different speed - a slow pointer and a fast pointer. The slow pointer moves one step at a time while the fast pointer moves two steps at a time.</p>
+</blockquote>
+<blockquote>
+<p>If there is no cycle in the list, the fast pointer will eventually reach the end and we can return false in this case.</p>
+</blockquote>
+<blockquote>
+<p>Now consider a cyclic list and imagine the slow and fast pointers are two runners racing around a circle track. The fast runner will eventually meet the slow runner. Why? Consider this case (we name it case A) - The fast runner is just one step behind the slow runner. In the next iteration, they both increment one and two steps respectively and meet each other.</p>
+</blockquote>
+<blockquote>
+<p>How about other cases? For example, we have not considered cases where the fast runner is two or three steps behind the slow runner yet. This is simple, because in the next or next&rsquo;s next iteration, this case will be reduced to case A mentioned above.</p>
+</blockquote>
+<p>Time complexity O(n). Space complexity O(1). Here is the <a href="https://leetcode.com/problems/linked-list-cycle/solution/">link</a>.</p>
+<h2 id="524-longest-word-in-dictionary-through-deleting-medium">524. Longest Word in Dictionary through Deleting (Medium)</h2>
+<p>This is the only medium problem. Through this problem, we can <strong>use two pointers to find the substring of a string</strong>. For this problem, you only need to consider about strings which are longer than your current answer.
+What&rsquo;s more,</p>
+<pre><code>str1.compareTo(str2) 
+</code></pre>
+<p>can be use to find the smaller lexicographical string. if the return value is smaller than 0, lexicographical order is str1&lt;str2.</p>
+<p>Time complexity : O(n⋅x). One iteration over all strings is required. Here n refers to the number of strings in list d and x refers to average string length.</p>
+<p>Space complexity : O(x). max_str variable is used.</p>
+<p>Here is the <a href="http://localhost:1313/2020/05/leetcode-two-pointers/">link</a>.</p>
+<h2 id="summary">Summary</h2>
+<p>If you find you can use two pointers to solve a problem. this problem will be very easy. Two pointers are used to iterate array, list and string.
+You can use two pointers to find the target value in array and substring of the string.</p>
+<p>In this kind of problem, you need to be careful about the initial value of two pointers.
+There are some situations:</p>
+<ul>
+<li>One pointer starts from the left of array/string, the other starts from the right/end of the array/string.</li>
+<li>Two pointers starts from the left/right of two arrays/strings.</li>
+<li>One pointer is faster than the other, like leetocde 141.</li>
+</ul>
+<p>You also need to be careful about how to move these two pointers. This depends on problem requirement.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
+
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/two-pointers/">two pointers</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/semester-summary-of-fl2019-sp2020/" data-tooltip="Semester Summary of FL2019 &amp; SP2020">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Yitong Wang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/semester-summary-of-fl2019-sp2020/" data-tooltip="Semester Summary of FL2019 &amp; SP2020">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-two-pointers/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-two-pointers%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-two-pointers%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-two-pointers%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Yitong Wang</h4>
+    
+      <div id="about-card-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Graduate student of Computer Science in Washington University in St. Louis
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        US
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://tywz-milk.github.io/images/WechatIMG249.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://tywz-milk.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-two-pointers\/';
+          
+            this.page.identifier = '\/2020\/05\/leetcode-two-pointers\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
