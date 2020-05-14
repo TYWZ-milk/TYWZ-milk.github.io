@@ -262,6 +262,7 @@
     <li><a href="#141-linked-list-cycle-easy">141. Linked List Cycle (Easy)</a></li>
     <li><a href="#524-longest-word-in-dictionary-through-deleting-medium">524. Longest Word in Dictionary through Deleting (Medium)</a></li>
     <li><a href="#75-sort-colors-medium">75. Sort Colors (Medium)</a></li>
+    <li><a href="#392-is-subsequence-easy">392. Is Subsequence (Easy)</a></li>
     <li><a href="#summary">Summary</a></li>
   </ul>
 </nav>
@@ -335,6 +336,21 @@ A pointer starts from left. The other starts from right. If we find 0 at the k, 
                 blue--;
             }
         }
+    }
+</code></pre>
+<h2 id="392-is-subsequence-easy">392. Is Subsequence (Easy)</h2>
+<p>You need two pointers for these two strings. If you find the characters are same, move the pointer of s.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/is-subsequence/">link</a>.</p>
+<pre><code>    public boolean isSubsequence(String s, String t) {
+        int index =0;
+        if(s.length()==0)return true;
+        for(int j =0;j&lt;t.length();j++){
+            if(t.charAt(j)==s.charAt(index)){
+                index++;
+                if(index == s.length())return true;
+            }
+        }
+        return false;
     }
 </code></pre>
 <h2 id="summary">Summary</h2>
@@ -585,7 +601,7 @@ There are some situations:</p>
     
   
     
-      <div id="cover" style="background-image:url('https://tywz-milk.github.io/images/WechatIMG249.jpeg');"></div>
+      <div id="cover" style="background-image:url('https://tywz-milk.github.io/images/WechatIMG246.jpeg');"></div>
     
   
 

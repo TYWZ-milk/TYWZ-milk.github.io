@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Yitong Wang">
+<meta name="keywords" content="Leetcode, greedy algorithm">
+<meta name="description" content="Some Leetcode problems can be solved by greedy algorithm effectively">
+
+
+<meta property="og:description" content="Some Leetcode problems can be solved by greedy algorithm effectively">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode-Greedy Algorithm">
+<meta name="twitter:title" content="Leetcode-Greedy Algorithm">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+<meta property="og:site_name" content="Yitong Wang&#39;s Blog">
+<meta property="og:description" content="Some Leetcode problems can be solved by greedy algorithm effectively">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by greedy algorithm effectively">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-05-13T09:26:17">
+  
+  
+    <meta property="article:modified_time" content="2020-05-13T09:26:17">
+  
+  
+  
+    
+      <meta property="article:section" content="Leetcode">
+    
+  
+  
+    
+      <meta property="article:tag" content="Leetcode">
+    
+      <meta property="article:tag" content="greedy algorithm">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
+  <meta property="twitter:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
+
+
+
+
+
+  <meta property="og:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+  <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+
+
+    <title>Leetcode-Greedy Algorithm</title>
+
+    <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://tywz-milk.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://tywz-milk.github.io/">Yitong Wang&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://tywz-milk.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://tywz-milk.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Yitong Wang</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/TYWZ-milk" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/yitong-wang-849047182" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Leetcode-Greedy Algorithm
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-13T09:26:17-05:00">
+        
+  
+  
+  
+  
+    13 May 2020
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://tywz-milk.github.io/categories/leetcode">Leetcode</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <aside>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#455-assign-cookies-easy">455. Assign Cookies (Easy)</a></li>
+    <li><a href="#435-non-overlapping-intervals-medium">435. Non-overlapping Intervals (Medium)</a></li>
+    <li><a href="#452-minimum-number-of-arrows-to-burst-balloons-medium">452. Minimum Number of Arrows to Burst Balloons (Medium)</a></li>
+    <li><a href="#406-queue-reconstruction-by-heightmedium">406. Queue Reconstruction by Height(Medium)</a></li>
+    <li><a href="#121-best-time-to-buy-and-sell-stock-easy">121. Best Time to Buy and Sell Stock (Easy)</a></li>
+    <li><a href="#122-best-time-to-buy-and-sell-stock-ii-easy">122. Best Time to Buy and Sell Stock II (Easy)</a></li>
+    <li><a href="#605-can-place-flowers-easy">605. Can Place Flowers (Easy)</a></li>
+    <li><a href="#665-non-decreasing-array-easy">665. Non-decreasing Array (Easy)</a></li>
+    <li><a href="#53-maximum-subarray-easy">53. Maximum Subarray (Easy)</a></li>
+    <li><a href="#763-partition-labels-medium">763. Partition Labels (Medium)</a></li>
+  </ul>
+</nav>
+              </aside>
+              <blockquote>
+<p>Reference: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E8%B4%AA%E5%BF%83%E6%80%9D%E6%83%B3.md">Link</a></p>
+</blockquote>
+<p>A greedy algorithm is any algorithm that follows the problem-solving heuristic of making the locally optimal choice at each stage with the intent of finding a global optimum.</p>
+<h2 id="455-assign-cookies-easy">455. Assign Cookies (Easy)</h2>
+<p>At first, we need to sort two arrays, because we want to use small cookie to content the child who is easily content. If we can use current cookie to content current child, we move to next child.
+Otherwise, we move to next cookie.</p>
+<p>Time complexity is O(mlogm+nlogn). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/assign-cookies/">link</a>.</p>
+<pre><code>    public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int ans = 0;
+        for(int i = 0,j=0;i&lt;g.length &amp;&amp; j&lt;s.length;i++){
+            while(j&lt;s.length &amp;&amp; s[j]&lt;g[i])j++;
+            if(j==s.length)break;
+            ans++;
+            j++;
+        }
+        return ans;
+    }
+</code></pre>
+<h2 id="435-non-overlapping-intervals-medium">435. Non-overlapping Intervals (Medium)</h2>
+<p>At first, we still need to sort intervals. We sort intervals according to their end time. Then we iterate intervals. In each step, we update end time.
+If we find an overlap interval, we plus 1 to answer and update start time to make sure our global interval is small enough.
+We want the minimum number, so we make sure our global interval is small enough.</p>
+<p>Time complexity is O(nlogn). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/non-overlapping-intervals/">link</a>.</p>
+<pre><code>    public int eraseOverlapIntervals(int[][] intervals) {
+        if(intervals.length==0)return 0;
+        Arrays.sort(intervals, new Comparator&lt;int[]&gt;() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[1] - o2[1];
+            }
+        });
+        int ans = 0;
+        int end = intervals[0][1];
+        for(int i =1;i&lt;intervals.length;i++){
+            if(intervals[i][0]&lt;end){
+                ans++;
+            }
+            else{
+                end = intervals[i][1];
+            }
+        }
+        return ans;
+    }
+</code></pre>
+<h2 id="452-minimum-number-of-arrows-to-burst-balloons-medium">452. Minimum Number of Arrows to Burst Balloons (Medium)</h2>
+<p>This problem is exactly same as the last problem. We need to calculate the non-overlap intervals.</p>
+<p>Time complexity is O(nlogn). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/">link</a>.</p>
+<pre><code>    public int findMinArrowShots(int[][] points) {
+        if(points.length==0)return 0;
+        
+        Arrays.sort(points, new Comparator&lt;int[]&gt;(){
+            @Override
+            public int compare(int[]a1,int[]a2){
+                return a1[0]-a2[0];
+            }
+        });
+        
+        int end = points[0][1];
+        int ans = 1;
+        for(int i =1;i&lt;points.length;i++){
+            if(points[i][0]&lt;=end){
+                end = Math.min(end,points[i][1]);
+            }
+            else{
+                ans++;
+                end = points[i][1];
+            }
+        }
+        return ans;
+        
+    }
+</code></pre>
+<h2 id="406-queue-reconstruction-by-heightmedium">406. Queue Reconstruction by Height(Medium)</h2>
+<p>At first, we need to sort this array. Higher people has smaller index. If two persons have same height, the person with smaller second value has smaller index.
+We sort people height in ascending order because the second value means the number of people in front of the person who are higher. Hence, we can ensure relative positions are right.
+We sort second value in descending order because the same height is also counted as the second value.</p>
+<p>After sorting, we add all elements into a new array. When you are adding an element, their second indices are their true indices.</p>
+<p>Time complexity is O(nlogn). Space complexity is O(n). We can reduce space complexity to O(1). We can change positions of elements in place. But this is not the core point of this problem.
+Here is the <a href="https://leetcode.com/problems/queue-reconstruction-by-height/">link</a>.</p>
+<pre><code>    public int[][] reconstructQueue(int[][] people) {
+        Arrays.sort(people,new Comparator&lt;int[]&gt;(){
+            @Override
+            public int compare(int[]a1,int[]a2){
+                return a1[0]==a2[0]?a1[1]-a2[1]:a2[0]-a1[0];
+            }
+        });
+        List&lt;int[]&gt;list = new ArrayList();
+        for(int[]person:people){
+
+            list.add(person[1],person);
+            
+        }
+        return list.toArray(new int[list.size()][]);
+    }
+</code></pre>
+<h2 id="121-best-time-to-buy-and-sell-stock-easy">121. Best Time to Buy and Sell Stock (Easy)</h2>
+<p>You need to iterate the whole array. Record the minimum price as the buying price. Update the answer when you are iterating.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">link</a>.</p>
+<pre><code>    public int maxProfit(int[] prices) {
+        if(prices.length&lt;=1)return 0;
+        int minPrice = prices[0];
+        int ans = 0;
+        for(int i =1;i&lt;prices.length;i++){
+            ans = Math.max(ans,prices[i]-minPrice);
+            minPrice = Math.min(minPrice,prices[i]);
+        }
+        return ans;
+    }
+</code></pre>
+<h2 id="122-best-time-to-buy-and-sell-stock-ii-easy">122. Best Time to Buy and Sell Stock II (Easy)</h2>
+<p>Consider an example [a,b,c,d]. a&lt;=b&lt;=c&lt;=d. The answer will be d-a = (d-c)+(c-b)+(b-a). Therefore, if we find prices[i]&gt;prices[i-1], we add their difference into the answer.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/">link</a>.</p>
+<pre><code>    public int maxProfit(int[] prices) {
+        int ans = 0;
+        if(prices.length&lt;=1)return 0;
+        int minPrice = prices[0];
+        for(int i =1;i&lt;prices.length;i++){
+            
+        }
+        return ans;
+    }
+</code></pre>
+<h2 id="605-can-place-flowers-easy">605. Can Place Flowers (Easy)</h2>
+<p>This problem is easy. You just need to check the previous position, current position and next position whether they are 0. And you also need to be careful about border, index = 0 and length-1.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/can-place-flowers/submissions/">link</a>.</p>
+<pre><code>    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int l = flowerbed.length;
+        for(int i = 0;i&lt;l;i++){
+            int pre = i==0?0:flowerbed[i-1];
+            int next = i==l-1?0:flowerbed[i+1];
+            if(pre==0 &amp;&amp; flowerbed[i]==0 &amp;&amp; next==0){
+                n--;
+                flowerbed[i]=1;
+            }
+            if(n==0)return true;
+        }
+        return n&gt;0?false:true;
+    }
+</code></pre>
+<h2 id="665-non-decreasing-array-easy">665. Non-decreasing Array (Easy)</h2>
+<p>This problem doesn&rsquo;t have any trick. You just need to be careful we should we should update nums[i] or nums[i+1] when nums[i]&gt;nums[i+1].
+If i == 0 &amp; [4,2,3], we need to replace 4 with 2.
+If [1,4,2,3], we should replace 4 with 2.
+If [3,4,2,4], we should replace 2 with 4.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/non-decreasing-array/">link</a>.</p>
+<pre><code>    public boolean checkPossibility(int[] nums) {
+        int cnt = 0;
+        for(int i =0;i&lt;nums.length-1;i++){
+            if(nums[i]&gt;nums[i+1]){
+                cnt++;
+                if(i==0||(i&gt;0 &amp;&amp; nums[i-1]&lt;=nums[i+1]))nums[i] = nums[i+1];
+                else nums[i+1]=nums[i];
+            }
+            if(cnt&gt;1)return false;
+        }
+        return true;
+    }
+</code></pre>
+<h2 id="53-maximum-subarray-easy">53. Maximum Subarray (Easy)</h2>
+<p>In this problem, we need a variable to record current sum. In each iteration, we compare nums[i] and curSum+nums[i]. Meanwhile, we update maximum answer.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/maximum-subarray/">link</a>.</p>
+<pre><code>    public int maxSubArray(int[] nums) {
+        if(nums.length==0) return 0;
+        int sum = 0;
+        int res = Integer.MIN_VALUE;
+        for(int i =0;i&lt;nums.length;i++){
+            sum = Math.max(sum+=nums[i],nums[i]);
+            res = Math.max(res,sum);
+            
+        }
+        return res;
+    }
+</code></pre>
+<h2 id="763-partition-labels-medium">763. Partition Labels (Medium)</h2>
+<p>The length of one part depends on the last index of each character in this part. At first, we need to record each characters&rsquo; last index in the string.
+And we iterate the string and update variable &lsquo;last&rsquo;. Variable &lsquo;last&rsquo; means the last index of one part. And we also need a variable &lsquo;start&rsquo; to record the start index of one part.
+If we find index i is equal to the last index, we find one part and can be added to our answer. Then we update the variable &lsquo;start&rsquo; as index (i+1) and continue to iterate the string.</p>
+<p>Time complexity is O(n). Space complexity is O(n). Here is the <a href="https://leetcode.com/problems/partition-labels/solution/">link</a>.</p>
+<pre><code>    public List&lt;Integer&gt; partitionLabels(String S) {
+        int[]lastIndex = new int[26];
+        for(int i =0;i&lt;S.length();i++){
+            lastIndex[S.charAt(i)-'a'] = i;
+        }
+        int last = lastIndex[S.charAt(0)-'a'];
+        List&lt;Integer&gt;ans = new ArrayList();
+        int start = 0;
+        for(int i =0;i&lt;S.length();i++){
+            if(lastIndex[S.charAt(i)-'a']&gt;last)
+                last = lastIndex[S.charAt(i)-'a'];
+            if(i==last){
+                ans.add(last-start+1);
+                start = i+1;
+            }
+        }
+        return ans;
+    }</code></pre>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
+
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/greedy-algorithm/">greedy algorithm</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-heapsort-quick-select/" data-tooltip="Leetcode-HeapSort &amp; Quick Select">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Yitong Wang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-heapsort-quick-select/" data-tooltip="Leetcode-HeapSort &amp; Quick Select">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-greedy-algorithm%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-greedy-algorithm%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-greedy-algorithm%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Yitong Wang</h4>
+    
+      <div id="about-card-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        <a href="https://drive.google.com/file/d/1pm27foZs2NJ2DZ95vZWfx9kkt8kdpXPa/view?usp=sharing">resume</a>
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        US
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://tywz-milk.github.io/images/WechatIMG246.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://tywz-milk.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-greedy-algorithm\/';
+          
+            this.page.identifier = '\/2020\/05\/leetcode-greedy-algorithm\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'yitongwang-blog';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
