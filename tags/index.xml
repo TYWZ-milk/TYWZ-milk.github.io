@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 May 2020 09:26:17 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 17:28:21 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>binary search</title>
+      <link>https://tywz-milk.github.io/tags/binary-search/</link>
+      <pubDate>Thu, 14 May 2020 17:28:21 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/tags/binary-search/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leetcode</title>
+      <link>https://tywz-milk.github.io/tags/leetcode/</link>
+      <pubDate>Thu, 14 May 2020 17:28:21 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/tags/leetcode/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>greedy algorithm</title>
@@ -17,15 +35,6 @@
       <pubDate>Wed, 13 May 2020 09:26:17 -0500</pubDate>
       
       <guid>https://tywz-milk.github.io/tags/greedy-algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Leetcode</title>
-      <link>https://tywz-milk.github.io/tags/leetcode/</link>
-      <pubDate>Wed, 13 May 2020 09:26:17 -0500</pubDate>
-      
-      <guid>https://tywz-milk.github.io/tags/leetcode/</guid>
       <description></description>
     </item>
     
