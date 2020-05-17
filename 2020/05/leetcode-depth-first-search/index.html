@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="Leetcode, bfs">
-<meta name="description" content="Some Leetcode problems can be solved by bfs effectively">
+<meta name="keywords" content="Leetcode, dfs">
+<meta name="description" content="Some Leetcode problems can be solved by dfs effectively">
 
 
-<meta property="og:description" content="Some Leetcode problems can be solved by bfs effectively">
+<meta property="og:description" content="Some Leetcode problems can be solved by dfs effectively">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-Breath-First Search">
-<meta name="twitter:title" content="Leetcode-Breath-First Search">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+<meta property="og:title" content="Leetcode-Depth-First Search">
+<meta name="twitter:title" content="Leetcode-Depth-First Search">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="Some Leetcode problems can be solved by bfs effectively">
-<meta name="twitter:description" content="Some Leetcode problems can be solved by bfs effectively">
+<meta property="og:description" content="Some Leetcode problems can be solved by dfs effectively">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by dfs effectively">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-16T15:10:49">
+    <meta property="article:published_time" content="2020-05-16T20:51:43">
   
   
-    <meta property="article:modified_time" content="2020-05-16T15:10:49">
+    <meta property="article:modified_time" content="2020-05-16T20:51:43">
   
   
   
@@ -38,7 +38,7 @@
     
       <meta property="article:tag" content="Leetcode">
     
-      <meta property="article:tag" content="bfs">
+      <meta property="article:tag" content="dfs">
     
   
 
@@ -62,14 +62,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Leetcode-Breath-First Search</title>
+    <title>Leetcode-Depth-First Search</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -219,13 +219,13 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Leetcode-Breath-First Search
+      Leetcode-Depth-First Search
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-16T15:10:49-05:00">
+      <time itemprop="datePublished" datetime="2020-05-16T20:51:43-05:00">
         
   
   
@@ -254,110 +254,220 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#1091-shortest-path-in-binary-matrixmedium">1091. Shortest Path in Binary Matrix(Medium)</a></li>
-    <li><a href="#127-word-ladder-medium">127. Word Ladder (Medium)</a></li>
+    <li><a href="#695-max-area-of-island-medium">695. Max Area of Island (Medium)</a></li>
+    <li><a href="#200-number-of-islands-medium">200. Number of Islands (Medium)</a></li>
+    <li><a href="#547-friend-circles-medium">547. Friend Circles (Medium)</a></li>
+    <li><a href="#130-surrounded-regions-medium">130. Surrounded Regions (Medium)</a></li>
+    <li><a href="#417-pacific-atlantic-water-flow-medium">417. Pacific Atlantic Water Flow (Medium)</a></li>
   </ul>
 </nav>
               </aside>
               <blockquote>
 <p>Reference: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%90%9C%E7%B4%A2.md#1-%E8%AE%A1%E7%AE%97%E5%9C%A8%E7%BD%91%E6%A0%BC%E4%B8%AD%E4%BB%8E%E5%8E%9F%E7%82%B9%E5%88%B0%E7%89%B9%E5%AE%9A%E7%82%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%95%BF%E5%BA%A6">Link</a></p>
 </blockquote>
-<p>If a problem is about graph or tree, we should consider bfs, dfs, backtracking as the solution. When we are using bfs, we need to use queue to store nodes that we have traversed.
-And we need to mark traversed nodes so that we will not traverse this node again. The test point of some questions is to use bfs to solve the shortest path problem.</p>
-<h2 id="1091-shortest-path-in-binary-matrixmedium">1091. Shortest Path in Binary Matrix(Medium)</h2>
-<p>This problem is a graph problem. The difference between this problem and common problems is adjacent cells are connected 8-directionally. And we need to get the shortest path in this problem.
-Therefore, we need to empty our queue in each iteration so that the length of path will not be larger.
-This means we need to get all possible adjacent cells in each step and check if these cells contain end position.
-We need a queue to traverse all possible cells. If we visit a cell, we change it value to 1 so that we will not visit it again.</p>
-<pre><code>public int shortestPathBinaryMatrix(int[][] grid) {
-    int m = grid.length;
-    int n = grid[0].length;
-    int[][] direction = {{1, -1}, {1, 0}, {1, 1}, {0, -1}, {0, 1}, {-1, -1}, {-1, 0}, {-1, 1}};
+<p>DFS is often used to solve accessibility problem. We get a graph and try to figure out if we can arrive at the node from the start node.
+We use stack to achieve dfs and we also need visited array to record all visited nodes.</p>
+<h2 id="695-max-area-of-island-medium">695. Max Area of Island (Medium)</h2>
+<p>This problem is very intuitive. We need to find all possible islands and compare their area to find the maximum area. In order to find all possible islands, we need to iterate all positions in this matrix.
+If grid[i][j]==1, we find a possible island and begin dfs. Dfs can help us find the area of this island. Remember if we visited a position, change its value as 0 so that we will not visit this position again.</p>
+<p>Time complexity is O(R*C), where R is the number of rows in the given grid, and C is the number of columns. We visit every square once.
+Space complexity: O(1). Here is the <a href="https://leetcode.com/problems/max-area-of-island/">link</a>.</p>
+<pre><code>public int maxAreaOfIsland(int[][] grid) {
     int ans = 0;
-    
-    if(grid[0][0]==1||grid[m-1][n-1]==1||m==0||n==0)return -1;
-    
-    Queue&lt;int[]&gt;queue = new LinkedList&lt;int[]&gt;();
-    queue.add(new int[]{0,0});
-    
-    
-    while(!queue.isEmpty()){
-        ans++;
-        int size = queue.size();
-        while(size&gt;0){
-            size--;
-            int[]start = queue.poll();
-            int x = start[0];
-            int y = start[1];
-            
-            if(grid[x][y]==1)continue;
-            
-            if(x==grid.length-1 &amp;&amp; y==grid[0].length-1){
-                return ans;
-            }
-            
-            grid[x][y]=1;
-            
-            for(int[] dict:direction){
-                int newx = x + dict[0];
-                int newy = y + dict[1];
-                int []newpos = new int[]{newx,newy};
-                if(valid(newpos,grid))
-                    queue.add(newpos);
+    for(int i =0;i&lt;grid.length;i++){
+        for(int j =0;j&lt;grid[i].length;j++){
+            if(grid[i][j]==1){
+                ans = Math.max(dfs(grid,i,j),ans);
             }
         }
     }
-    return -1;
+    return ans;
 }
-
-public boolean valid(int[]next,int[][]grid){
-    
-    if(next[0]&gt;=0&amp;&amp;next[1]&gt;=0&amp;&amp;next[0]&lt;grid.length&amp;&amp;next[1]&lt;grid[0].length)
-        return true;
-    else
-        return false;
+public int dfs(int[][]grid,int i, int j){
+    int ans = 1;
+    grid[i][j]=0;
+    int[][] directions = {{0,1},{1,0},{0,-1},{-1,0}};
+    for(int []direct:directions){
+        int newposx = direct[0]+i;
+        int newposy = direct[1]+j;
+        if(newposx&gt;=0 &amp;&amp; newposx&lt;grid.length &amp;&amp; newposy &gt;=0 &amp;&amp; newposy &lt; grid[0].length &amp;&amp; grid[newposx][newposy]==1)
+            ans+=dfs(grid,newposx,newposy);
+    }
+    return ans;
 }
 </code></pre>
-<h2 id="127-word-ladder-medium">127. Word Ladder (Medium)</h2>
-<p>The idea of this problem is to find the shortest path in a graph. This graph is consist of strings in &lsquo;wordList&rsquo;. Each node is a string.
-And we need to find the shortest path from &lsquo;beginWord&rsquo; to &lsquo;endWord&rsquo;. So we need to use bfs to solve this problem. We use a hashmap to record the length of the path.
-And this hashmap can also tell us if a node is already visited. The key is the string in &lsquo;wordList&rsquo;. The value is the length of the path from &lsquo;startWord&rsquo; to the key. We store all strings in a hash set but not list, because it can improve the efficiency to find the target string.
-In each iteration, we get a string from the queue. And change one character of this string to find if new string is in the hash set. If it&rsquo;s in the hashset and it&rsquo;s not in the hashmap,
-we can add it to the queue and map. If it&rsquo;s the endword, we can return the answer.</p>
-<p>Time complexity is O(mn). m is the size of &lsquo;wordList&rsquo;. n is the average length of the string. Space complexity is O(m+n). Here is the <a href="https://leetcode.com/problems/word-ladder/solution/">link</a>.
-public int ladderLength(String beginWord, String endWord, List<!-- raw HTML omitted --> wordList) {
-Queue<!-- raw HTML omitted -->queue = new LinkedList<!-- raw HTML omitted -->();
-queue.add(beginWord);</p>
-<pre><code>public int ladderLength(String beginWord, String endWord, List&lt;String&gt; wordList) {
-    Queue&lt;String&gt;queue = new LinkedList&lt;String&gt;();
-    queue.add(beginWord);
-    
-    HashMap&lt;String,Integer&gt;map = new HashMap();
-    map.put(beginWord,1);
-    HashSet&lt;String&gt;wordset = new HashSet();
-    
-    for(String str:wordList)wordset.add(str);
-
-    while(!queue.isEmpty()){
-
-        String word = queue.poll();
-            
-        for(int i =0;i&lt;word.length();i++){
-            for(Character letter = 'a';letter&lt;='z';letter++){
-                String newword = word.substring(0,i)+String.valueOf(letter)+word.substring(i+1);
-                if(wordset.contains(newword)){
-                    if(newword.equals(endWord) )return map.get(word)+1;
-                    if(!map.containsKey(newword)){
-                        queue.add(newword);
-                        map.put(newword,map.get(word)+1);
-                    }
-                }
+<h2 id="200-number-of-islands-medium">200. Number of Islands (Medium)</h2>
+<p>This problem is similar to the last problem. In the last problem, we need to find the maximum area. In this problem, we need to find the number of island.
+We just need to return different value.</p>
+<p>Time complexity is O(R*C), where R is the number of rows in the given grid, and C is the number of columns. We visit every square once.
+Space complexity: O(1). Here is the <a href="https://leetcode.com/problems/number-of-islands/submissions/">link</a>.</p>
+<pre><code>public int numIslands(char[][] grid) {
+    int ans = 0;
+    for(int i =0;i&lt;grid.length;i++){
+        for(int j =0;j&lt;grid[i].length;j++){
+            if(grid[i][j]=='1'){
+                island(grid,i,j);
+                ans++;
             }
         }
     }
+    return ans;
+}
 
-    return 0;
-}</code></pre>
+public void island(char[][] grid,int i, int j){
+    if(i&lt;0||j&lt;0||i&gt;=grid.length||j&gt;=grid[0].length||grid[i][j]=='0')return;
+    grid[i][j]='0';
+    int[][] directions = {{0,1},{1,0},{-1,0},{0,-1}};
+    for(int[]direct:directions){
+        int newx = i + direct[0];
+        int newy = j + direct[1];
+        island(grid,newx,newy);
+    }
+    
+}
+</code></pre>
+<h2 id="547-friend-circles-medium">547. Friend Circles (Medium)</h2>
+<p>We can transform friend circle to a graph. If A is a direct friend of B, A node and B node has an edge. If A is an indirect friend of C, A
+and C can be connected indirectly in the graph. Therefore, we need to use dfs to find all possible connections as friend circles.
+And we record all friends that we have iterated.</p>
+<p>Time complexity is O(n^2). Space complexity is O(n). Here is the <a href="https://leetcode.com/problems/friend-circles/">link</a>.</p>
+<pre><code>public int findCircleNum(int[][] M) {
+    if(M.length==0)return 0;
+    int ans = 0;
+    HashSet&lt;Integer&gt;visited = new HashSet();
+    for(int i =0;i&lt;M.length;i++){
+        if(visited.contains(i))continue;
+        dfs(M,i,visited);
+        ans++;
+    }
+    return ans;
+}
+public void dfs(int[][]M, int friend,HashSet&lt;Integer&gt;visited){
+    int []direct = M[friend];
+    visited.add(friend);
+    for(int i =0;i&lt;M.length;i++){
+        if(visited.contains(i)||M[friend][i]==0)continue;
+        dfs(M,i,visited);
+    }
+}
+</code></pre>
+<h2 id="130-surrounded-regions-medium">130. Surrounded Regions (Medium)</h2>
+<p>Another graph problem. In this problem, we need to deal with letter &lsquo;O&rsquo; on the border. We need to distinguish letter &lsquo;O&rsquo; on the border and not on the border.
+The best way is to change letter &lsquo;O&rsquo; on the border to another letter. I changed it to letter &lsquo;.'. And I use dfs to search all letter &lsquo;O&rsquo; which are connected with letter &lsquo;O&rsquo; on the border.
+Change them to letter &lsquo;.'. Then, I iterate all regions in 2D board. If it&rsquo;s letter &lsquo;.', restore it to letter &lsquo;O&rsquo;. If it&rsquo;s letter &lsquo;O&rsquo;, change it to letter &lsquo;X&rsquo;.</p>
+<p>Time complexity is O(mn). Space complexity is O(1). mn is the size of board. Here is the <a href="https://leetcode.com/problems/surrounded-regions/">link</a>.</p>
+<pre><code>public void solve(char[][] board) {
+    if(board.length==0||board[0].length==0)return;
+    for(int i =0;i&lt;board.length;i++){
+        for(int j =0;j&lt;board[i].length;j++){
+            if(board[i][j]=='O' &amp;&amp;(i==0||i==board.length-1||j==0||j==board[i].length-1))
+                dfs(board,i,j);
+        }
+    }
+    for(int i =0;i&lt;board.length;i++){
+        for(int j =0;j&lt;board[i].length;j++){
+            if(board[i][j]=='.')
+                board[i][j]='O';
+            else if(board[i][j]=='O')
+                board[i][j]='X';
+        }
+    }
+}
+public void dfs(char[][]board, int i, int j){
+    if(i&lt;0||i&gt;=board.length||j&lt;0||j&gt;=board[i].length||board[i][j]=='X'||board[i][j]=='.')return;
+    int[][] directions = {{0,1},{1,0},{-1,0},{0,-1}};
+    board[i][j]= '.';
+    for(int[] direct:directions){
+        int newposx = i+direct[0];
+        int newposy = j +direct[1];
+        dfs(board,newposx,newposy);
+    }
+}
+</code></pre>
+<h2 id="417-pacific-atlantic-water-flow-medium">417. Pacific Atlantic Water Flow (Medium)</h2>
+<p>I designed two solutions to solve this problem. Both solutions use dfs. One solution starts dfs from each cell. The other solution starts dfs from the border.</p>
+<p>The first solution is we use dfs for each cell to check whether water starts from this cell can touch both oceans. We still need a set to record visited cells. And we need to clear this set in each dfs, because we use dfs starts from the different cells and want to go to different oceans.
+We can use two hashmaps to replace with visited hashset. The key is the position of the cell. The value is a boolean variable means if we can reach Pacific/Atlantic.
+This can help us reduce running time. When we are using dfs, we need to check whether current position is on the border. If it&rsquo;s on the border, this means the path can reach one ocean.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; pacificAtlantic(int[][] matrix) {
+    List&lt;List&lt;Integer&gt;&gt; ans = new ArrayList();
+    HashSet&lt;List&lt;Integer&gt;&gt;visited = new HashSet();
+    for(int i =0;i&lt;matrix.length;i++){
+        for(int j =0;j&lt;matrix[i].length;j++){
+            visited = new HashSet();
+            if(dfs(matrix,i,j,0,visited)){
+                visited = new HashSet();
+                if(dfs(matrix,i,j,1,visited))
+                    ans.add(new ArrayList(Arrays.asList(i,j)));   
+            }
+        }
+    }
+    return ans;
+}
+
+public boolean dfs(int[][] matrix, int i,int j, int atlan, HashSet&lt;List&lt;Integer&gt;&gt;visited){
+    List&lt;Integer&gt;pos = new ArrayList();
+    pos.add(i);
+    pos.add(j);
+    visited.add(pos);
+    int bordertop = atlan== 0?0:matrix.length-1;
+    int borderleft = atlan == 0? 0:matrix[0].length-1;
+    if(i==bordertop || j == borderleft)return true;
+    int[][] directions = {{0,1},{1,0},{0,-1},{-1,0}};
+    for(int []direct:directions){
+        int newx = i + direct[0];
+        int newy = j + direct[1];
+        List&lt;Integer&gt;newpos = new ArrayList();
+        newpos.add(newx);
+        newpos.add(newy); 
+        if(newx&lt;0||newy&lt;0||newx&gt;=matrix.length||newy&gt;=matrix[0].length||visited.contains(newpos)||matrix[newx][newy]&gt;matrix[i][j])
+            continue;
+        if(dfs(matrix,newx,newy,atlan,visited))
+            return true;
+    }
+    return false;
+}
+</code></pre>
+<p>The second solution reduces running time and memory. We use dfs for each cell on the border. If a cell is connected with the cell on the border, we set this cell as true.
+And we need to build 2 arrays for pacific and atlantic separately. At last, we iterate these two arrays.
+If a cell is true for both pacific and atlantic, this cell is one of our answers.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; pacificAtlantic(int[][] matrix) {
+    List&lt;List&lt;Integer&gt;&gt; ans = new ArrayList();
+    if(matrix.length==0||matrix[0].length==0)return ans;
+    int m = matrix.length;
+    int n = matrix[0].length;
+    boolean [][]pacific = new boolean[m][n];
+    boolean [][]atlantic = new boolean[m][n];
+    
+    for(int i =0;i&lt;m;i++){
+        dfs(matrix,pacific,-1,i,0);
+        dfs(matrix,atlantic,-1,i,n-1);
+    }
+    for(int i=0;i&lt;n;i++){
+        dfs(matrix,pacific,-1,0,i);
+        dfs(matrix,atlantic,-1,m-1,i);
+    }
+    for(int i =0;i&lt;m;i++){
+        for(int j =0;j&lt;n;j++){
+            if(pacific[i][j]&amp;&amp;atlantic[i][j]){
+                ans.add(new ArrayList(Arrays.asList(i,j)));
+            }
+        }
+    }
+    return ans;
+}
+
+public void dfs(int[][] matrix, boolean[][]ocean,int pre, int i,int j){
+    int m = matrix.length, n = matrix[0].length;
+    if (i &lt; 0 || i &gt;= m || j &lt; 0 || j &gt;= n || ocean[i][j] || matrix[i][j] &lt; pre) return;
+    ocean[i][j] = true;
+    dfs(matrix, ocean, matrix[i][j], i + 1, j);
+    dfs(matrix, ocean, matrix[i][j], i - 1, j);
+    dfs(matrix, ocean, matrix[i][j], i, j + 1);
+    dfs(matrix, ocean, matrix[i][j], i, j - 1);
+}
+</code></pre>
+<p>Time complexity is O(mn). mn is the size of matrix. Space complexity is O(mn). Here is the <a href="https://leetcode.com/problems/pacific-atlantic-water-flow/submissions/">link</a>.</p>
 
               
             </div>
@@ -372,7 +482,7 @@ queue.add(beginWord);</p>
                     
   <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
 
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/bfs/">bfs</a>
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/dfs/">dfs</a>
 
                   </div>
                 
@@ -385,7 +495,7 @@ queue.add(beginWord);</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/" data-tooltip="Leetcode-Depth-First Search">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -393,7 +503,7 @@ queue.add(beginWord);</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/" data-tooltip="Leetcode-Divide and Conquer">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/" data-tooltip="Leetcode-Breath-First Search">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -411,19 +521,19 @@ queue.add(beginWord);</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -471,7 +581,7 @@ queue.add(beginWord);</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/" data-tooltip="Leetcode-Depth-First Search">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -479,7 +589,7 @@ queue.add(beginWord);</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/" data-tooltip="Leetcode-Divide and Conquer">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/" data-tooltip="Leetcode-Breath-First Search">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -497,19 +607,19 @@ queue.add(beginWord);</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -539,19 +649,19 @@ queue.add(beginWord);</p>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-breath-first-search%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-depth-first-search%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-breath-first-search%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-depth-first-search%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-breath-first-search%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-depth-first-search%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -643,9 +753,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-breath-first-search\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-depth-first-search\/';
           
-            this.page.identifier = '\/2020\/05\/leetcode-breath-first-search\/'
+            this.page.identifier = '\/2020\/05\/leetcode-depth-first-search\/'
           
         };
         (function() {
