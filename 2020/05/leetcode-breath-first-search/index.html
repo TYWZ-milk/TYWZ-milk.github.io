@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="Leetcode, divide and conquer">
-<meta name="description" content="Some Leetcode problems can be solved by divide and conquer effectively">
+<meta name="keywords" content="Leetcode, bfs">
+<meta name="description" content="Some Leetcode problems can be solved by bfs effectively">
 
 
-<meta property="og:description" content="Some Leetcode problems can be solved by divide and conquer effectively">
+<meta property="og:description" content="Some Leetcode problems can be solved by bfs effectively">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-Divide and Conquer">
-<meta name="twitter:title" content="Leetcode-Divide and Conquer">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
+<meta property="og:title" content="Leetcode-Breath-First Search">
+<meta name="twitter:title" content="Leetcode-Breath-First Search">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="Some Leetcode problems can be solved by divide and conquer effectively">
-<meta name="twitter:description" content="Some Leetcode problems can be solved by divide and conquer effectively">
+<meta property="og:description" content="Some Leetcode problems can be solved by bfs effectively">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by bfs effectively">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-16T09:57:53">
+    <meta property="article:published_time" content="2020-05-16T15:10:49">
   
   
-    <meta property="article:modified_time" content="2020-05-16T09:57:53">
+    <meta property="article:modified_time" content="2020-05-16T15:10:49">
   
   
   
@@ -38,7 +38,7 @@
     
       <meta property="article:tag" content="Leetcode">
     
-      <meta property="article:tag" content="divide and conquer">
+      <meta property="article:tag" content="bfs">
     
   
 
@@ -62,14 +62,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Leetcode-Divide and Conquer</title>
+    <title>Leetcode-Breath-First Search</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -219,13 +219,13 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Leetcode-Divide and Conquer
+      Leetcode-Breath-First Search
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-16T09:57:53-05:00">
+      <time itemprop="datePublished" datetime="2020-05-16T15:10:49-05:00">
         
   
   
@@ -254,79 +254,109 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#241-different-ways-to-add-parentheses-medium">241. Different Ways to Add Parentheses (Medium)</a></li>
-    <li><a href="#95-unique-binary-search-trees-ii-medium">95. Unique Binary Search Trees II (Medium)</a></li>
+    <li><a href="#1091-shortest-path-in-binary-matrixmedium">1091. Shortest Path in Binary Matrix(Medium)</a></li>
+    <li><a href="#127-word-ladder-medium">127. Word Ladder (Medium)</a></li>
   </ul>
 </nav>
               </aside>
               <blockquote>
-<p>Reference: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%88%86%E6%B2%BB.md">Link</a></p>
+<p>Reference: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%90%9C%E7%B4%A2.md#1-%E8%AE%A1%E7%AE%97%E5%9C%A8%E7%BD%91%E6%A0%BC%E4%B8%AD%E4%BB%8E%E5%8E%9F%E7%82%B9%E5%88%B0%E7%89%B9%E5%AE%9A%E7%82%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%95%BF%E5%BA%A6">Link</a></p>
 </blockquote>
-<h2 id="241-different-ways-to-add-parentheses-medium">241. Different Ways to Add Parentheses (Medium)</h2>
-<p>We can use divide and conquer to solve this problem. We divide the string at the position of operators. For example, compute 1+1.
-We treat 1+1 as ()+(). We need to find all possible values for the left and right brackets. And compute the sum of all these possible values.
-Therefore, we need to use recursion to find all possible values. We keep dividing until we find there is no operator in the input string.
-This means the input string is only a number. We just return it as the only possible value.</p>
-<p>We can also use a hashmap to reduce running time. We define a global hashmap. The key is string, value is a list of all possible values generated by computing the key.
-In each recursion, we find if this string is the key of hashmap. If hashmap contains this string, we just return the value, because we already computed all possible values.
-This way can help us to avoid computing same string again and again.</p>
-<p>Here is the <a href="https://leetcode.com/problems/different-ways-to-add-parentheses/">link</a>.</p>
-<pre><code>public List&lt;Integer&gt; diffWaysToCompute(String input) {
-    List&lt;Integer&gt;res = new ArrayList();
-    for(int i =0;i&lt;input.length();i++){
-        Character operator = input.charAt(i);
-        if(operator == '+'||operator == '*'||operator == '-'){
-            List&lt;Integer&gt;left = diffWaysToCompute(input.substring(0,i));
-            List&lt;Integer&gt;right = diffWaysToCompute(input.substring(i+1));
-            for(int m =0;m&lt;left.size();m++){
-                for(int j =0;j&lt;right.size();j++){
-                    if(operator == '+'){
-                        res.add(left.get(m)+right.get(j));
+<p>If a problem is about graph or tree, we should consider bfs, dfs, backtracking as the solution. When we are using bfs, we need to use queue to store nodes that we have traversed.
+And we need to mark traversed nodes so that we will not traverse this node again. The test point of some questions is to use bfs to solve the shortest path problem.</p>
+<h2 id="1091-shortest-path-in-binary-matrixmedium">1091. Shortest Path in Binary Matrix(Medium)</h2>
+<p>This problem is a graph problem. The difference between this problem and common problems is adjacent cells are connected 8-directionally. And we need to get the shortest path in this problem.
+Therefore, we need to empty our queue in each iteration so that the length of path will not be larger.
+This means we need to get all possible adjacent cells in each step and check if these cells contain end position.
+We need a queue to traverse all possible cells. If we visit a cell, we change it value to 1 so that we will not visit it again.</p>
+<pre><code>public int shortestPathBinaryMatrix(int[][] grid) {
+    int m = grid.length;
+    int n = grid[0].length;
+    int[][] direction = {{1, -1}, {1, 0}, {1, 1}, {0, -1}, {0, 1}, {-1, -1}, {-1, 0}, {-1, 1}};
+    int ans = 0;
+    
+    if(grid[0][0]==1||grid[m-1][n-1]==1||m==0||n==0)return -1;
+    
+    Queue&lt;int[]&gt;queue = new LinkedList&lt;int[]&gt;();
+    queue.add(new int[]{0,0});
+    
+    
+    while(!queue.isEmpty()){
+        ans++;
+        int size = queue.size();
+        while(size&gt;0){
+            size--;
+            int[]start = queue.poll();
+            int x = start[0];
+            int y = start[1];
+            
+            if(grid[x][y]==1)continue;
+            
+            if(x==grid.length-1 &amp;&amp; y==grid[0].length-1){
+                return ans;
+            }
+            
+            grid[x][y]=1;
+            
+            for(int[] dict:direction){
+                int newx = x + dict[0];
+                int newy = y + dict[1];
+                int []newpos = new int[]{newx,newy};
+                if(valid(newpos,grid))
+                    queue.add(newpos);
+            }
+        }
+    }
+    return -1;
+}
+
+public boolean valid(int[]next,int[][]grid){
+    
+    if(next[0]&gt;=0&amp;&amp;next[1]&gt;=0&amp;&amp;next[0]&lt;grid.length&amp;&amp;next[1]&lt;grid[0].length)
+        return true;
+    else
+        return false;
+}
+</code></pre>
+<h2 id="127-word-ladder-medium">127. Word Ladder (Medium)</h2>
+<p>The idea of this problem is to find the shortest path in a graph. This graph is consist of strings in &lsquo;wordList&rsquo;. Each node is a string.
+And we need to find the shortest path from &lsquo;beginWord&rsquo; to &lsquo;endWord&rsquo;. So we need to use bfs to solve this problem. We use a hashmap to record the length of the path.
+And this hashmap can also tell us if a node is already visited. The key is the string in &lsquo;wordList&rsquo;. The value is the length of the path from &lsquo;startWord&rsquo; to the key. We store all strings in a hash set but not list, because it can improve the efficiency to find the target string.
+In each iteration, we get a string from the queue. And change one character of this string to find if new string is in the hash set. If it&rsquo;s in the hashset and it&rsquo;s not in the hashmap,
+we can add it to the queue and map. If it&rsquo;s the endword, we can return the answer.</p>
+<p>Time complexity is O(mn). m is the size of &lsquo;wordList&rsquo;. n is the average length of the string. Space complexity is O(m+n). Here is the <a href="https://leetcode.com/problems/word-ladder/solution/">link</a>.
+public int ladderLength(String beginWord, String endWord, List<!-- raw HTML omitted --> wordList) {
+Queue<!-- raw HTML omitted -->queue = new LinkedList<!-- raw HTML omitted -->();
+queue.add(beginWord);</p>
+<pre><code>public int ladderLength(String beginWord, String endWord, List&lt;String&gt; wordList) {
+    Queue&lt;String&gt;queue = new LinkedList&lt;String&gt;();
+    queue.add(beginWord);
+    
+    HashMap&lt;String,Integer&gt;map = new HashMap();
+    map.put(beginWord,1);
+    HashSet&lt;String&gt;wordset = new HashSet();
+    
+    for(String str:wordList)wordset.add(str);
+
+    while(!queue.isEmpty()){
+
+        String word = queue.poll();
+            
+        for(int i =0;i&lt;word.length();i++){
+            for(Character letter = 'a';letter&lt;='z';letter++){
+                String newword = word.substring(0,i)+String.valueOf(letter)+word.substring(i+1);
+                if(wordset.contains(newword)){
+                    if(newword.equals(endWord) )return map.get(word)+1;
+                    if(!map.containsKey(newword)){
+                        queue.add(newword);
+                        map.put(newword,map.get(word)+1);
                     }
-                    else if(operator == '-'){
-                        res.add(left.get(m)-right.get(j));
-                    }
-                    else
-                        res.add(left.get(m)*right.get(j));
                 }
             }
         }
     }
-    if(res.size()==0)
-        res.add(Integer.valueOf(input));
-    return res;
 
-}
-</code></pre>
-<h2 id="95-unique-binary-search-trees-ii-medium">95. Unique Binary Search Trees II (Medium)</h2>
-<p>The solution of this problem is similar to the last problem. We divide n this time. For example, we start from i (1&lt;=i&lt;=n). We take i as the head.
-And compute the left subtree and right subtree. Left subtree is consist of (1,i-1). Right subtree is consist of (i+1,n). And in recursion,
-we do this again and again until we find all possible subtrees. And combine all possible subtrees to get our answer.</p>
-<p>We can also use a 2D array as our memory to avoid computing same subtree again. (i,j) means the range of the subtree. This can help us reduce running time.</p>
-<p>Here is the <a href="https://leetcode.com/problems/unique-binary-search-trees-ii/submissions/">link</a>.</p>
-<pre><code>public List&lt;TreeNode&gt; generateTrees(int n) {
-    if(n==0)return new ArrayList();
-    return help(1,n);
-}
-public List&lt;TreeNode&gt; help(int low, int high){
-    List&lt;TreeNode&gt;ans = new ArrayList();
-    if(low&gt;high){
-        ans.add(null);
-        return ans;
-    }
-    for(int i =low;i&lt;=high;i++){   
-        List&lt;TreeNode&gt;left = help(low,i-1);
-        List&lt;TreeNode&gt;right = help(i+1,high);
-        for(int m =0;m&lt;left.size();m++){
-            for(int n = 0;n&lt;right.size();n++){
-                TreeNode head = new TreeNode(i);
-                head.left = left.get(m);
-                head.right = right.get(n);
-                ans.add(head);
-            }
-        }
-    }
-    return ans;
+    return 0;
 }</code></pre>
 
               
@@ -342,7 +372,7 @@ public List&lt;TreeNode&gt; help(int low, int high){
                     
   <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
 
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/divide-and-conquer/">divide and conquer</a>
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/bfs/">bfs</a>
 
                   </div>
                 
@@ -355,7 +385,7 @@ public List&lt;TreeNode&gt; help(int low, int high){
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/" data-tooltip="Leetcode-Breath-First Search">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -363,7 +393,7 @@ public List&lt;TreeNode&gt; help(int low, int high){
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-binary-search/" data-tooltip="Leetcode-Binary Search">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/" data-tooltip="Leetcode-Divide and Conquer">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -381,19 +411,19 @@ public List&lt;TreeNode&gt; help(int low, int high){
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -441,7 +471,7 @@ public List&lt;TreeNode&gt; help(int low, int high){
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/" data-tooltip="Leetcode-Breath-First Search">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -449,7 +479,7 @@ public List&lt;TreeNode&gt; help(int low, int high){
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-binary-search/" data-tooltip="Leetcode-Binary Search">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/" data-tooltip="Leetcode-Divide and Conquer">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -467,19 +497,19 @@ public List&lt;TreeNode&gt; help(int low, int high){
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-divide-and-conquer/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-breath-first-search/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -509,19 +539,19 @@ public List&lt;TreeNode&gt; help(int low, int high){
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-divide-and-conquer%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-breath-first-search%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-divide-and-conquer%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-breath-first-search%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-divide-and-conquer%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-breath-first-search%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -613,9 +643,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-divide-and-conquer\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-breath-first-search\/';
           
-            this.page.identifier = '\/2020\/05\/leetcode-divide-and-conquer\/'
+            this.page.identifier = '\/2020\/05\/leetcode-breath-first-search\/'
           
         };
         (function() {
