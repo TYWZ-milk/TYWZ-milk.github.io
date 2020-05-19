@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Yitong Wang">
+<meta name="keywords" content="Leetcode, backtracking">
+<meta name="description" content="Some Leetcode problems can be solved by backtracking and dfs effectively">
+
+
+<meta property="og:description" content="Some Leetcode problems can be solved by backtracking and dfs effectively">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode-Backtracking">
+<meta name="twitter:title" content="Leetcode-Backtracking">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+<meta property="og:site_name" content="Yitong Wang&#39;s Blog">
+<meta property="og:description" content="Some Leetcode problems can be solved by backtracking and dfs effectively">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by backtracking and dfs effectively">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-05-17T16:58:24">
+  
+  
+    <meta property="article:modified_time" content="2020-05-17T16:58:24">
+  
+  
+  
+    
+      <meta property="article:section" content="Leetcode">
+    
+  
+  
+    
+      <meta property="article:tag" content="Leetcode">
+    
+      <meta property="article:tag" content="backtracking">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
+  <meta property="twitter:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
+
+
+
+
+
+  <meta property="og:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+  <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+
+
+    <title>Leetcode-Backtracking</title>
+
+    <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://tywz-milk.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://tywz-milk.github.io/">Yitong Wang&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://tywz-milk.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://tywz-milk.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Yitong Wang</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/TYWZ-milk" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/yitong-wang-849047182" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Leetcode-Backtracking
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-17T16:58:24-05:00">
+        
+  
+  
+  
+  
+    17 May 2020
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://tywz-milk.github.io/categories/leetcode">Leetcode</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <aside>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#17-letter-combinations-of-a-phone-number-medium">17. Letter Combinations of a Phone Number (Medium)</a></li>
+    <li><a href="#93-restore-ip-addresses-medium">93. Restore IP Addresses (Medium)</a></li>
+    <li><a href="#79-word-search-medium">79. Word Search (Medium)</a></li>
+    <li><a href="#257-binary-tree-paths-easy">257. Binary Tree Paths (Easy)</a></li>
+    <li><a href="#46-permutations-medium">46. Permutations (Medium)</a></li>
+    <li><a href="#47-permutations-ii-medium">47. Permutations II (Medium)</a></li>
+    <li><a href="#77-combinations-medium">77. Combinations (Medium)</a></li>
+    <li><a href="#39-combination-sum-medium">39. Combination Sum (Medium)</a></li>
+    <li><a href="#40-combination-sum-ii-medium">40. Combination Sum II (Medium)</a></li>
+    <li><a href="#78-subsets-medium">78. Subsets (Medium)</a></li>
+    <li><a href="#90-subsets-ii-medium">90. Subsets II (Medium)</a></li>
+    <li><a href="#131-palindrome-partitioning-medium">131. Palindrome Partitioning (Medium)</a></li>
+    <li><a href="#37-sudoku-solver-hard">37. Sudoku Solver (Hard)</a></li>
+    <li><a href="#51-n-queens-hard">51. N-Queens (Hard)</a></li>
+  </ul>
+</nav>
+              </aside>
+              <blockquote>
+<p>Reference: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%90%9C%E7%B4%A2.md#1-%E8%AE%A1%E7%AE%97%E5%9C%A8%E7%BD%91%E6%A0%BC%E4%B8%AD%E4%BB%8E%E5%8E%9F%E7%82%B9%E5%88%B0%E7%89%B9%E5%AE%9A%E7%82%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%95%BF%E5%BA%A6">Link</a></p>
+</blockquote>
+<h2 id="17-letter-combinations-of-a-phone-number-medium">17. Letter Combinations of a Phone Number (Medium)</h2>
+<p>This problem is not difficult. We iterate all possible letters and backtrack to find all possible combinations.</p>
+<p>Time complexity : O(3^N×4^M) where N is the number of digits in the input that maps to 3 letters (e.g. 2, 3, 4, 5, 6, 8) and M is the number of digits in the input that maps to 4 letters (e.g. 7, 9), and N+M is the total number digits in the input.
+Space complexity : O(3^N×4^M). since one has to keep O(3^N×4^M) solutions. Here is the <a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/solution/">link</a>.</p>
+<pre><code>private static final String[] KEYS = {&quot;&quot;, &quot;&quot;, &quot;abc&quot;, &quot;def&quot;, &quot;ghi&quot;, &quot;jkl&quot;, &quot;mno&quot;, &quot;pqrs&quot;, &quot;tuv&quot;, &quot;wxyz&quot;};
+public List&lt;String&gt; letterCombinations(String digits) {
+
+    List&lt;String&gt;ans = new ArrayList();
+    if(digits.length()==0)return ans;
+    backtrack(digits,ans,&quot;&quot;);
+    return ans;
+}
+
+public void backtrack(String digits, List&lt;String&gt;ans, String temp){
+
+    String letters = KEYS[digits.charAt(0)-'0'];
+    for(int i =0;i&lt;letters.length();i++){
+        String newstring = temp+String.valueOf(letters.charAt(i));
+        if(digits.length()&gt;1)
+            backtrack(digits.substring(1),ans,newstring);
+        else
+            ans.add(newstring);
+    }
+}
+</code></pre>
+<h2 id="93-restore-ip-addresses-medium">93. Restore IP Addresses (Medium)</h2>
+<p>In order to solve this problem, you need to know what is IP address. IP address is like XXX.XXX.XXX.XXX. Each XXX is larger or equal 0 and smaller or equal 255.
+Each IP address has four parts. The length of these four parts could be 1, 2 or 3. But if the length is not 1, 0 cannot be the first number in one part.
+Such as 00, 01, 012 are invalid. We use recursion and backtrack to solve this problem. In my algorithm, n means how many parts we already find. If n==4, this means
+we find a possible IP address. k is the length of each part. We try different length until we find a valid address. Remember we also need add &lsquo;.&rsquo; to divide four parts.</p>
+<p>Time complexity is O(n). Space complexity depends on the input. Here is the <a href="https://leetcode.com/problems/restore-ip-addresses/">link</a>.</p>
+<pre><code>public List&lt;String&gt; restoreIpAddresses(String s) {
+    List&lt;String&gt; res = new ArrayList&lt;String&gt;();
+    helper(s, 0, &quot;&quot;, res);
+    return res;
+}
+public void helper(String s, int n, String out, List&lt;String&gt; res) {
+    if (n == 4) {
+        if (s.isEmpty()) res.add(out);
+        return;
+    }
+    for (int k = 1; k &lt; 4; ++k) {
+        if (s.length() &lt; k) break;
+        int val = Integer.parseInt(s.substring(0, k));
+        if (val &gt; 255 || k != String.valueOf(val).length()) continue;
+        helper(s.substring(k), n + 1, out + s.substring(0, k) + (n == 3 ? &quot;&quot; : &quot;.&quot;), res);
+    }
+}
+</code></pre>
+<h2 id="79-word-search-medium">79. Word Search (Medium)</h2>
+<p>We usually combine backtrack with dfs to solve problems. This problem is one of them. We use dfs to find the target string in the board.
+And if the string we find is not the target string, we backtrack to the previous step and continue to find the target string. If we find the target string, the algorithm should stop and return answer.
+I use a 2D boolean array as the visited array. Actually, we don&rsquo;t need to use extra space. We can just change the value in board. For example, change it to &lsquo;#'.
+After using dfs and backtracking, we restore its origin value.</p>
+<p>Time complexity is O(mn). mn is the size of board. Space complexity is O(mn). Here is the <a href="https://leetcode.com/problems/word-search/submissions/">link</a>.</p>
+<pre><code>public boolean exist(char[][] board, String word) {
+    int m = board.length;
+    int n = board[0].length;
+    if(m==0||n==0)return false;
+    boolean [][]visited = new boolean[m][n];
+    for(int i =0;i&lt;m;i++){
+        for(int j =0;j&lt;n;j++){
+            if(board[i][j]==word.charAt(0)){
+                if(backtrack(board,word,i,j,visited))
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+
+public boolean backtrack(char[][] board, String word, int i, int j,boolean [][]visited){
+    int m = board.length;
+    int n = board[0].length;
+    if(i&lt;0||j&lt;0||i&gt;=m||j&gt;=n||board[i][j]!=word.charAt(0)||visited[i][j])return false;
+    if(word.length()==1)return true;
+    visited[i][j]=true;
+    int[][] directions = {{-1,0},{0,-1},{1,0},{0,1}};
+    for(int[]direct:directions){
+        int x = i + direct[0];
+        int y = j + direct[1];
+        if(backtrack(board,word.substring(1),x,y,visited))
+            return true;
+    }
+    visited[i][j]=false;
+    return false;
+}
+</code></pre>
+<h2 id="257-binary-tree-paths-easy">257. Binary Tree Paths (Easy)</h2>
+<p>A very easy problem. We just need to use dfs to find all possible paths.</p>
+<p>Time complexity is O(n). Space complexity is O(n). n is the number of nodes in the tree. Here is the <a href="https://leetcode.com/problems/binary-tree-paths/">link</a>.</p>
+<pre><code>public List&lt;String&gt; binaryTreePaths(TreeNode root) {
+    List&lt;String&gt;ans = new ArrayList();
+    if(root == null)return ans;
+    dfs(root,ans,&quot;&quot;);
+    return ans;
+}
+
+public void dfs(TreeNode root, List&lt;String&gt;ans,String str){
+    if(root == null)return;
+    if(root.left==null &amp;&amp; root.right == null){
+        str+=String.valueOf(root.val);
+        ans.add(str);
+        return;
+    }
+    str+=String.valueOf(root.val)+&quot;-&gt;&quot;;
+    dfs(root.left,ans,str);
+    dfs(root.right,ans,str);
+}
+</code></pre>
+<h2 id="46-permutations-medium">46. Permutations (Medium)</h2>
+<p>We need to find all permutations, so we use dfs and backtrack to solve this problem. We also need a visited array to record if a value is already in our list.</p>
+<p>Time complexity is O(n!). Space complexity is O(n!). If we have n numbers, the number of permutations is n!. Here is the <a href="https://leetcode.com/problems/permutations/">link</a>.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) {
+    List&lt;List&lt;Integer&gt;&gt;ans = new ArrayList();
+    if(nums.length==0)return ans;
+    boolean[]visited = new boolean[nums.length];
+    help(nums,ans,visited,new ArrayList());
+    return ans;
+}
+public void help(int[] nums,List&lt;List&lt;Integer&gt;&gt;ans,boolean[]visited,List&lt;Integer&gt;list){
+    if(list.size()==nums.length){
+        ans.add(new ArrayList(list));
+        return;
+    }
+    for(int i =0;i&lt;nums.length;i++){
+        if(visited[i])continue;
+        visited[i]=true;
+        list.add(nums[i]);
+        help(nums,ans,visited,list);
+        visited[i]=false;
+        list.remove(list.size()-1);
+    }
+}
+</code></pre>
+<h2 id="47-permutations-ii-medium">47. Permutations II (Medium)</h2>
+<p>This problem is exactly same as the last problem. But we need to delete duplicate permutations. We can use a hashset to store our answers. This will prevent storing same permutations.
+What&rsquo;s more, we can sort the array. And check if next number is same as the current number. If they have same value, we may get the same result. We need to skip the same number in the same level.</p>
+<p>Time complexity is O(n!). Space complexity: O(n + k). If we have n numbers, the number of permutations is n!. Here is the <a href="https://leetcode.com/problems/permutations-ii/submissions/">link</a>.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; permuteUnique(int[] nums) {
+    List&lt;List&lt;Integer&gt;&gt;ans = new ArrayList();
+    if(nums.length==0)return ans;
+    boolean[]visited = new boolean[nums.length];
+    Arrays.sort(nums);
+    help(nums,ans,visited,new ArrayList());
+    return ans;
+}
+public void help(int[] nums,List&lt;List&lt;Integer&gt;&gt;ans,boolean[]visited,List&lt;Integer&gt;list){
+    if(list.size()==nums.length){
+        ans.add(new ArrayList(list));
+        return;
+    }
+    for(int i =0;i&lt;nums.length;i++){
+        if(visited[i])continue;
+        visited[i]=true;
+        list.add(nums[i]);
+        help(nums,ans,visited,list);
+        visited[i]=false;
+        list.remove(list.size()-1);
+        while(i+1&lt;nums.length &amp;&amp; nums[i+1]==nums[i])i++;
+    }
+}
+</code></pre>
+<h2 id="77-combinations-medium">77. Combinations (Medium)</h2>
+<p>This problem is same as the last problem. But we can use some tricks to improve algorithm. At first, [2,3] and [3,2] are same. We only need one of them as the answer.
+So we want to make sure all our answers are ascending order. This is easy, we just need to pass the current value to next recursion and make sure next possible value is larger than current value.
+This can also help us to save space for visited array, because visited values are smaller and we will not iterate them again.</p>
+<p>Time complexity: O(C(n, k)). Space complexity: O(k). Here is the <a href="https://zxi.mytechroad.com/blog/searching/leetcode-77-combinations/">link</a>.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) {
+    List&lt;List&lt;Integer&gt;&gt;ans = new ArrayList();
+    if(n==0)return ans;
+    help(n,ans,0,new ArrayList(),k);
+    return ans;
+}
+
+public void help(int n,List&lt;List&lt;Integer&gt;&gt;ans,int j,List&lt;Integer&gt;list,int k){
+    if(list.size()==k){
+        ans.add(new ArrayList(list));
+        return;
+    }
+    for(int i =j+1;i&lt;=n;i++){
+        list.add(i);
+        help(n,ans,i,list,k);
+        list.remove(list.size()-1);
+    }
+}
+</code></pre>
+<h2 id="39-combination-sum-medium">39. Combination Sum (Medium)</h2>
+<p>In this problem, we can use one element unlimited number of times. The index we pass from current recursion to next is still current value&rsquo;s index.
+Therefore, we can use same value unlimited number of times. If we find the value is larger than the target, we return to the previous recursion.</p>
+<p>Here is the <a href="">link</a>.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; combinationSum(int[] candidates, int target) {
+    Arrays.sort(candidates);
+    List&lt;List&lt;Integer&gt;&gt;ans = new ArrayList();
+    List&lt;Integer&gt;temp = new ArrayList();
+    help(candidates,target,ans,temp,0);
+    return ans;
+}
+
+private static void help(int[] candidates,int target,List&lt;List&lt;Integer&gt;&gt;ans,List&lt;Integer&gt;temp,int index){
+    if(target == 0){
+        ans.add(new ArrayList(temp));
+        return;
+    }
+    for(int i = index;i&lt;candidates.length;i++){
+        if(candidates[i]&gt;target)return;
+        temp.add(candidates[i]);
+        help(candidates,target-candidates[i],ans,temp,i);
+        temp.remove(temp.size()-1);
+    }
+}
+</code></pre>
+<h2 id="40-combination-sum-ii-medium">40. Combination Sum II (Medium)</h2>
+<p>This problem is same as the last problem.  The only difference is we cannot use an element unlimited number of times.
+Therefore, we need to change the value of index that we pass to the next recursion. And we need to skip all same values in iteration.</p>
+<blockquote>
+<p>Ref: (<a href="https://massivealgorithms.blogspot.com/2014/06/leetcode-combination-sum-darrens-blog.html">https://massivealgorithms.blogspot.com/2014/06/leetcode-combination-sum-darrens-blog.html</a>)</p>
+<p>(1) Let us see the difference between Combination Sum and Combination Sum II:</p>
+<p>The input of Combination Sum has no dups, but each element can be used for MORE than one time.</p>
+<p>The input of Combination Sum II has dups, but each element can be used for ONLY one time.</p>
+<p>(2) Let us understand the time complexity of Combination Sum II at the beginning:</p>
+<p>O(k * 2 ^ n) is the time complexity of Combination Sum II:</p>
+<p>k is average length of each solution, and we need O(k) time to copy new linkedlist when we get one combination.</p>
+<p>Solution space:</p>
+<p>Since we use one element ONLY for one time, so, for the combinations with k elements, the number of different choices is C(n, k). And most of the time, this number is far smaller than k. But what is the worst case? int[] arr = {1,1,1,1,1,1,1,1,1}, target is 2, in this case, the number can actually reach C(n,k).</p>
+<p>Considering that the combinations may have different length, which range from 0 ~ n. So, there are at most C(n,0) + C(n,1) + C(n,2) + &hellip; C(n,n) solutions. We know that C(n,0) + C(n,1) + C(n,2) + &hellip; C(n,n) = 2^n. Then we got the time complexity of Combination Sum II which is O(k * 2 ^ n).</p>
+<p>(3) Then how we convert Combination Sum to Combination Sum II?</p>
+<p>For example, given int[] arr = {2, 3, 4, 5, 6} and target is 10 and each element can be used for MORE than once.</p>
+<p>Actually, it is same with the problem: given int[] arr = {2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 6}, and target 10, each element can be used for ONLY one time, which is the same description of Combination Sum II.</p>
+<p>And you must find that for the new array, each element E, which is smaller than target, will expand to ceil(target/E). Assume the new array has length n&rsquo;, we can get the time complexity which is O(k * 2 ^ n&rsquo;) using the same analysis of Combination Sum II.</p>
+</blockquote>
+<p>Here is the <a href="https://leetcode.com/problems/combination-sum-ii/submissions/">link</a>.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; combinationSum2(int[] candidates, int target) {
+    Arrays.sort(candidates);
+    List&lt;List&lt;Integer&gt;&gt;ans = new ArrayList();
+    List&lt;Integer&gt;temp = new ArrayList();
+    help(candidates,target,ans,temp,-1);
+    return ans;
+}
+
+    private static void help(int[] candidates,int target,List&lt;List&lt;Integer&gt;&gt;ans,List&lt;Integer&gt;temp,int index){
+    if(target == 0){
+        ans.add(new ArrayList(temp));
+        return;
+    }
+    for(int i = index+1;i&lt;candidates.length;i++){
+        if(candidates[i]&gt;target)return;
+        temp.add(candidates[i]);
+        help(candidates,target-candidates[i],ans,temp,i);
+        temp.remove(temp.size()-1);
+        while(i+1&lt;candidates.length&amp;&amp;candidates[i+1]==candidates[i])i++;
+    }
+}
+</code></pre>
+<h2 id="78-subsets-medium">78. Subsets (Medium)</h2>
+<p>In this problem, we need to add current list to our answer in each recursion. We also need to add empty set at first.</p>
+<p>Time complexity: O(N×2^N) to generate all subsets and then copy them into output list.
+Space complexity: O(N×2^N) to keep all the subsets of length N, since each of N elements could be present or absent.
+Here is the <a href="https://leetcode.com/problems/subsets/solution/">link</a>.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; subsets(int[] nums) {
+    Arrays.sort(nums);
+    List&lt;List&lt;Integer&gt;&gt; ans = new ArrayList();
+    ans.add(new ArrayList());
+    if(nums.length==0)return ans;
+    help(nums,ans,new ArrayList(),0);
+    return ans;
+}
+public void help(int[]nums,List&lt;List&lt;Integer&gt;&gt; ans,List&lt;Integer&gt;list,int index){
+    if(index==nums.length)return;
+    for(int i =index;i&lt;nums.length;i++){
+        list.add(nums[i]);
+        ans.add(new ArrayList(list));
+        help(nums,ans,list,i+1);
+        list.remove(list.size()-1);
+    }
+}
+</code></pre>
+<h2 id="90-subsets-ii-medium">90. Subsets II (Medium)</h2>
+<p>This problem is similar to the last problem. But we need to skip duplicate values.</p>
+<p>Time complexity: O(N×2^N) to generate all subsets and then copy them into output list.
+Space complexity: O(N×2^N) to keep all the subsets of length N, since each of N elements could be present or absent.
+Here is the <a href="https://leetcode.com/problems/subsets-ii/submissions/">link</a>.</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; subsetsWithDup(int[] nums) {
+    Arrays.sort(nums);
+    List&lt;List&lt;Integer&gt;&gt; ans = new ArrayList();
+    ans.add(new ArrayList());
+    if(nums.length==0)return ans;
+    help(nums,ans,new ArrayList(),0);
+    return ans;
+}
+    public void help(int[]nums,List&lt;List&lt;Integer&gt;&gt; ans,List&lt;Integer&gt;list,int index){
+    if(index==nums.length)return;
+    for(int i =index;i&lt;nums.length;i++){
+        list.add(nums[i]);
+        ans.add(new ArrayList(list));
+        help(nums,ans,list,i+1);
+        list.remove(list.size()-1);
+        while(i+1&lt;nums.length &amp;&amp; nums[i]==nums[i+1])i++;
+    }
+}
+</code></pre>
+<h2 id="131-palindrome-partitioning-medium">131. Palindrome Partitioning (Medium)</h2>
+<p>We find all subsets in last problem. In this problem, we need to find all substrings. The way to find substring is similar to the way find subsets.
+We also need a function to check if a substring is a palindrome string. We can use two pointers to check palindrome strings.</p>
+<p>Time complexity: O(2^n). Space complexity: O(n). Here is the <a href="https://leetcode.com/problems/palindrome-partitioning/">link</a>.</p>
+<pre><code>public List&lt;List&lt;String&gt;&gt; partition(String s) {
+    List&lt;List&lt;String&gt;&gt;ans = new ArrayList();
+    List&lt;String&gt;list = new ArrayList();
+    help(ans,list,0,s);
+    return ans;
+}
+
+public void help(List&lt;List&lt;String&gt;&gt;ans,List&lt;String&gt;list,int start,String s){
+    if(start == s.length()){
+        ans.add(new ArrayList(list));
+        return;
+    }
+    for(int i =start;i&lt;s.length();i++){
+        String substring = s.substring(start,i+1);
+        if(!palindrome(substring))continue;
+        list.add(substring);
+        help(ans,list,i+1,s);
+        list.remove(list.size()-1);
+    }
+}
+
+public boolean palindrome(String s){
+    int left = 0;
+    int right =s.length()-1;
+    while(left&lt;right){
+        if(s.charAt(left)!=s.charAt(right))
+            return false;
+        left++;
+        right--;
+    }
+    return true;
+}
+</code></pre>
+<h2 id="37-sudoku-solver-hard">37. Sudoku Solver (Hard)</h2>
+<p>We fill in each empty cell with number 1 to 9 and check whether it is valid. If it is valid, we move to next recursion. When we back to the current recursion, we need to restore its origin value &lsquo;.'.
+In order to check whether current value is valid, we check whether the same row, same column and same sub-box has the same value.
+When i==9, this means we fill in all empty cells successfully. When j ==9, this means we fill in empty cells in one row successfully and we need to move to next row.</p>
+<p>Time Complexity - O(9m)， Space Complexity -  O(m)， m is the number of &lsquo;.'. Here is the <a href="https://leetcode.com/problems/sudoku-solver/">link</a>.</p>
+<pre><code>public void solveSudoku(char[][] board) {
+    helper(board,0,0);
+}
+private static boolean helper(char[][]board,int i, int j){
+    if(i==9)return true;
+    if(j&gt;=9)return helper(board,i+1,0);
+    if(board[i][j]!='.')return helper(board,i,j+1);
+    for(char c = '1';c&lt;='9';c++){
+        if(!isValid(board,i,j,c))continue;
+        board[i][j]=c;
+        if(helper(board,i,j+1))return true;
+        board[i][j]='.';
+    }
+    return false;
+}
+private static boolean isValid(char[][]board,int i,int j,char val){
+    for(int m =0;m&lt;9;m++){
+        if(board[i][m]==val)return false;
+    }
+    for(int n = 0;n&lt;9;n++){
+        if( board[n][j]==val)return false;
+    }
+    int x = i/3;
+    int y = j/3;
+    
+    for(int m = x*3;m&lt;x*3+3;m++){
+        for(int n =y*3;n&lt;y*3+3;n++){
+            if(board[m][n]==val)
+                return false;
+        }
+    }
+    return true;
+}
+</code></pre>
+<h2 id="51-n-queens-hard">51. N-Queens (Hard)</h2>
+<p>In last problem, we try 9 numbers in an empty cell. While in this problem, we try n positions for each row. At first, we build a board.
+We can also instead build a string to represent the board. After initiating the board, we place the &lsquo;Q&rsquo; at n positions for each row.
+If current position is valid, we move to next row. If it&rsquo;s not valid, we move to next position.
+We need to find all possible solutions, so we need to restore its origin value after recursion.
+If we find i = board.length, this means we already place n queens in valid positions. We add it as the answer.</p>
+<p>In order to prove a position is valid, we need to check the same column and two diagonal directions. We don&rsquo;t need to check the same row, because if a position is valid,
+we jump to next row.</p>
+<p>Time Complexity - O(n^n),  Space Complexity - O(n). My solution&rsquo;s space complexity is O(n^n), but we can improve it by using string.
+Here is the <a href="https://leetcode.com/problems/n-queens/">link</a>.</p>
+<pre><code>public List&lt;List&lt;String&gt;&gt; solveNQueens(int n) {
+    List&lt;List&lt;String&gt;&gt;ans = new ArrayList();
+    char[][]board= new char[n][n];
+    for(int i =0;i&lt;n;i++){
+        for(int j =0;j&lt;n;j++)
+            board[i][j]='.';
+    }
+    help(ans,board,0);
+    return ans;
+}
+public void help(List&lt;List&lt;String&gt;&gt;ans,char[][]board,int i){
+    if(i==board.length){
+        List&lt;String&gt;res = new ArrayList();
+        for(int m = 0;m&lt;board.length;m++){
+            String row = &quot;&quot;;
+            for(int n =0;n&lt;board[m].length;n++){
+                row+=String.valueOf(board[m][n]);
+            }
+            res.add(row);
+        }
+        ans.add(new ArrayList(res));
+        return;
+    }
+    for(int m =0; m&lt;board[0].length;m++){
+        if(isvalid(board,i,m)){
+            board[i][m]='Q';
+            help(ans,board,i+1);
+            board[i][m]='.';
+        }
+    }
+}
+
+public boolean isvalid(char[][]board,int i, int j){
+    for(int n = i;n&gt;=0;n--){
+        if( board[n][j]=='Q')return false;
+    }
+    for(int m = i,n = j;m&gt;=0 &amp;&amp; n&gt;=0;m--,n--){
+        if(board[m][n]=='Q')
+            return false;
+    }
+    for(int m = i,n = j;m&gt;=0 &amp;&amp; n&lt;board[0].length;m--,n++){
+        if(board[m][n]=='Q')
+            return false;
+    }
+    return true;
+}</code></pre>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
+
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/backtracking/">backtracking</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/" data-tooltip="Leetcode-Depth-First Search">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Yitong Wang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-depth-first-search/" data-tooltip="Leetcode-Depth-First Search">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-backtracking/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-backtracking%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-backtracking%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-backtracking%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Yitong Wang</h4>
+    
+      <div id="about-card-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        <a href="https://drive.google.com/file/d/1pm27foZs2NJ2DZ95vZWfx9kkt8kdpXPa/view?usp=sharing">resume</a>
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        US
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://tywz-milk.github.io/images/WechatIMG246.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://tywz-milk.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-backtracking\/';
+          
+            this.page.identifier = '\/2020\/05\/leetcode-backtracking\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'yitongwang-blog';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
