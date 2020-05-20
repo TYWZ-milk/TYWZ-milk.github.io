@@ -258,6 +258,8 @@
   <ul>
     <li><a href="#70-climbing-stairs-easy">70. Climbing Stairs (Easy)</a></li>
     <li><a href="#198-house-robber-easy">198. House Robber (Easy)</a></li>
+    <li><a href="#213-house-robber-ii-medium">213. House Robber II (Medium)</a></li>
+    <li><a href="#634-find-the-derangement-of-an-array">634. Find the Derangement of An Array</a></li>
   </ul>
 </nav>
               </aside>
@@ -281,7 +283,7 @@ The other way is use 2 steps from the (n-2)th stair. Therefore, all ways to the 
 </code></pre>
 <p>We can also use Fibonacci number to save more memory. Fibonacci number is F(n) = F(n-1) + F(n-2). The formula is same as this dp formula.
 Therefore, we don&rsquo;t need an array to store value. We just need to calculate the value of the nth Fibonacci number.</p>
-<p>Time complexity is O(n). Space complexity is O(1).</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/climbing-stairs/description/">link</a>.</p>
 <pre><code>public int climbStairs(int n) {
     if(n==1)return 1;
     int first = 1;
@@ -297,6 +299,81 @@ Therefore, we don&rsquo;t need an array to store value. We just need to calculat
 }
 </code></pre>
 <h2 id="198-house-robber-easy">198. House Robber (Easy)</h2>
+<p>The idea of this problem is pick up some non-adjacent elements and make sure their sum is maximum. dp[i] means the maximum sum between 0 and i.
+The formula is dp[i] = Math.max(dp[i-2]+nums[i],dp[i-1]). dp[0] = nums[0]. dp[1] = Math.max(nums[0],nums[1]). And start iteration from index 2.</p>
+<p>We can also save memory by using two variables. These two variables means whether we rob current house. If the position of current house id odd number,
+we compare the value of even and the value of previous odd plus current house. &lsquo;odd&rsquo; variable doesn&rsquo;t mean we only rob odd positions. It means the house we currently rob is at odd position.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/house-robber/">link</a>.</p>
+<pre><code>public int rob(int[] nums) {
+    int odd = 0;
+    int even = 0;
+    for(int i =0;i&lt;nums.length;i++){
+        if(i%2==0)
+            even = Math.max(even+nums[i],odd);
+        else
+            odd = Math.max(odd+nums[i],even);
+    }
+    return Math.max(even,odd);
+}
+</code></pre>
+<h2 id="213-house-robber-ii-medium">213. House Robber II (Medium)</h2>
+<p>This problem is same as the previous problem. The only difference is all houses at this place are arranged in a circle. This means we cannot rob the first house and last house at the same time.
+The easiest way is to use previous function and consider to rob between [0,nums.length-1] and [1,nums.length] separately. Get the larger value as the answer.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/house-robber-ii/">link</a>.</p>
+<pre><code>public int rob(int[] nums) {
+    if(nums.length==1)return nums[0];
+    if(nums.length==0)return 0;
+    return Math.max(robpart(nums,0,nums.length-1),robpart(nums,1,nums.length));
+}
+
+public int robpart(int[]nums,int start,int end){
+    int odd = 0;
+    int even = 0;
+    for(int i =start;i&lt;end;i++){
+        if(i%2==0)
+            even = Math.max(even+nums[i],odd);
+        else
+            odd = Math.max(odd+nums[i],even);
+    }
+    return Math.max(even,odd);
+}
+</code></pre>
+<h2 id="634-find-the-derangement-of-an-array">634. Find the Derangement of An Array</h2>
+<blockquote>
+<p>Ref: <a href="https://www.cnblogs.com/grandyang/p/7210929.html">https://www.cnblogs.com/grandyang/p/7210929.html</a></p>
+</blockquote>
+<p>This problem is difficult because the dp formula is not easy to get. For example, n = 4.</p>
+<ol>
+<li>
+<p>We put number 4 at the position k = 3. Now, it becomes [X X 4 X].</p>
+</li>
+<li>
+<p>Assume 3 is at the position k = 4. Now, it becomes [X X 4 3]. Then, we need to find out how to fill in first 2 positions with number 1 and 2.
+The answer is same as n = 2. For n = 2, we need to find the number of derangement with 1 and 2.</p>
+</li>
+<li>
+<p>Assume 3 is not at the position k = 4, so 3 can be only put at first two positions. This situation is same as n = 3.
+For n = 3, we cannot put 3 at the last position which is same as this situation.</p>
+</li>
+<li>
+<p>We know 4 has 3 possible positions. Therefore, dp[4] = 3 * (dp[3] + dp[2])</p>
+</li>
+<li>
+<p>Our dp formula is dp[i] = (i-1)* (dp[i-1]+dp[i-2]). For number n, we can put number n at (n-1) positions. If we put number n at the position k, number k can be put at the position n or not.
+If number k is put at the position k, the situation is same as n-2. Otherwise, the situation is same as n-1.</p>
+</li>
+</ol>
+<p>Time complexity is O(n). Space complexity can be optimized to O(1). We only need two values dp[i-1] and dp[i-2]. We can use two variable to represent them. Here is the <a href="https://leetcode.com/problems/find-the-derangement-of-an-array/">link</a>.</p>
+<pre><code>int findDerangement(int n) {
+    if (n &lt; 2) return 0;
+    vector&lt;long long&gt; dp(n + 1, 0);
+    dp[1] = 0; dp[2] = 1;
+    for (int i = 3; i &lt;= n; ++i) {
+        dp[i] = (dp[i - 1] + dp[i - 2]) * (i - 1) % 1000000007;
+    }
+    return dp[n];
+}
+</code></pre>
 
               
             </div>
