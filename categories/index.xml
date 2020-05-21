@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 May 2020 21:04:08 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 15:21:43 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring Boot</title>
+      <link>https://tywz-milk.github.io/categories/spring-boot/</link>
+      <pubDate>Thu, 21 May 2020 15:21:43 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/categories/spring-boot/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Leetcode</title>
