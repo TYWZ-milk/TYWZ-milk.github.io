@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Yitong Wang">
+<meta name="keywords" content="React.js">
+<meta name="description" content="Notes of learning React.js. Learn React.js by implementing a tic tac toe game.">
+
+
+<meta property="og:description" content="Notes of learning React.js. Learn React.js by implementing a tic tac toe game.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Use React.js to implement a tic tac toe game.">
+<meta name="twitter:title" content="Use React.js to implement a tic tac toe game.">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+<meta property="og:site_name" content="Yitong Wang&#39;s Blog">
+<meta property="og:description" content="Notes of learning React.js. Learn React.js by implementing a tic tac toe game.">
+<meta name="twitter:description" content="Notes of learning React.js. Learn React.js by implementing a tic tac toe game.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-05-22T10:24:51">
+  
+  
+    <meta property="article:modified_time" content="2020-05-22T10:24:51">
+  
+  
+  
+    
+      <meta property="article:section" content="React.js">
+    
+      <meta property="article:section" content="Notes">
+    
+  
+  
+    
+      <meta property="article:tag" content="React.js">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png">
+  <meta property="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png">
+
+
+
+
+
+  <meta property="og:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+  <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
+
+
+    <title>Use React.js to implement a tic tac toe game.</title>
+
+    <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://tywz-milk.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://tywz-milk.github.io/">Yitong Wang&#39;s Blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://tywz-milk.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://tywz-milk.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Yitong Wang</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://tywz-milk.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/TYWZ-milk" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/yitong-wang-849047182" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Use React.js to implement a tic tac toe game.
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-22T10:24:51-05:00">
+        
+  
+  
+  
+  
+    22 May 2020
+  
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://tywz-milk.github.io/categories/react.js">React.js</a>, 
+    
+      <a class="category-link" href="https://tywz-milk.github.io/categories/notes">Notes</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <aside>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#passing-data-through-props">Passing Data Through Props</a></li>
+    <li><a href="#making-an-interactive-component">Making an Interactive Component</a></li>
+    <li><a href="#lifting-state-up">Lifting State Up</a></li>
+    <li><a href="#why-immutability-is-important">Why Immutability Is Important</a>
+      <ul>
+        <li><a href="#complex-features-become-simple">Complex Features Become Simple</a></li>
+        <li><a href="#detecting-changes">Detecting Changes</a></li>
+        <li><a href="#determining-when-to-re-render-in-react">Determining When to Re-Render in React</a></li>
+      </ul>
+    </li>
+    <li><a href="#function-components">Function Components</a></li>
+    <li><a href="#taking-turns">Taking Turns</a></li>
+    <li><a href="#declaring-a-winner">Declaring a Winner</a></li>
+    <li><a href="#storing-a-history-of-moves">Storing a History of Moves</a></li>
+    <li><a href="#lifting-state-up-again">Lifting State Up, Again</a></li>
+    <li><a href="#showing-the-past-moves">Showing the Past Moves</a></li>
+    <li><a href="#picking-a-key">Picking a Key</a></li>
+    <li><a href="#implementing-time-travel">Implementing Time Travel</a></li>
+  </ul>
+</nav>
+              </aside>
+              <blockquote>
+<p>Ref: <a href="https://reactjs.org/tutorial/tutorial.html">Tutorial of React.js</a></p>
+</blockquote>
+<p>A quick start of React.js. Learn React.js by implementing a tic tac toe game.</p>
+<h2 id="passing-data-through-props">Passing Data Through Props</h2>
+<p>In Board’s <code>renderSquare</code> method, change the code to pass a prop called <code>value</code> to the Square.</p>
+<pre><code>class Board extends React.Component {
+  renderSquare(i) {
+    return &lt;Square value={i} /&gt;;
+  }
+}
+</code></pre>
+<p>Change Square’s <code>render</code> method to show that value by replacing <code>{/* TODO */}</code> with <code>{this.props.value}</code>:</p>
+<pre><code>class Square extends React.Component {
+  render() {
+    return (
+      &lt;button className=&quot;square&quot;&gt;
+        {this.props.value}
+      &lt;/button&gt;
+    );
+  }
+}
+</code></pre>
+<h2 id="making-an-interactive-component">Making an Interactive Component</h2>
+<p>Let’s fill the Square component with an “X” when we click it. First, change the button tag that is returned from the Square component’s <code>render()</code> function to this:</p>
+<pre><code>class Square extends React.Component {
+ render() {
+   return (
+     &lt;button className=&quot;square&quot; onClick={() =&gt; alert('click')}&gt;
+       {this.props.value}
+     &lt;/button&gt;
+   );
+ }
+}
+</code></pre>
+<p>If you click on a Square now, you should see an alert in your browser.</p>
+<p>As a next step, we want the Square component to “remember” that it got clicked, and fill it with an “X” mark. To “remember” things, components use <code>state</code>.</p>
+<p>React components can have <code>state</code> by setting <code>this.state</code> in their constructors. <code>this.state</code> should be considered as private to a React component that it’s defined in. Let’s store the current value of the Square in <code>this.state</code>, and change it when the Square is clicked.</p>
+<p>First, we’ll add a constructor to the class to initialize the state:</p>
+<pre><code>class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
+
+  render() {
+    return (
+      &lt;button className=&quot;square&quot; onClick={() =&gt; alert('click')}&gt;
+        {this.props.value}
+      &lt;/button&gt;
+    );
+  }
+}
+</code></pre>
+<p>In JavaScript classes, you need to always call <code>super</code> when defining the constructor of a subclass. All React component classes that have a <code>constructor</code> should start with a <code>super(props)</code> call.</p>
+<p>Now we’ll change the Square’s <code>render</code> method to display the current state’s value when clicked:</p>
+<ul>
+<li>Replace <code>this.props.value</code> with <code>this.state.value</code> inside the <code>&lt;button&gt;</code> tag.</li>
+<li>Replace the <code>onClick={...}</code> event handler with <code>onClick={() =&gt; this.setState({value: 'X'})}</code>.</li>
+<li>Put the <code>className</code> and <code>onClick</code> props on separate lines for better readability.</li>
+</ul>
+<p>After these changes, the <code>&lt;button&gt;</code> tag that is returned by the Square’s render method looks like this:</p>
+<pre><code>class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
+
+  render() {
+    return (
+      &lt;button
+        className=&quot;square&quot;
+        onClick={() =&gt; this.setState({value: 'X'})}
+      &gt;
+        {this.state.value}
+      &lt;/button&gt;
+    );
+  }
+}
+</code></pre>
+<p>By calling <code>this.setState</code> from an <code>onClick</code> handler in the Square’s <code>render</code> method, we tell React to re-render that Square whenever its <code>&lt;button&gt;</code> is clicked. After the update, the Square’s <code>this.state.value</code> will be &lsquo;X&rsquo;, so we’ll see the X on the game board. If you click on any Square, an X should show up.</p>
+<p>When you call <code>setState</code> in a component, React automatically updates the child components inside of it too.</p>
+<h2 id="lifting-state-up">Lifting State Up</h2>
+<p>To collect data from multiple children, or to have two child components communicate with each other, you need to declare the shared state in their parent component instead. The parent component can pass the state back down to the children by using props; this keeps the child components in sync with each other and with the parent component.</p>
+<p>Add a <code>constructor</code> to the <code>Board</code> and set the <code>Board’s</code> initial state to contain an array of 9 nulls corresponding to the 9 squares:</p>
+<pre><code>class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  renderSquare(i) {
+    return &lt;Square value={i} /&gt;;
+  }
+</code></pre>
+<p>Next, we need to change what happens when a <code>Square</code> is clicked. The <code>Board</code> component now maintains which squares are filled. We need to create a way for the <code>Square</code> to update the <code>Board’s</code> state. Since state is considered to be private to a component that defines it, we cannot update the Board’s state directly from Square.</p>
+<p>Instead, we’ll pass down a function from the Board to the Square, and we’ll have Square call that function when a square is clicked. We’ll change the renderSquare method in Board to:</p>
+<pre><code> renderSquare(i) {
+    return (
+      &lt;Square
+        value={this.state.squares[i]}
+        onClick={() =&gt; this.handleClick(i)}
+      /&gt;
+    );
+  }
+</code></pre>
+<p>Now we’re passing down two <code>props</code> from <code>Board</code> to <code>Square</code>: <code>value</code> and <code>onClick</code>. The <code>onClick</code> prop is a function that <code>Square</code> can call when clicked. We’ll make the following changes to <code>Square</code>:</p>
+<ul>
+<li>Replace <code>this.state.value</code> with <code>this.props.value</code> in Square’s <code>render</code> method</li>
+<li>Replace <code>this.setState()</code> with <code>this.props.onClick()</code> in Square’s <code>render</code> method</li>
+<li>Delete the <code>constructor</code> from Square because Square no longer keeps track of the game’s state</li>
+</ul>
+<p>After these changes, the Square component looks like this:</p>
+<pre><code>class Square extends React.Component {
+  render() {
+    return (
+      &lt;button
+        className=&quot;square&quot;
+        onClick={() =&gt; this.props.onClick()}
+      &gt;
+        {this.props.value}
+      &lt;/button&gt;
+    );
+  }
+}
+</code></pre>
+<p>We’ll now add <code>handleClick</code> to the Board class:</p>
+<pre><code>class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
+  }
+
+  renderSquare(i) {
+    return (
+      &lt;Square
+        value={this.state.squares[i]}
+        onClick={() =&gt; this.handleClick(i)}
+      /&gt;
+    );
+  }
+
+  render() {
+    const status = 'Next player: X';
+
+    return (
+      &lt;div&gt;
+        &lt;div className=&quot;status&quot;&gt;{status}&lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        &lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        &lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>Since the <code>Square</code> components no longer maintain state, the <code>Square</code> components receive values from the <code>Board</code> component and inform the <code>Board</code> component when they’re clicked. In React terms, the <code>Square</code> components are now controlled components. The <code>Board</code> has full control over them.</p>
+<p>Note how in <code>handleClick</code>, we call <code>.slice()</code> to create a copy of the squares array to modify instead of modifying the existing array. We will explain why we create a copy of the squares array in the next section.</p>
+<h2 id="why-immutability-is-important">Why Immutability Is Important</h2>
+<p>There are generally two approaches to changing data. The first approach is to mutate the data by directly changing the data’s values. The second approach is to replace the data with a new copy which has the desired changes.</p>
+<p>Data Change with Mutation</p>
+<pre><code>var player = {score: 1, name: 'Jeff'};
+player.score = 2;
+// Now player is {score: 2, name: 'Jeff'}
+</code></pre>
+<p>Data Change without Mutation</p>
+<pre><code>var player = {score: 1, name: 'Jeff'};
+
+var newPlayer = Object.assign({}, player, {score: 2});
+// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
+
+// Or if you are using object spread syntax proposal, you can write:
+// var newPlayer = {...player, score: 2};
+</code></pre>
+<h3 id="complex-features-become-simple">Complex Features Become Simple</h3>
+<p>Immutability makes complex features much easier to implement. Later in this tutorial, we will implement a “time travel” feature that allows us to review the tic-tac-toe game’s history and “jump back” to previous moves. This functionality isn’t specific to games — an ability to undo and redo certain actions is a common requirement in applications. Avoiding direct data mutation lets us keep previous versions of the game’s history intact, and reuse them later.</p>
+<h3 id="detecting-changes">Detecting Changes</h3>
+<p>Detecting changes in mutable objects is difficult because they are modified directly. This detection requires the mutable object to be compared to previous copies of itself and the entire object tree to be traversed.</p>
+<p>Detecting changes in immutable objects is considerably easier. If the immutable object that is being referenced is different than the previous one, then the object has changed.</p>
+<h3 id="determining-when-to-re-render-in-react">Determining When to Re-Render in React</h3>
+<p>The main benefit of immutability is that it helps you build pure components in React. Immutable data can easily determine if changes have been made which helps to determine when a component requires re-rendering.</p>
+<h2 id="function-components">Function Components</h2>
+<p>We’ll now change the Square to be a <em>function component</em>.</p>
+<p>In React, <em>function component</em> are a simpler way to write components that only contain a <code>render</code> method and don’t have their own state. Instead of defining a class which extends <code>React.Component</code>, we can write a function that takes <code>props</code> as input and returns what should be rendered. Function components are less tedious to write than classes, and many components can be expressed this way.</p>
+<p>Replace the Square class with this function:</p>
+<pre><code>function Square(props) {
+  return (
+    &lt;button className=&quot;square&quot; onClick={props.onClick}&gt;
+      {props.value}
+    &lt;/button&gt;
+  );
+}
+</code></pre>
+<p>We have changed <code>this.props</code> to <code>props</code> both times it appears. When we modified the Square to be a function component, we also changed <code>onClick={() =&gt; this.props.onClick()}</code> to a shorter <code>onClick={props.onClick}</code> (note the lack of parentheses on both sides).</p>
+<h2 id="taking-turns">Taking Turns</h2>
+<p>We now need to fix an obvious defect in our tic-tac-toe game: the “O”s cannot be marked on the board.</p>
+<p>We’ll set the first move to be “X” by default. We can set this default by modifying the initial state in our Board constructor:</p>
+<pre><code>class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true,
+    };
+  }
+</code></pre>
+<p>Each time a player moves, xIsNext (a boolean) will be flipped to determine which player goes next and the game’s state will be saved. We’ll update the Board’s handleClick function to flip the value of xIsNext:</p>
+<pre><code>  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+    });
+  }
+</code></pre>
+<p>Let’s also change the “status” text in Board’s render so that it displays which player has the next turn:</p>
+<pre><code> render() {
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+
+    return (
+      // the rest has not changed
+</code></pre>
+<p>After applying these changes, you should have this Board component:</p>
+<pre><code>class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true,
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+    });
+  }
+
+  renderSquare(i) {
+    return (
+      &lt;Square
+        value={this.state.squares[i]}
+        onClick={() =&gt; this.handleClick(i)}
+      /&gt;
+    );
+  }
+
+  render() {
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+
+    return (
+      &lt;div&gt;
+        &lt;div className=&quot;status&quot;&gt;{status}&lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        &lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        &lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<h2 id="declaring-a-winner">Declaring a Winner</h2>
+<p>Now that we show which player’s turn is next, we should also show when the game is won and there are no more turns to make. Copy this helper function and paste it at the end of the file:</p>
+<p>Given an array of 9 squares, this function will check for a winner and return &lsquo;X&rsquo;, &lsquo;O&rsquo;, or null as appropriate.</p>
+<p>We will call calculateWinner(squares) in the Board’s render function to check if a player has won. If a player has won, we can display text such as “Winner: X” or “Winner: O”. We’ll replace the status declaration in Board’s render function with this code:</p>
+<pre><code>  render() {
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+
+    return (
+      // the rest has not changed
+</code></pre>
+<p>We can now change the Board’s handleClick function to return early by ignoring a click if someone has won the game or if a Square is already filled:</p>
+<pre><code>handleClick(i) {
+    const squares = this.state.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+    });
+  }
+</code></pre>
+<h2 id="storing-a-history-of-moves">Storing a History of Moves</h2>
+<p>We used <code>slice()</code> to create a new copy of the squares array after every move, and treated it as immutable. This will allow us to store every past version of the squares array, and navigate between the turns that have already happened.</p>
+<p>We’ll store the past squares arrays in another array called <code>history</code>. The <code>history</code> array represents all board states, from the first to the last move, and has a shape like this:</p>
+<pre><code>history = [
+  // Before first move
+  {
+    squares: [
+      null, null, null,
+      null, null, null,
+      null, null, null,
+    ]
+  },
+  // After first move
+  {
+    squares: [
+      null, null, null,
+      null, 'X', null,
+      null, null, null,
+    ]
+  },
+  // After second move
+  {
+    squares: [
+      null, null, null,
+      null, 'X', null,
+      null, null, 'O',
+    ]
+  },
+  // ...
+]
+</code></pre>
+<h2 id="lifting-state-up-again">Lifting State Up, Again</h2>
+<p>We’ll want the top-level <code>Game</code> component to display a list of past moves. It will need access to the history to do that, so we will place the history state in the top-level <code>Game</code> component.</p>
+<p>Placing the history state into the <code>Game</code> component lets us remove the squares state from its child <code>Board</code> component. Just like we “lifted state up” from the <code>Square</code> component into the <code>Board</code> component, we are now lifting it up from the <code>Board</code> into the top-level <code>Game</code> component. This gives the <code>Game</code> component full control over the <code>Board’s</code> data, and lets it instruct the <code>Board</code> to render previous turns from the history.</p>
+<p>First, we’ll set up the initial state for the <code>Game</code> component within its constructor:</p>
+<pre><code>class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true,
+    };
+  }
+
+  render() {
+    return (
+      &lt;div className=&quot;game&quot;&gt;
+        &lt;div className=&quot;game-board&quot;&gt;
+          &lt;Board /&gt;
+        &lt;/div&gt;
+        &lt;div className=&quot;game-info&quot;&gt;
+          &lt;div&gt;{/* status */}&lt;/div&gt;
+          &lt;ol&gt;{/* TODO */}&lt;/ol&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>Next, we’ll have the <code>Board</code> component receive <code>squares</code> and <code>onClick</code> props from the <code>Game</code> component. Since we now have a single click handler in Board for many Squares, we’ll need to pass the location of each Square into the <code>onClick</code> handler to indicate which <code>Square</code> was clicked. Here are the required steps to transform the <code>Board</code> component:</p>
+<ul>
+<li>Delete the <code>constructor</code> in <code>Board</code>.</li>
+<li>Replace <code>this.state.squares[i]</code> with <code>this.props.squares[i]</code> in Board’s <code>renderSquare</code>.</li>
+<li>Replace <code>this.handleClick(i)</code> with <code>this.props.onClick(i)</code> in Board’s <code>renderSquare</code>.</li>
+</ul>
+<p>The Board component now looks like this:</p>
+<pre><code>class Board extends React.Component {
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+    });
+  }
+
+  renderSquare(i) {
+    return (
+      &lt;Square
+        value={this.props.squares[i]}
+        onClick={() =&gt; this.props.onClick(i)}
+      /&gt;
+    );
+  }
+
+  render() {
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+
+    return (
+      &lt;div&gt;
+        &lt;div className=&quot;status&quot;&gt;{status}&lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        &lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        &lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>We’ll update the Game component’s <code>render</code> function to use the most recent history entry to determine and display the game’s status:</p>
+<pre><code> render() {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const winner = calculateWinner(current.squares);
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+
+    return (
+      &lt;div className=&quot;game&quot;&gt;
+        &lt;div className=&quot;game-board&quot;&gt;
+          &lt;Board
+            squares={current.squares}
+            onClick={(i) =&gt; this.handleClick(i)}
+          /&gt;
+        &lt;/div&gt;
+        &lt;div className=&quot;game-info&quot;&gt;
+          &lt;div&gt;{status}&lt;/div&gt;
+          &lt;ol&gt;{/* TODO */}&lt;/ol&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+</code></pre>
+<p>Since the Game component is now rendering the game’s status, we can remove the corresponding code from the Board’s <code>render</code> method. After refactoring, the Board’s <code>render</code> function looks like this:</p>
+<pre><code>  render() {
+    return (
+      &lt;div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        &lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        &lt;/div&gt;
+        &lt;div className=&quot;board-row&quot;&gt;
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+</code></pre>
+<p>Finally, we need to move the <code>handleClick</code> method from the Board component to the Game component. We also need to modify <code>handleClick</code> because the Game component’s state is structured differently. Within the Game’s <code>handleClick</code> method, we concatenate new <code>history</code> entries onto <code>history</code>.</p>
+<pre><code> handleClick(i) {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const squares = current.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      history: history.concat([{
+        squares: squares,
+      }]),
+      xIsNext: !this.state.xIsNext,
+    });
+  }
+</code></pre>
+<p>Unlike the array <code>push()</code> method you might be more familiar with, the <code>concat()</code> method doesn’t mutate the original array, so we prefer it.</p>
+<p>At this point, the Board component only needs the <code>renderSquare</code> and <code>render</code> methods. The game’s state and the <code>handleClick</code> method should be in the Game component.</p>
+<h2 id="showing-the-past-moves">Showing the Past Moves</h2>
+<p>This part doesn&rsquo;t include some unknown information about React.js. Check this <a href="https://reactjs.org/tutorial/tutorial.html#showing-the-past-moves">link</a> to finish this step.</p>
+<h2 id="picking-a-key">Picking a Key</h2>
+<p>Because React cannot know our intentions, we need to specify a key property for each list item to differentiate each list item from its siblings. One option would be to use the strings alexa, ben, claudia. If we were displaying data from a database, Alexa, Ben, and Claudia’s database IDs could be used as keys.</p>
+<pre><code>&lt;li key={user.id}&gt;{user.name}: {user.taskCount} tasks left&lt;/li&gt;
+</code></pre>
+<p>When a list is re-rendered, React takes each list item’s key and searches the previous list’s items for a matching key. If the current list has a key that didn’t exist before, React creates a component. If the current list is missing a key that existed in the previous list, React destroys the previous component. If two keys match, the corresponding component is moved. Keys tell React about the identity of each component which allows React to maintain state between re-renders. If a component’s key changes, the component will be destroyed and re-created with a new state.</p>
+<p>key is a special and reserved property in React (along with ref, a more advanced feature). When an element is created, React extracts the key property and stores the key directly on the returned element. Even though key may look like it belongs in props, key cannot be referenced using this.props.key. React automatically uses key to decide which components to update. A component cannot inquire about its key.</p>
+<p>It’s strongly recommended that you assign proper keys whenever you build dynamic lists. If you don’t have an appropriate key, you may want to consider restructuring your data so that you do.</p>
+<p>If no key is specified, React will present a warning and use the array index as a key by default. Using the array index as a key is problematic when trying to re-order a list’s items or inserting/removing list items. Explicitly passing key={i} silences the warning but has the same problems as array indices and is not recommended in most cases.</p>
+<p>Keys do not need to be globally unique; they only need to be unique between components and their siblings.</p>
+<h2 id="implementing-time-travel">Implementing Time Travel</h2>
+<p>Check this <a href="https://reactjs.org/tutorial/tutorial.html#implementing-time-travel">link</a> for more information.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/react.js/">React.js</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/quick-start-of-spring-boot/" data-tooltip="Quick start of Spring Boot">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Yitong Wang. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/quick-start-of-spring-boot/" data-tooltip="Quick start of Spring Boot">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fuse-react.js-to-implement-a-tic-tac-toe-game.%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fuse-react.js-to-implement-a-tic-tac-toe-game.%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fuse-react.js-to-implement-a-tic-tac-toe-game.%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Yitong Wang</h4>
+    
+      <div id="about-card-bio"><strong>DANCE</strong>, <strong>LIFE</strong>, <strong>FREEDOM</strong>, <strong>YOU</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        <a href="https://drive.google.com/file/d/1pm27foZs2NJ2DZ95vZWfx9kkt8kdpXPa/view?usp=sharing">resume</a>
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        US
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://tywz-milk.github.io/images/WechatIMG246.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://tywz-milk.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/use-react.js-to-implement-a-tic-tac-toe-game.\/';
+          
+            this.page.identifier = '\/2020\/05\/use-react.js-to-implement-a-tic-tac-toe-game.\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'yitongwang-blog';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

@@ -250,14 +250,62 @@
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
               <aside>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#step1-start-a-new-spring-boot-project">Step1. Start a new Spring Boot project</a></li>
+    <li><a href="#step2-add-your-code">Step2. Add your code</a></li>
+    <li><a href="#step3-try-it">Step3. Try it</a></li>
+    <li><a href="#the-structure-of-a-sprint-boot-project">The structure of a Sprint Boot project</a></li>
+  </ul>
+</nav>
               </aside>
               <blockquote>
 <p>Ref: <a href="https://spring.io/quickstart">Spring Quickstart Guide</a></p>
 </blockquote>
-<ol>
-<li>Use</li>
-</ol>
+<h2 id="step1-start-a-new-spring-boot-project">Step1. Start a new Spring Boot project</h2>
+<p>Use start.spring.io to create a “web” project. This article <a href="https://tywz-milk.github.io/2020/05/how-to-use-spring-initializr-in-intellij-to-build-a-spring-boot-project/">How to use Spring Initializr in Intellij to build a Spring Boot project&rdquo;</a> introduces how to use Spring Initializr to build a Sprint Boot project.</p>
+<p>In the “Dependencies” dialog search for and add the “web” dependency as shown in the screenshot. Other options can be set as default.</p>
+<p><img src="https://tywz-milk.github.io/img/empty-springboot/1.png" alt="RUNOOB 1"></p>
+<h2 id="step2-add-your-code">Step2. Add your code</h2>
+<p>Open up the project in your IDE and locate the <code>DemoApplication.java</code> file in the <code>src/main/java/com/example/demo</code> folder. Now change the contents of the file by adding the extra method and annotations shown in the code below. You can copy and paste the code or just type it.</p>
+<pre><code>package com.example.demo;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+    @GetMapping(&quot;/hello&quot;)
+    public String hello(@RequestParam(value = &quot;name&quot;, defaultValue = &quot;World&quot;) String name) {
+        return String.format(&quot;Hello %s!&quot;, name);
+    }
+
+}
+</code></pre>
+<p>The <code>hello()</code> method we’ve added is designed to take a String parameter called <code>name</code>, and then combine this parameter with the word <code>&quot;Hello&quot;</code> in the code. This means that if you set your name to <code>“Amy”</code> in the request, the response would be <code>“Hello Amy”</code>.</p>
+<p>The <code>@RestController</code> annotation tells Spring that this code describes an endpoint that should be made available over the web. The <code>@GetMapping(“/hello”)</code> tells Spring to use our <code>hello()</code> method to answer requests that get sent to the <code>http://localhost:8080/hello</code> address. Finally, the <code>@RequestParam</code> is telling Spring to expect a <code>name</code> value in the request, but if it’s not there, it will use the word “World” by default.</p>
+<h2 id="step3-try-it">Step3. Try it</h2>
+<p>Let’s build and run the program. Run the <code>DemoApplication.java</code> file. You should see some output that tells you your project is running.
+Spring Boot’s embedded Apache Tomcat server is acting as a webserver and is listening for requests on <code>localhost</code> port <code>8080</code>. Open your browser and in the address bar at the top enter http://localhost:8080/hello.
+Then you will see &ldquo;Hello world!&quot;. If you input <code>?name=Amy</code> to the end of URL, you will see &ldquo;Hello Amy!&quot;.</p>
+<h2 id="the-structure-of-a-sprint-boot-project">The structure of a Sprint Boot project</h2>
+<p>There are three basic directories.</p>
+<ul>
+<li>The entry of the program under <code>src/main/java</code>: The <code>DemoApplication.java</code> file.</li>
+<li>Configuration file under <code>src/main/resources</code>: <code>application.properties</code></li>
+<li>Test files under <code>src/test/</code>:<code>DemoApplicationTests</code></li>
+</ul>
+<p>You can also check pom.xml file to see all dependencies we have installed.</p>
+<p><img src="https://tywz-milk.github.io/img/empty-springboot/2.png" alt="RUNOOB 1"></p>
 
               
             </div>
@@ -283,7 +331,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./" data-tooltip="Use React.js to implement a tic tac toe game.">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -369,7 +417,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./" data-tooltip="Use React.js to implement a tic tac toe game.">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>

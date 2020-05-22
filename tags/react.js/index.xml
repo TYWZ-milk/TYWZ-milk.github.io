@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Notes on Yitong Wang&#39;s Blog</title>
-    <link>https://tywz-milk.github.io/categories/notes/</link>
-    <description>Recent content in Notes on Yitong Wang&#39;s Blog</description>
+    <title>React.js on Yitong Wang&#39;s Blog</title>
+    <link>https://tywz-milk.github.io/tags/react.js/</link>
+    <description>Recent content in React.js on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 22 May 2020 10:24:51 -0500</lastBuildDate>
     
-	<atom:link href="https://tywz-milk.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tywz-milk.github.io/tags/react.js/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./</guid>
       <description>Notes of learning React.js. Learn React.js by implementing a tic tac toe game.</description>
-    </item>
-    
-    <item>
-      <title>How to easily create a new post on your Hugo site </title>
-      <link>https://tywz-milk.github.io/2020/05/how-to-easily-create-a-new-post-on-your-hugo-site/</link>
-      <pubDate>Sun, 10 May 2020 15:19:37 -0500</pubDate>
-      
-      <guid>https://tywz-milk.github.io/2020/05/how-to-easily-create-a-new-post-on-your-hugo-site/</guid>
-      <description>Create your first post on your Hugo site in only 6 steps.</description>
     </item>
     
   </channel>

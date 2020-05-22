@@ -6,10 +6,28 @@
     <description>Recent content in Categories on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 May 2020 15:21:43 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 10:24:51 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes</title>
+      <link>https://tywz-milk.github.io/categories/notes/</link>
+      <pubDate>Fri, 22 May 2020 10:24:51 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/categories/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>React.js</title>
+      <link>https://tywz-milk.github.io/categories/react.js/</link>
+      <pubDate>Fri, 22 May 2020 10:24:51 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/categories/react.js/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Spring Boot</title>
@@ -53,15 +71,6 @@
       <pubDate>Sun, 10 May 2020 15:19:37 -0500</pubDate>
       
       <guid>https://tywz-milk.github.io/categories/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Notes</title>
-      <link>https://tywz-milk.github.io/categories/notes/</link>
-      <pubDate>Sun, 10 May 2020 15:19:37 -0500</pubDate>
-      
-      <guid>https://tywz-milk.github.io/categories/notes/</guid>
       <description></description>
     </item>
     
