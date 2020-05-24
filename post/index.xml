@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 May 2020 10:24:51 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2020 21:08:54 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Study Notes of Spring</title>
+      <link>https://tywz-milk.github.io/2020/05/study-notes-of-spring/</link>
+      <pubDate>Sat, 23 May 2020 21:08:54 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2020/05/study-notes-of-spring/</guid>
+      <description>My study notes of Spring.</description>
+    </item>
     
     <item>
       <title>Use React.js to implement a tic tac toe game.</title>

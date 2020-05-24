@@ -254,6 +254,14 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
+    <li><a href="#closest-element-to-target">Closest Element to Target</a></li>
+    <li><a href="#find-the-first--last-target">Find the first &amp; last target</a></li>
+    <li><a href="#closest-k-elements">Closest k Elements</a></li>
+    <li><a href="#k-th-smallest-in-two-sorted-arrays">K-th Smallest in two sorted arrays</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#binary-search-with-unknown-size">Binary search with unknown size</a></li>
     <li><a href="#69-sqrtx-easy">69. Sqrt(x) (Easy)</a></li>
     <li><a href="#744-find-smallest-letter-greater-than-target-easy">744. Find Smallest Letter Greater Than Target (Easy)</a></li>
     <li><a href="#540-single-element-in-a-sorted-array-medium">540. Single Element in a Sorted Array (Medium)</a></li>
@@ -325,6 +333,24 @@ This one is similar to the last one.</p>
 <p>Leetcode problem: Kth Smallest Element in a Sorted Matrix, Sqrt(x)</p>
 <p>There are some other problems which can be solved by binary search as a small part of the solution. And for those difficult problems, the target value may change.
 The solution to solve these difficult problems depends on different requirements.</p>
+<p>When we try to use binary search on a 2D matrix, there are two ways. One way is use binary search for row and column separately. The other way is treat a 2D matrix as 1D array. Map 2D coordinates to 1D coordinate.
+<img src="https://tywz-milk.github.io/img/semester-summary/1.png" alt="RUNOOB game2"></p>
+<h2 id="closest-element-to-target">Closest Element to Target</h2>
+<p><img src="https://tywz-milk.github.io/img/semester-summary/2.png" alt="RUNOOB game2"></p>
+<h2 id="find-the-first--last-target">Find the first &amp; last target</h2>
+<p><img src="https://tywz-milk.github.io/img/semester-summary/3.png" alt="RUNOOB game2"></p>
+<h2 id="closest-k-elements">Closest k Elements</h2>
+<p><img src="https://tywz-milk.github.io/img/semester-summary/4.png" alt="RUNOOB game2"></p>
+<h2 id="k-th-smallest-in-two-sorted-arrays">K-th Smallest in two sorted arrays</h2>
+<p><img src="https://tywz-milk.github.io/img/semester-summary/7.png" alt="RUNOOB game2">
+<img src="https://tywz-milk.github.io/img/semester-summary/5.png" alt="RUNOOB game2">
+<img src="https://tywz-milk.github.io/img/semester-summary/6.png" alt="RUNOOB game2"></p>
+<h1 id="k-th-closest-elements">K-th closest elements</h1>
+<p><img src="https://tywz-milk.github.io/img/semester-summary/8.png" alt="RUNOOB game2"></p>
+<h2 id="binary-search-with-unknown-size">Binary search with unknown size</h2>
+<p><img src="https://tywz-milk.github.io/img/semester-summary/9.png" alt="RUNOOB game2">
+<img src="https://tywz-milk.github.io/img/semester-summary/10.png" alt="RUNOOB game2">
+<img src="https://tywz-milk.github.io/img/semester-summary/11.png" alt="RUNOOB game2"></p>
 <h2 id="69-sqrtx-easy">69. Sqrt(x) (Easy)</h2>
 <p>This is the second kind of binary search. Find the last value which is smaller than sqrt(target).</p>
 <p>Time complexity is O(logx). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/sqrtx/submissions/">link</a>.</p>
@@ -529,7 +555,8 @@ public int binary(int[][]matrix,int target){
         }
     }
     return ans;
-}</code></pre>
+}
+</code></pre>
 
               
             </div>
