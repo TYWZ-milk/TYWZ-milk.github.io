@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Notes on Yitong Wang&#39;s Blog</title>
-    <link>https://tywz-milk.github.io/categories/notes/</link>
-    <description>Recent content in Notes on Yitong Wang&#39;s Blog</description>
+    <title>React on Yitong Wang&#39;s Blog</title>
+    <link>https://tywz-milk.github.io/tags/react/</link>
+    <description>Recent content in React on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 25 May 2020 09:24:49 -0500</lastBuildDate>
     
-	<atom:link href="https://tywz-milk.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tywz-milk.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://tywz-milk.github.io/2020/05/study-notes-of-react.js/</guid>
       <description>My study notes of React.js.</description>
-    </item>
-    
-    <item>
-      <title>Study Notes of Spring</title>
-      <link>https://tywz-milk.github.io/2020/05/study-notes-of-spring/</link>
-      <pubDate>Sat, 23 May 2020 21:08:54 -0500</pubDate>
-      
-      <guid>https://tywz-milk.github.io/2020/05/study-notes-of-spring/</guid>
-      <description>My study notes of Spring.</description>
     </item>
     
   </channel>

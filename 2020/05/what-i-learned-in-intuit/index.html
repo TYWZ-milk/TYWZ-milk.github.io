@@ -7,38 +7,36 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="Spring">
-<meta name="description" content="My study notes of Spring.">
+<meta name="keywords" content="Intuit">
+<meta name="description" content="I appreciated my internship in Inuit. I learned a lot and made some notes in this article.">
 
 
-<meta property="og:description" content="My study notes of Spring.">
+<meta property="og:description" content="I appreciated my internship in Inuit. I learned a lot and made some notes in this article.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Study Notes of Spring">
-<meta name="twitter:title" content="Study Notes of Spring">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+<meta property="og:title" content="What I learned in Intuit">
+<meta name="twitter:title" content="What I learned in Intuit">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="My study notes of Spring.">
-<meta name="twitter:description" content="My study notes of Spring.">
+<meta property="og:description" content="I appreciated my internship in Inuit. I learned a lot and made some notes in this article.">
+<meta name="twitter:description" content="I appreciated my internship in Inuit. I learned a lot and made some notes in this article.">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-23T21:08:54">
+    <meta property="article:published_time" content="2020-05-29T18:39:35">
   
   
-    <meta property="article:modified_time" content="2020-05-23T21:08:54">
+    <meta property="article:modified_time" content="2020-05-29T18:39:35">
   
   
   
     
-      <meta property="article:section" content="Notes">
-    
-      <meta property="article:section" content="Spring">
+      <meta property="article:section" content="Intuit">
     
   
   
     
-      <meta property="article:tag" content="Spring">
+      <meta property="article:tag" content="Intuit">
     
   
 
@@ -51,8 +49,8 @@
 
 
 
-  <meta property="og:image" content="https://cdn.auth0.com/blog/illustrations/spring.png">
-  <meta property="twitter:image" content="https://cdn.auth0.com/blog/illustrations/spring.png">
+  <meta property="og:image" content="https://pbs.twimg.com/profile_images/1145667210901372929/nIzSlggg_400x400.png">
+  <meta property="twitter:image" content="https://pbs.twimg.com/profile_images/1145667210901372929/nIzSlggg_400x400.png">
 
 
 
@@ -62,14 +60,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Study Notes of Spring</title>
+    <title>What I learned in Intuit</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -219,19 +217,19 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Study Notes of Spring
+      What I learned in Intuit
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-23T21:08:54-05:00">
+      <time itemprop="datePublished" datetime="2020-05-29T18:39:35-05:00">
         
   
   
   
   
-    23 May 2020
+    29 May 2020
   
 
       </time>
@@ -241,9 +239,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://tywz-milk.github.io/categories/notes">Notes</a>, 
-    
-      <a class="category-link" href="https://tywz-milk.github.io/categories/spring">Spring</a>
+      <a class="category-link" href="https://tywz-milk.github.io/categories/intuit">Intuit</a>
     
   
 
@@ -256,47 +252,27 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#annotation">Annotation</a>
-      <ul>
-        <li><a href="#getmapping">@GetMapping</a></li>
-        <li><a href="#requestparam">@RequestParam</a></li>
-        <li><a href="#restcontroller">@RestController</a></li>
-        <li><a href="#responsebody">@ResponseBody</a></li>
-        <li><a href="#springbootapplication">@SpringBootApplication</a></li>
-        <li><a href="#bean">@Bean</a></li>
-        <li><a href="#repository">@Repository</a></li>
-      </ul>
-    </li>
+    <li><a href="#d4d">D4D</a></li>
   </ul>
 </nav>
               </aside>
-              <h2 id="annotation">Annotation</h2>
-<h3 id="getmapping">@GetMapping</h3>
-<p>The <code>@GetMapping</code> annotation ensures that HTTP GET requests to <code>/greeting</code> are mapped to the <code>greeting()</code> method.</p>
-<p>There are companion annotations for other HTTP verbs (e.g. <code>@PostMapping</code> for <code>POST</code>). There is also a <code>@RequestMapping</code> annotation that they all derive from, and can serve as a synonym (e.g. <code>@RequestMapping(method=GET)</code>).</p>
-<h3 id="requestparam">@RequestParam</h3>
-<p><code>@RequestParam</code> binds the value of the query string parameter <code>name</code> into the <code>name</code> parameter of the <code>greeting()</code> method. If the <code>name</code> parameter is absent in the request, the <code>defaultValue</code> of <code>World</code> is used.</p>
-<pre><code>@GetMapping(&quot;/greeting&quot;)
-    public Greeting greeting(@RequestParam(value = &quot;name&quot;, defaultValue = &quot;World&quot;) String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
-</code></pre>
-<h3 id="restcontroller">@RestController</h3>
-<p>Spring <code>@RestController</code> marks the class as a controller where every method returns a domain object instead of a view. It is shorthand for including both <code>@Controller</code> and <code>@ResponseBody</code>.</p>
-<p>A key difference between a traditional MVC controller and the RESTful web service controller shown earlier is the way that the HTTP response body is created. Rather than relying on a view technology to perform server-side rendering of the greeting data to HTML, this RESTful web service controller populates and returns a domain object. The object data will be written directly to the HTTP response as JSON.</p>
-<h3 id="responsebody">@ResponseBody</h3>
-<p>The <code>@ResponseBody</code> annotation tells a controller that the object returned is automatically serialized into JSON and passed back into the <code>HttpResponse</code> object.</p>
-<h3 id="springbootapplication">@SpringBootApplication</h3>
-<p><code>@SpringBootApplication</code> is a convenience annotation that adds all of the following:</p>
-<p><code>@Configuration</code>: Tags the class as a source of bean definitions for the application context.</p>
-<p><code>@EnableAutoConfiguration</code>: Tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings. For example, if <code>spring-webmvc</code> is on the classpath, this annotation flags the application as a web application and activates key behaviors, such as setting up a <code>DispatcherServlet</code>.</p>
-<p><code>@ComponentScan</code>: Tells Spring to look for other components, configurations, and services in the <code>com/example</code> package, letting it find the controllers.</p>
-<h3 id="bean">@Bean</h3>
-<p><code>Bean</code> is a method-level annotation and a direct analog of the XML <!-- raw HTML omitted --> element. The annotation supports most of the attributes offered by <!-- raw HTML omitted -->, such as: init-method, destroy-method, autowiring, lazy-init, dependency-check, depends-on and scope.</p>
-<h3 id="repository">@Repository</h3>
-<p>Spring <code>@Repository</code> annotation is used to indicate that the class provides the mechanism for storage, retrieval, search, update and delete operation on objects.</p>
-<p>Spring Repository annotation is a specialization of @Component annotation, so Spring Repository classes are autodetected by spring framework through classpath scanning.</p>
-<p>Spring Repository is very close to DAO pattern where DAO classes are responsible for providing CRUD operations on database tables. However, if you are using Spring Data for managing database operations, then you should use Spring Data Repository interface.</p>
-<p>This <a href="https://www.journaldev.com/21460/spring-repository-annotation">article</a> introduces an example of Spring Repository annotation.</p>
+              <h2 id="d4d">D4D</h2>
+<blockquote>
+<p>Ref: <a href="http://www.intuitlabs.com/design-for-delight">DESIGN FOR DELIGHT</a></p>
+</blockquote>
+<p>D4D means Design for Delight. It has 3 principles:</p>
+<ol>
+<li>Deep Customer Empathy</li>
+<li>Go Broad to go Narrow</li>
+<li>Rapid Experiments with Customers</li>
+</ol>
+<p>D4D is also known as CDI(Customer Driven Innovation). D4D’s goal is to help teams to <strong>be bold by</strong> going beyond customer expectations, evoking positive emotion throughout the customer experience, and delivering dramatic improvements in our customers’ lives.</p>
+<p>Principle #1: Deep Customer Empathy.
+Why is this important- Empathy allows us to get inspired and embrace the unexpected. By gaining a deeper understanding of our customer, what their pain points are, why and how they are currently doing something, it gives us that inspiration to innovate and come up with solutions to change their lives so profoundly that they can’t imagine going back to the old way of doing things.</p>
+<p>Principle #2: Go Broad to Go Narrow.
+Why is this important- To get to one great idea, you need a lot of them. The trick is to go for quantity first, then be intentional about narrowing these down to the best one. To inspire bold innovation you can leverage go broad to go narrow to define the ideal state.</p>
+<p>Principle #3: Rapid Experiments with Customers.
+Why is this important- Rapid experiments help you make better decisions based on actual user behaviors. Decisions are better based on facts than conjecture; experiments are usually the best way to get the facts. Experiments can help you discover the truth before build. Experiments help teams align on the customer.</p>
 
               
             </div>
@@ -309,7 +285,7 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/spring/">Spring</a>
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/intuit/">Intuit</a>
 
                   </div>
                 
@@ -322,7 +298,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/study-notes-of-react.js/" data-tooltip="Study Notes of React.js">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -330,7 +306,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./" data-tooltip="Use React.js to implement a tic tac toe game.">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-integer-break/" data-tooltip="Leetcode-Integer Break">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -348,19 +324,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -408,7 +384,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/study-notes-of-react.js/" data-tooltip="Study Notes of React.js">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -416,7 +392,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./" data-tooltip="Use React.js to implement a tic tac toe game.">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-integer-break/" data-tooltip="Leetcode-Integer Break">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -434,19 +410,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -476,19 +452,19 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-spring%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fwhat-i-learned-in-intuit%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-spring%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fwhat-i-learned-in-intuit%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-spring%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fwhat-i-learned-in-intuit%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -580,9 +556,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/study-notes-of-spring\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/what-i-learned-in-intuit\/';
           
-            this.page.identifier = '\/2020\/05\/study-notes-of-spring\/'
+            this.page.identifier = '\/2020\/05\/what-i-learned-in-intuit\/'
           
         };
         (function() {

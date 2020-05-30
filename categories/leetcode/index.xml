@@ -6,10 +6,28 @@
     <description>Recent content in Leetcode on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 May 2020 21:04:08 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2020 10:45:32 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leetcode-Integer Break</title>
+      <link>https://tywz-milk.github.io/2020/05/leetcode-integer-break/</link>
+      <pubDate>Fri, 29 May 2020 10:45:32 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2020/05/leetcode-integer-break/</guid>
+      <description>Some Leetcode problems can be solved by dp effectively.</description>
+    </item>
+    
+    <item>
+      <title>Leetcode-Range Array</title>
+      <link>https://tywz-milk.github.io/2020/05/leetcode-range-array/</link>
+      <pubDate>Thu, 28 May 2020 19:35:12 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2020/05/leetcode-range-array/</guid>
+      <description>Some Leetcode problems can be solved by dp effectively.</description>
+    </item>
     
     <item>
       <title>Leetcode-Path in the matrix</title>

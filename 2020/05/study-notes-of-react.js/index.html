@@ -7,38 +7,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="Spring">
-<meta name="description" content="My study notes of Spring.">
+<meta name="keywords" content="React">
+<meta name="description" content="My study notes of React.js.">
 
 
-<meta property="og:description" content="My study notes of Spring.">
+<meta property="og:description" content="My study notes of React.js.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Study Notes of Spring">
-<meta name="twitter:title" content="Study Notes of Spring">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+<meta property="og:title" content="Study Notes of React.js">
+<meta name="twitter:title" content="Study Notes of React.js">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="My study notes of Spring.">
-<meta name="twitter:description" content="My study notes of Spring.">
+<meta property="og:description" content="My study notes of React.js.">
+<meta name="twitter:description" content="My study notes of React.js.">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-23T21:08:54">
+    <meta property="article:published_time" content="2020-05-25T09:24:49">
   
   
-    <meta property="article:modified_time" content="2020-05-23T21:08:54">
+    <meta property="article:modified_time" content="2020-05-25T09:24:49">
   
   
   
     
       <meta property="article:section" content="Notes">
     
-      <meta property="article:section" content="Spring">
+      <meta property="article:section" content="React">
     
   
   
     
-      <meta property="article:tag" content="Spring">
+      <meta property="article:tag" content="React">
     
   
 
@@ -51,8 +51,8 @@
 
 
 
-  <meta property="og:image" content="https://cdn.auth0.com/blog/illustrations/spring.png">
-  <meta property="twitter:image" content="https://cdn.auth0.com/blog/illustrations/spring.png">
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png">
+  <meta property="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png">
 
 
 
@@ -62,14 +62,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Study Notes of Spring</title>
+    <title>Study Notes of React.js</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -219,19 +219,19 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Study Notes of Spring
+      Study Notes of React.js
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-23T21:08:54-05:00">
+      <time itemprop="datePublished" datetime="2020-05-25T09:24:49-05:00">
         
   
   
   
   
-    23 May 2020
+    25 May 2020
   
 
       </time>
@@ -243,7 +243,7 @@
     
       <a class="category-link" href="https://tywz-milk.github.io/categories/notes">Notes</a>, 
     
-      <a class="category-link" href="https://tywz-milk.github.io/categories/spring">Spring</a>
+      <a class="category-link" href="https://tywz-milk.github.io/categories/react">React</a>
     
   
 
@@ -256,47 +256,71 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#annotation">Annotation</a>
-      <ul>
-        <li><a href="#getmapping">@GetMapping</a></li>
-        <li><a href="#requestparam">@RequestParam</a></li>
-        <li><a href="#restcontroller">@RestController</a></li>
-        <li><a href="#responsebody">@ResponseBody</a></li>
-        <li><a href="#springbootapplication">@SpringBootApplication</a></li>
-        <li><a href="#bean">@Bean</a></li>
-        <li><a href="#repository">@Repository</a></li>
-      </ul>
-    </li>
+    <li><a href="#import-css-files">Import CSS files</a></li>
+    <li><a href="#how-to-get-the-value-of-input">How to get the value of input</a></li>
+    <li><a href="#conditional-rendering">Conditional Rendering</a></li>
+    <li><a href="#passing-data-between-react-components--parent-children-siblings">Passing Data Between React Components — Parent, Children, Siblings</a></li>
   </ul>
 </nav>
               </aside>
-              <h2 id="annotation">Annotation</h2>
-<h3 id="getmapping">@GetMapping</h3>
-<p>The <code>@GetMapping</code> annotation ensures that HTTP GET requests to <code>/greeting</code> are mapped to the <code>greeting()</code> method.</p>
-<p>There are companion annotations for other HTTP verbs (e.g. <code>@PostMapping</code> for <code>POST</code>). There is also a <code>@RequestMapping</code> annotation that they all derive from, and can serve as a synonym (e.g. <code>@RequestMapping(method=GET)</code>).</p>
-<h3 id="requestparam">@RequestParam</h3>
-<p><code>@RequestParam</code> binds the value of the query string parameter <code>name</code> into the <code>name</code> parameter of the <code>greeting()</code> method. If the <code>name</code> parameter is absent in the request, the <code>defaultValue</code> of <code>World</code> is used.</p>
-<pre><code>@GetMapping(&quot;/greeting&quot;)
-    public Greeting greeting(@RequestParam(value = &quot;name&quot;, defaultValue = &quot;World&quot;) String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+              <h2 id="import-css-files">Import CSS files</h2>
+<p>Build your css files in <code>src</code> directory. Import your css files in js files by <code>import './index.css';</code>.</p>
+<p>We can also import bootstrap files. First, install reactstrap and Bootstrap by npm. Run this command</p>
+<pre><code>npm install --save reactstrap bootstrap@4
 </code></pre>
-<h3 id="restcontroller">@RestController</h3>
-<p>Spring <code>@RestController</code> marks the class as a controller where every method returns a domain object instead of a view. It is shorthand for including both <code>@Controller</code> and <code>@ResponseBody</code>.</p>
-<p>A key difference between a traditional MVC controller and the RESTful web service controller shown earlier is the way that the HTTP response body is created. Rather than relying on a view technology to perform server-side rendering of the greeting data to HTML, this RESTful web service controller populates and returns a domain object. The object data will be written directly to the HTTP response as JSON.</p>
-<h3 id="responsebody">@ResponseBody</h3>
-<p>The <code>@ResponseBody</code> annotation tells a controller that the object returned is automatically serialized into JSON and passed back into the <code>HttpResponse</code> object.</p>
-<h3 id="springbootapplication">@SpringBootApplication</h3>
-<p><code>@SpringBootApplication</code> is a convenience annotation that adds all of the following:</p>
-<p><code>@Configuration</code>: Tags the class as a source of bean definitions for the application context.</p>
-<p><code>@EnableAutoConfiguration</code>: Tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings. For example, if <code>spring-webmvc</code> is on the classpath, this annotation flags the application as a web application and activates key behaviors, such as setting up a <code>DispatcherServlet</code>.</p>
-<p><code>@ComponentScan</code>: Tells Spring to look for other components, configurations, and services in the <code>com/example</code> package, letting it find the controllers.</p>
-<h3 id="bean">@Bean</h3>
-<p><code>Bean</code> is a method-level annotation and a direct analog of the XML <!-- raw HTML omitted --> element. The annotation supports most of the attributes offered by <!-- raw HTML omitted -->, such as: init-method, destroy-method, autowiring, lazy-init, dependency-check, depends-on and scope.</p>
-<h3 id="repository">@Repository</h3>
-<p>Spring <code>@Repository</code> annotation is used to indicate that the class provides the mechanism for storage, retrieval, search, update and delete operation on objects.</p>
-<p>Spring Repository annotation is a specialization of @Component annotation, so Spring Repository classes are autodetected by spring framework through classpath scanning.</p>
-<p>Spring Repository is very close to DAO pattern where DAO classes are responsible for providing CRUD operations on database tables. However, if you are using Spring Data for managing database operations, then you should use Spring Data Repository interface.</p>
-<p>This <a href="https://www.journaldev.com/21460/spring-repository-annotation">article</a> introduces an example of Spring Repository annotation.</p>
+<p>Import <code>import 'bootstrap/dist/css/bootstrap.css';</code> in your js files.</p>
+<h2 id="how-to-get-the-value-of-input">How to get the value of input</h2>
+<p>In HTML, form elements such as <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState().</p>
+<p>We can combine the two by making the React state be the “single source of truth”. Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a “controlled component”.</p>
+<pre><code>class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      &lt;form onSubmit={this.handleSubmit}&gt;
+        &lt;label&gt;
+          Name:
+          &lt;input type=&quot;text&quot; value={this.state.value} onChange={this.handleChange} /&gt;
+        &lt;/label&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+</code></pre>
+<h2 id="conditional-rendering">Conditional Rendering</h2>
+<p>Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like if or the conditional operator to create elements representing the current state, and let React update the UI to match them.</p>
+<pre><code>render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    &lt;div&gt;
+      {isLoggedIn
+        ? &lt;LogoutButton onClick={this.handleLogoutClick} /&gt;
+        : &lt;LoginButton onClick={this.handleLoginClick} /&gt;
+      }
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h2 id="passing-data-between-react-components--parent-children-siblings">Passing Data Between React Components — Parent, Children, Siblings</h2>
+<blockquote>
+<p>Ref: <a href="https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf">https://towardsdatascience.com/passing-data-between-react-components-parent-children-siblings-a64f89e24ecf</a></p>
+</blockquote>
 
               
             </div>
@@ -309,7 +333,7 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/spring/">Spring</a>
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/react/">React</a>
 
                   </div>
                 
@@ -322,7 +346,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/study-notes-of-react.js/" data-tooltip="Study Notes of React.js">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-range-array/" data-tooltip="Leetcode-Range Array">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -330,7 +354,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./" data-tooltip="Use React.js to implement a tic tac toe game.">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/study-notes-of-spring/" data-tooltip="Study Notes of Spring">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -348,19 +372,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -408,7 +432,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/study-notes-of-react.js/" data-tooltip="Study Notes of React.js">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-range-array/" data-tooltip="Leetcode-Range Array">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -416,7 +440,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/use-react.js-to-implement-a-tic-tac-toe-game./" data-tooltip="Use React.js to implement a tic tac toe game.">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/study-notes-of-spring/" data-tooltip="Study Notes of Spring">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -434,19 +458,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/study-notes-of-spring/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/study-notes-of-react.js/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -476,19 +500,19 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-spring%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-react.js%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-spring%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-react.js%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-spring%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fstudy-notes-of-react.js%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -580,9 +604,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/study-notes-of-spring\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/study-notes-of-react.js\/';
           
-            this.page.identifier = '\/2020\/05\/study-notes-of-spring\/'
+            this.page.identifier = '\/2020\/05\/study-notes-of-react.js\/'
           
         };
         (function() {
