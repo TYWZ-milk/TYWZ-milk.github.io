@@ -255,6 +255,7 @@
                 <nav id="TableOfContents">
   <ul>
     <li><a href="#343-integer-break-medium">343. Integer Break (Medium)</a></li>
+    <li><a href="#279-perfect-squaresmedium">279. Perfect Squares(Medium)</a></li>
   </ul>
 </nav>
               </aside>
@@ -277,7 +278,26 @@ Here is the <a href="https://leetcode.com/problems/integer-break/">link</a>.</p>
         }
     }
     return dp[n];
-}</code></pre>
+}
+</code></pre>
+<h2 id="279-perfect-squaresmedium">279. Perfect Squares(Medium)</h2>
+<p>The solution to this problem is similar to the last problem. In the last problem, we break n into some integers. In this problem, we break integer n into some square integers.
+We still use dp to solve this problem. dp[i] means the least number of perfect square numbers. At first, we need to initialize all values to Integer.MAX_VALUE, because we need to find the least numbers.
+Then, we don&rsquo;t assign values one by one. At first, we assign all square numbers. And then assign all remaining values.
+dp formula is dp[i+j<em>j] = Math.min(dp[i+j</em>j],dp[i]+1).</p>
+<p>Time complexity is O(n^2). Space complexity is O(n). We can reduce time and space complexity by using some math solution. Here is the <a href="https://leetcode.com/problems/perfect-squares/">link</a>.</p>
+<pre><code>public int numSquares(int n) {
+    int[]dp = new int[n+1];
+    for(int i =0;i&lt;n+1;i++)dp[i]=Integer.MAX_VALUE;
+    dp[0]=0;
+    for(int i =0;i&lt;n+1;i++){
+        for(int j=1;i+j*j&lt;n+1;j++){
+            dp[i+j*j] =Math.min(dp[i+j*j], dp[i]+1);
+        }
+    }
+    return dp[n];
+}
+</code></pre>
 
               
             </div>

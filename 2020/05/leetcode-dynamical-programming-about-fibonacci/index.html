@@ -260,6 +260,7 @@
     <li><a href="#198-house-robber-easy">198. House Robber (Easy)</a></li>
     <li><a href="#213-house-robber-ii-medium">213. House Robber II (Medium)</a></li>
     <li><a href="#634-find-the-derangement-of-an-array">634. Find the Derangement of An Array</a></li>
+    <li><a href="#91-decode-ways">91. Decode Ways</a></li>
   </ul>
 </nav>
               </aside>
@@ -374,6 +375,41 @@ If number k is put at the position k, the situation is same as n-2. Otherwise, t
     return dp[n];
 }
 </code></pre>
+<h2 id="91-decode-ways">91. Decode Ways</h2>
+<p>At first, let&rsquo;s not consider about the edge case which includes value &lsquo;0&rsquo;. Assume the input string doesn&rsquo;t have value &lsquo;0&rsquo;.
+dp[i] means the total number of ways to decode it. Assume the current index is k. If s[k-1]s[k] is not in the mapping, we can only decode these two numbers as two separate integers.
+This means dp[k] = dp[k-1]. If s[k-1][k] is in the mapping, we can decode s[k] in two ways: decode as s[k-1]s[k] or s[k]. If we decode it as s[k-1][k], there are dp[k-2] solutions.
+If we decode it as s[k], there are dp[k-1] solutions. The total number of ways to decode it is dp[k] = dp[k-1]+dp[k-2]. Therefore, our dp function is</p>
+<pre><code>dp[i] = dp[i-1] + dp[i-2] if 10&lt;=s[i-1][i]&lt;=26
+dp[i] = dp[i-1] Otherwise
+</code></pre>
+<p>Now, let&rsquo;s consider about value &lsquo;0&rsquo;. Assume that the kth value is &lsquo;0&rsquo;. And (k-1)th value is &lsquo;1&rsquo; or &lsquo;2&rsquo;. In this situation, we can only decode them as s[k-1]s[k].
+This is the only valid way to decode these two values. Therefore, dp[k] = dp[k-1]. But if (k-1)th value is other values. We cannot find a way to decode value &lsquo;0&rsquo;.
+Value &lsquo;0&rsquo; cannot exits alone and it cannot be decoded with its previous value. This means the whole input string cannot be decoded. We return 0.</p>
+<pre><code>dp[i] = dp[i-1] if 10&lt;=s[i-1][i]&lt;=26 s[i]=0
+answer = 0 Otherwise
+</code></pre>
+<p>I thinks this problem is in the category of Fibonacci, because dp function is dp[i] = dp[i-1] +dp[i-2] under some situation.
+We only need previous two values, so we can use two variables to represent the whole dp array. &lsquo;first&rsquo; represents dp[i-2]. &lsquo;second&rsquo; represents dp[i-1].
+Meanwhile, we need to check the value of index i. If value is &lsquo;0&rsquo;, we assign &lsquo;0&rsquo; to variable &lsquo;second&rsquo;. dp[i] includes dp[i-1] no matter what the situation, we can keep the value of &lsquo;second&rsquo;
+as the current value. If s[i-1][i] is valid, we plus the value of &lsquo;first&rsquo;. Otherwise, we update the value of &lsquo;first&rsquo; to the value of &lsquo;second&rsquo;.</p>
+<p>Time complexity is O(1). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/decode-ways/">link</a>.</p>
+<pre><code>public int numDecodings(String s) {
+    if(s.length()==0||s.charAt(0)=='0')return 0;
+    int first = 1; // represent dp[i-2]
+    int second = 1; // represent dp[i-1]
+    for(int i = 1;i&lt;s.length();i++){
+        second = s.charAt(i)=='0'?0:second;
+        if(s.charAt(i-1)=='1'||(s.charAt(i-1)=='2'&amp;&amp;s.charAt(i)&lt;'7')){
+            second+=first;
+            first = second-first;
+        }
+        else{
+            first = second;
+        }
+    }
+    return second;
+}</code></pre>
 
               
             </div>
