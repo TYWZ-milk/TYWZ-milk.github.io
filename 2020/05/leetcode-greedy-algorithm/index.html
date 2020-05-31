@@ -264,7 +264,8 @@
     <li><a href="#665-non-decreasing-array-easy">665. Non-decreasing Array (Easy)</a></li>
     <li><a href="#53-maximum-subarray-easy">53. Maximum Subarray (Easy)</a></li>
     <li><a href="#763-partition-labels-medium">763. Partition Labels (Medium)</a></li>
-    <li><a href="#646-maximum-length-of-pair-chain">646. Maximum Length of Pair Chain</a></li>
+    <li><a href="#646-maximum-length-of-pair-chain-medium">646. Maximum Length of Pair Chain (Medium)</a></li>
+    <li><a href="#376-wiggle-subsequence-medium">376. Wiggle Subsequence (Medium)</a></li>
   </ul>
 </nav>
               </aside>
@@ -468,7 +469,7 @@ If we find index i is equal to the last index, we find one part and can be added
         return ans;
     }
 </code></pre>
-<h2 id="646-maximum-length-of-pair-chain">646. Maximum Length of Pair Chain</h2>
+<h2 id="646-maximum-length-of-pair-chain-medium">646. Maximum Length of Pair Chain (Medium)</h2>
 <p>We can select pairs in any order which means we can change the order of input array. Therefore, we sort the input array in ascending order according to the second value of each elements.
 We cannot sort according to the first value. Assume input array is [[2,4],[1,5]]. If we sort it according to the first value, it will be [[1,5],[2,4]]. Then, when we iterate it, we will consider [1,5]
 as the part of answer at first. But if we consider [2,4] as the part of the answer, we may get a longer length of pair chain. Therefore, we need to sort input array according to the second value.
@@ -485,6 +486,22 @@ Next, we use a variable to record the last value of pair chain.</p>
         }
     }
     return ans;
+}
+</code></pre>
+<h2 id="376-wiggle-subsequence-medium">376. Wiggle Subsequence (Medium)</h2>
+<p>Let&rsquo;s consider about nums[i] and nums[i-1]. The idea is very obvious if you draw a diagram. Loot at the below diagram. Assume nums[i]&gt;nums[i-1].</p>
+<p><img src="https://tywz-milk.github.io/img/semester-summary/12.png" alt="RUNOOB corono"></p>
+<p>No matter the position of nums[i] and nums[i-1], the length of descend always plus 1. This also applies to nums[i]&lt;nums[i-1].</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/wiggle-subsequence/">link</a>.</p>
+<pre><code>public int wiggleMaxLength(int[] nums) {
+    if(nums.length&lt;2)return nums.length;
+    int ascend = 1;
+    int descend = 1;
+    for(int i =1;i&lt;nums.length;i++){
+        if(nums[i]&gt;nums[i-1])ascend = descend+1;
+        else if(nums[i]&lt;nums[i-1])descend = ascend+1;
+    }
+    return Math.max(ascend,descend);
 }</code></pre>
 
               

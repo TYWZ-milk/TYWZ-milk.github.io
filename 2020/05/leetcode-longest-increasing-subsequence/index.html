@@ -257,7 +257,8 @@
                 <nav id="TableOfContents">
   <ul>
     <li><a href="#300-longest-increasing-subsequence-medium">300. Longest Increasing Subsequence (Medium)</a></li>
-    <li><a href="#646-maximum-length-of-pair-chain">646. Maximum Length of Pair Chain</a></li>
+    <li><a href="#646-maximum-length-of-pair-chain-medium">646. Maximum Length of Pair Chain (Medium)</a></li>
+    <li><a href="#1143-longest-common-subsequence-medium">1143. Longest Common Subsequence (Medium)</a></li>
   </ul>
 </nav>
               </aside>
@@ -303,12 +304,12 @@ we replace the first value which is larger than the target value with the target
         return list.size();
     }
 </code></pre>
-<h2 id="646-maximum-length-of-pair-chain">646. Maximum Length of Pair Chain</h2>
+<h2 id="646-maximum-length-of-pair-chain-medium">646. Maximum Length of Pair Chain (Medium)</h2>
 <p>There are some differences between this and last problem. In last problem, we need to find a subsequence which means we cannot change the order in the input array. But in this problem,
 we can select pairs in any order which means we can change the order of input array. Therefore, we can sort the input array according to the first element in ascending order.
 And then we can use the same way as the last problem. But we cannot use binary search, because we need to consider two values this time, the left border and the right border.</p>
 <p>Time complexity is O(n^2). Space complexity is O(n). Here is the <a href="https://leetcode.com/problems/maximum-length-of-pair-chain/submissions/">link</a>.</p>
-<p>We can improve this solution by using greedy instead. Here is the <a href="">link</a>.</p>
+<p>We can improve this solution by using greedy instead. Here is the <a href="https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/#646-maximum-length-of-pair-chain">link</a>.</p>
 <pre><code>public int findLongestChain(int[][] pairs) {
     Arrays.sort(pairs, (a, b) -&gt; a[0] - b[0]);
     int []dp = new int [pairs.length];
@@ -323,7 +324,30 @@ And then we can use the same way as the last problem. But we cannot use binary s
         }
     }
     return ans;
-}</code></pre>
+}
+</code></pre>
+<h2 id="1143-longest-common-subsequence-medium">1143. Longest Common Subsequence (Medium)</h2>
+<p>We can use dp to solve this problem. We have two strings so we use 2D array for dp. dp[i][j] means the length of the longest common subsequence of text1 with first i characters and text2 with first j characters.
+We return the last value in 2D array. dp function is</p>
+<pre><code>dp[i][j] = dp[i-1][j-1]+1 if text1[i]=text2[j]
+dp[i][j] = Math.max(dp[i][j-1],dp[i-1][j])
+</code></pre>
+<p>Assume text1 = &lsquo;abc&rsquo; and text2 = &lsquo;ac&rsquo;. When we find text1[2] = text2[1] = &lsquo;c&rsquo;, we need to know the length of the longest common subsequence of text1 = &lsquo;ab&rsquo; and text2 = &lsquo;a&rsquo;. And plus 1 to this length.
+Assume text1[i]!=text2[j]. This means we cannot get a longer common subsequence with ith character in text1 and jth character in text2. Therefore, we can check two situations without these two characters separately.
+And use the larger value as the value of dp[i][j].</p>
+<p>Time complexity is O(mn). Space complexity is O(mn). m is the length of text1. n is the length of text2. Here is the <a href="https://leetcode.com/problems/longest-common-subsequence/">link</a>.</p>
+<pre><code>    public int longestCommonSubsequence(String text1, String text2) {
+        int[][]dp = new int[text1.length()+1][text2.length()+1];
+        for(int i =0;i&lt;text1.length();i++){
+            for(int j =0;j&lt;text2.length();j++){
+                dp[i+1][j+1] = Math.max(dp[i][j+1],dp[i+1][j]);
+                if(text1.charAt(i)==text2.charAt(j)){
+                    dp[i+1][j+1] = dp[i][j]+1;
+                }
+            }
+        }
+        return dp[text1.length()][text2.length()];
+    }</code></pre>
 
               
             </div>
