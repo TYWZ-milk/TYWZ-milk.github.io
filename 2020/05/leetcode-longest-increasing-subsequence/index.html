@@ -7,36 +7,40 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="Intuit">
-<meta name="description" content="I appreciated my internship in Inuit. I learned a lot and made some notes in this article.">
+<meta name="keywords" content="Leetcode, dp, Fibonacci">
+<meta name="description" content="Some Leetcode problems can be solved by dp effectively. All problems are related to Longest Increasing Subsequence.">
 
 
-<meta property="og:description" content="I appreciated my internship in Inuit. I learned a lot and made some notes in this article.">
+<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively. All problems are related to Longest Increasing Subsequence.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="What I learned in Intuit">
-<meta name="twitter:title" content="What I learned in Intuit">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+<meta property="og:title" content="Leetcode-Longest Increasing Subsequence">
+<meta name="twitter:title" content="Leetcode-Longest Increasing Subsequence">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="I appreciated my internship in Inuit. I learned a lot and made some notes in this article.">
-<meta name="twitter:description" content="I appreciated my internship in Inuit. I learned a lot and made some notes in this article.">
+<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively. All problems are related to Longest Increasing Subsequence.">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by dp effectively. All problems are related to Longest Increasing Subsequence.">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-29T18:39:35">
+    <meta property="article:published_time" content="2020-05-30T17:57:36">
   
   
-    <meta property="article:modified_time" content="2020-05-29T18:39:35">
+    <meta property="article:modified_time" content="2020-05-30T17:57:36">
   
-  
-  
-    
-      <meta property="article:section" content="Intuit">
-    
   
   
     
-      <meta property="article:tag" content="Intuit">
+      <meta property="article:section" content="Leetcode">
+    
+  
+  
+    
+      <meta property="article:tag" content="Leetcode">
+    
+      <meta property="article:tag" content="dp">
+    
+      <meta property="article:tag" content="Fibonacci">
     
   
 
@@ -49,8 +53,8 @@
 
 
 
-  <meta property="og:image" content="https://pbs.twimg.com/profile_images/1145667210901372929/nIzSlggg_400x400.png">
-  <meta property="twitter:image" content="https://pbs.twimg.com/profile_images/1145667210901372929/nIzSlggg_400x400.png">
+  <meta property="og:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
+  <meta property="twitter:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
 
 
 
@@ -60,14 +64,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>What I learned in Intuit</title>
+    <title>Leetcode-Longest Increasing Subsequence</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -217,19 +221,19 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      What I learned in Intuit
+      Leetcode-Longest Increasing Subsequence
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-29T18:39:35-05:00">
+      <time itemprop="datePublished" datetime="2020-05-30T17:57:36-05:00">
         
   
   
   
   
-    29 May 2020
+    30 May 2020
   
 
       </time>
@@ -239,7 +243,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://tywz-milk.github.io/categories/intuit">Intuit</a>
+      <a class="category-link" href="https://tywz-milk.github.io/categories/leetcode">Leetcode</a>
     
   
 
@@ -252,27 +256,74 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#d4d">D4D</a></li>
+    <li><a href="#300-longest-increasing-subsequence-medium">300. Longest Increasing Subsequence (Medium)</a></li>
+    <li><a href="#646-maximum-length-of-pair-chain">646. Maximum Length of Pair Chain</a></li>
   </ul>
 </nav>
               </aside>
-              <h2 id="d4d">D4D</h2>
-<blockquote>
-<p>Ref: <a href="http://www.intuitlabs.com/design-for-delight">DESIGN FOR DELIGHT</a></p>
+              <blockquote>
+<p>Ref: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md#%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97">link</a></p>
 </blockquote>
-<p>D4D means Design for Delight. It has 3 principles:</p>
-<ol>
-<li>Deep Customer Empathy</li>
-<li>Go Broad to go Narrow</li>
-<li>Rapid Experiments with Customers</li>
-</ol>
-<p>D4D is also known as CDI(Customer Driven Innovation). D4D’s goal is to help teams to <strong>be bold by</strong> going beyond customer expectations, evoking positive emotion throughout the customer experience, and delivering dramatic improvements in our customers’ lives.</p>
-<p>Principle #1: Deep Customer Empathy.
-Why is this important- Empathy allows us to get inspired and embrace the unexpected. By gaining a deeper understanding of our customer, what their pain points are, why and how they are currently doing something, it gives us that inspiration to innovate and come up with solutions to change their lives so profoundly that they can’t imagine going back to the old way of doing things.</p>
-<p>Principle #2: Go Broad to Go Narrow.
-Why is this important- To get to one great idea, you need a lot of them. The trick is to go for quantity first, then be intentional about narrowing these down to the best one. To inspire bold innovation you can leverage go broad to go narrow to define the ideal state.</p>
-<p>Principle #3: Rapid Experiments with Customers.
-Why is this important- Rapid experiments help you make better decisions based on actual user behaviors. Decisions are better based on facts than conjecture; experiments are usually the best way to get the facts. Experiments can help you discover the truth before build. Experiments help teams align on the customer.</p>
+<h2 id="300-longest-increasing-subsequence-medium">300. Longest Increasing Subsequence (Medium)</h2>
+<p>This problem is not difficult. We can find dp function in a short time. At first, initiate all dp values to 1, because if the input array is in decreasing order, the answer is 1.
+Dp function is dp[i] = Math.max(dp[i],dp[j]+1) j&lt;i and nums[j]&lt;nums[i]. The return value should be the maximum value of dp array.</p>
+<p>The follow up is difficult. We need to use binary search to improve time complexity. We need a new list. And we add values to this list. Finally, the size of this list is the answer.
+At first, we add nums[0] to the list. And then we iterate the input array. If nums[i]&lt;=nums[0], we replace nums[0] with nums[i]. If nums[i]&gt;nums[last inex], we add nums[i] to the list.
+If nums[0]&lt;nums[i]&lt;=nums[last index], we use binary search to find the first value which is larger than nums[i] and we replace this value with nums[i].
+Note, the result list may not be the longest increasing subsequence. But we don&rsquo;t need the longest increasing subsequence. We only need its length.
+The idea is, if we iterate a value which is larger than all values in the list, we add it so we can build a longer increasing subsequence. If we find a value which is smaller than the last value in the list,
+we replace the first value which is larger than the target value with the target value. In this way, we try to make the value in the list as small as possible. If values are very small, we have more opportunities to build a longer increasing subsequence.</p>
+<p>Time complexity is O(nlogn). Space complexity is O(n). Here is the <a href="https://leetcode.com/problems/longest-increasing-subsequence/solution/">link</a>.</p>
+<pre><code>    public int lengthOfLIS(int[] nums) {
+        if(nums.length==0)return 0;
+        List&lt;Integer&gt;list = new ArrayList();
+        list.add(nums[0]);
+        for(int i =1;i&lt;nums.length;i++){
+            if(nums[i]&lt;=list.get(0)){
+                list.set(0,nums[i]);
+            }
+            else if(nums[i]&gt;list.get(list.size()-1)){
+                list.add(nums[i]);
+            }
+            else{
+                int left = 0;
+                int right = list.size();
+                while(left&lt;right-1){
+                    int mid = left + (right-left)/2;
+                    if(list.get(mid)&lt;nums[i]){
+                        left = mid + 1;
+                    }
+                    else
+                        right = mid;
+                }
+                int index = list.get(left)&gt;nums[i]?left:right;
+                list.set(index,nums[i]);
+            }
+        }
+        return list.size();
+    }
+</code></pre>
+<h2 id="646-maximum-length-of-pair-chain">646. Maximum Length of Pair Chain</h2>
+<p>There are some differences between this and last problem. In last problem, we need to find a subsequence which means we cannot change the order in the input array. But in this problem,
+we can select pairs in any order which means we can change the order of input array. Therefore, we can sort the input array according to the first element in ascending order.
+And then we can use the same way as the last problem. But we cannot use binary search, because we need to consider two values this time, the left border and the right border.</p>
+<p>Time complexity is O(n^2). Space complexity is O(n). Here is the <a href="https://leetcode.com/problems/maximum-length-of-pair-chain/submissions/">link</a>.</p>
+<p>We can improve this solution by using greedy instead. Here is the <a href="">link</a>.</p>
+<pre><code>public int findLongestChain(int[][] pairs) {
+    Arrays.sort(pairs, (a, b) -&gt; a[0] - b[0]);
+    int []dp = new int [pairs.length];
+    int ans = 1;
+    for(int i =0;i&lt;pairs.length;i++)dp[i]=1;
+    for(int i =1;i&lt;pairs.length;i++){
+        for(int j = 0;j&lt;i;j++){
+            if(pairs[i][0]&gt;pairs[j][1]){
+                dp[i] = Math.max(dp[i],dp[j]+1);
+                ans = Math.max(dp[i],ans);
+            }
+        }
+    }
+    return ans;
+}</code></pre>
 
               
             </div>
@@ -285,7 +336,11 @@ Why is this important- Rapid experiments help you make better decisions based on
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/intuit/">Intuit</a>
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
+
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/dp/">dp</a>
+
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/fibonacci/">Fibonacci</a>
 
                   </div>
                 
@@ -298,7 +353,7 @@ Why is this important- Rapid experiments help you make better decisions based on
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/" data-tooltip="Leetcode-Longest Increasing Subsequence">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -306,7 +361,7 @@ Why is this important- Rapid experiments help you make better decisions based on
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-integer-break/" data-tooltip="Leetcode-Integer Break">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/" data-tooltip="What I learned in Intuit">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -324,19 +379,19 @@ Why is this important- Rapid experiments help you make better decisions based on
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -384,7 +439,7 @@ Why is this important- Rapid experiments help you make better decisions based on
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/" data-tooltip="Leetcode-Longest Increasing Subsequence">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -392,7 +447,7 @@ Why is this important- Rapid experiments help you make better decisions based on
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-integer-break/" data-tooltip="Leetcode-Integer Break">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/" data-tooltip="What I learned in Intuit">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -410,19 +465,19 @@ Why is this important- Rapid experiments help you make better decisions based on
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -452,19 +507,19 @@ Why is this important- Rapid experiments help you make better decisions based on
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fwhat-i-learned-in-intuit%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-longest-increasing-subsequence%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fwhat-i-learned-in-intuit%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-longest-increasing-subsequence%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fwhat-i-learned-in-intuit%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-longest-increasing-subsequence%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -556,9 +611,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/what-i-learned-in-intuit\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-longest-increasing-subsequence\/';
           
-            this.page.identifier = '\/2020\/05\/what-i-learned-in-intuit\/'
+            this.page.identifier = '\/2020\/05\/leetcode-longest-increasing-subsequence\/'
           
         };
         (function() {
