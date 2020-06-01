@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="Leetcode, dp, Fibonacci">
-<meta name="description" content="Some Leetcode problems can be solved by dp effectively. All problems are related to Longest Increasing Subsequence.">
+<meta name="keywords" content="Leetcode, backtracking">
+<meta name="description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
 
 
-<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively. All problems are related to Longest Increasing Subsequence.">
+<meta property="og:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-Longest Increasing Subsequence">
-<meta name="twitter:title" content="Leetcode-Longest Increasing Subsequence">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+<meta property="og:title" content="Leetcode-0/1 knapsack problem">
+<meta name="twitter:title" content="Leetcode-0/1 knapsack problem">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively. All problems are related to Longest Increasing Subsequence.">
-<meta name="twitter:description" content="Some Leetcode problems can be solved by dp effectively. All problems are related to Longest Increasing Subsequence.">
+<meta property="og:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-30T17:57:36">
+    <meta property="article:published_time" content="2020-05-31T16:26:02">
   
   
-    <meta property="article:modified_time" content="2020-05-30T17:57:36">
+    <meta property="article:modified_time" content="2020-05-31T16:26:02">
   
   
   
@@ -38,9 +38,7 @@
     
       <meta property="article:tag" content="Leetcode">
     
-      <meta property="article:tag" content="dp">
-    
-      <meta property="article:tag" content="Fibonacci">
+      <meta property="article:tag" content="backtracking">
     
   
 
@@ -64,14 +62,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Leetcode-Longest Increasing Subsequence</title>
+    <title>Leetcode-0/1 knapsack problem</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -221,19 +219,19 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Leetcode-Longest Increasing Subsequence
+      Leetcode-0/1 knapsack problem
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-30T17:57:36-05:00">
+      <time itemprop="datePublished" datetime="2020-05-31T16:26:02-05:00">
         
   
   
   
   
-    30 May 2020
+    31 May 2020
   
 
       </time>
@@ -256,98 +254,69 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#300-longest-increasing-subsequence-medium">300. Longest Increasing Subsequence (Medium)</a></li>
-    <li><a href="#646-maximum-length-of-pair-chain-medium">646. Maximum Length of Pair Chain (Medium)</a></li>
-    <li><a href="#1143-longest-common-subsequence-medium">1143. Longest Common Subsequence (Medium)</a></li>
+    <li><a href="#416-partition-equal-subset-sum-medium">416. Partition Equal Subset Sum (Medium)</a></li>
+    <li><a href="#494-target-sum-medium">494. Target Sum (Medium)</a></li>
   </ul>
 </nav>
               </aside>
               <blockquote>
-<p>Ref: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md#%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97">link</a></p>
+<p>Ref:<a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md#0-1-%E8%83%8C%E5%8C%85">link</a></p>
 </blockquote>
-<h2 id="300-longest-increasing-subsequence-medium">300. Longest Increasing Subsequence (Medium)</h2>
-<p>This problem is not difficult. We can find dp function in a short time. At first, initiate all dp values to 1, because if the input array is in decreasing order, the answer is 1.
-Dp function is dp[i] = Math.max(dp[i],dp[j]+1) j&lt;i and nums[j]&lt;nums[i]. The return value should be the maximum value of dp array.</p>
-<p>The follow up is difficult. We need to use binary search to improve time complexity. We need a new list. And we add values to this list. Finally, the size of this list is the answer.
-At first, we add nums[0] to the list. And then we iterate the input array. If nums[i]&lt;=nums[0], we replace nums[0] with nums[i]. If nums[i]&gt;nums[last inex], we add nums[i] to the list.
-If nums[0]&lt;nums[i]&lt;=nums[last index], we use binary search to find the first value which is larger than nums[i] and we replace this value with nums[i].
-Note, the result list may not be the longest increasing subsequence. But we don&rsquo;t need the longest increasing subsequence. We only need its length.
-The idea is, if we iterate a value which is larger than all values in the list, we add it so we can build a longer increasing subsequence. If we find a value which is smaller than the last value in the list,
-we replace the first value which is larger than the target value with the target value. In this way, we try to make the value in the list as small as possible. If values are very small, we have more opportunities to build a longer increasing subsequence.</p>
-<p>Time complexity is O(nlogn). Space complexity is O(n). Here is the <a href="https://leetcode.com/problems/longest-increasing-subsequence/solution/">link</a>.</p>
-<pre><code>    public int lengthOfLIS(int[] nums) {
-        if(nums.length==0)return 0;
-        List&lt;Integer&gt;list = new ArrayList();
-        list.add(nums[0]);
-        for(int i =1;i&lt;nums.length;i++){
-            if(nums[i]&lt;=list.get(0)){
-                list.set(0,nums[i]);
-            }
-            else if(nums[i]&gt;list.get(list.size()-1)){
-                list.add(nums[i]);
-            }
-            else{
-                int left = 0;
-                int right = list.size();
-                while(left&lt;right-1){
-                    int mid = left + (right-left)/2;
-                    if(list.get(mid)&lt;nums[i]){
-                        left = mid + 1;
-                    }
-                    else
-                        right = mid;
-                }
-                int index = list.get(left)&gt;nums[i]?left:right;
-                list.set(index,nums[i]);
-            }
-        }
-        return list.size();
-    }
-</code></pre>
-<h2 id="646-maximum-length-of-pair-chain-medium">646. Maximum Length of Pair Chain (Medium)</h2>
-<p>There are some differences between this and last problem. In last problem, we need to find a subsequence which means we cannot change the order in the input array. But in this problem,
-we can select pairs in any order which means we can change the order of input array. Therefore, we can sort the input array according to the first element in ascending order.
-And then we can use the same way as the last problem. But we cannot use binary search, because we need to consider two values this time, the left border and the right border.</p>
-<p>Time complexity is O(n^2). Space complexity is O(n). Here is the <a href="https://leetcode.com/problems/maximum-length-of-pair-chain/submissions/">link</a>.</p>
-<p>We can improve this solution by using greedy instead. Here is the <a href="https://tywz-milk.github.io/2020/05/leetcode-greedy-algorithm/#646-maximum-length-of-pair-chain">link</a>.</p>
-<pre><code>public int findLongestChain(int[][] pairs) {
-    Arrays.sort(pairs, (a, b) -&gt; a[0] - b[0]);
-    int []dp = new int [pairs.length];
-    int ans = 1;
-    for(int i =0;i&lt;pairs.length;i++)dp[i]=1;
-    for(int i =1;i&lt;pairs.length;i++){
-        for(int j = 0;j&lt;i;j++){
-            if(pairs[i][0]&gt;pairs[j][1]){
-                dp[i] = Math.max(dp[i],dp[j]+1);
-                ans = Math.max(dp[i],ans);
+<h2 id="416-partition-equal-subset-sum-medium">416. Partition Equal Subset Sum (Medium)</h2>
+<p><strong>If you see a problem asks you to find two equal sums in the array, this means you need to find the half of all elements&rsquo; sum in the array.</strong>
+For this problem, we need to partition equal subset sum. At first, we calculate the sum of all elements. If we can find the half of sum in the input array, we can partition it into equal subset sum.
+Therefore, the problem is find the sum of elements which is equal to the target value. Obviously, this is 0/1 knapsack problem.</p>
+<p>Here we use 1D array to represent dp array instead of 2D array. dp[i] means if the sum of some elements in the input array is i.
+For the second for loop, we iterate from the end of the array, because this can guarantee the value will not be larger. If we start from the start of the array,
+values will be larger than the correct answer.</p>
+<p>If the sum of the whole array is m. Time complexity is O(mn). Space complexity is O(m). Here is the <a href="https://leetcode.com/problems/partition-equal-subset-sum/">link</a>.</p>
+<pre><code>public boolean canPartition(int[] nums) {
+    int ans =0;
+    for(int num:nums)ans+=num;
+    if(ans%2!=0)return false;
+    int target = ans/2;
+    int[]dp = new int[target+1];
+    for(int i =1;i&lt;nums.length+1;i++){
+        for(int j =target;j&gt;=1;j--){
+            if(nums[i-1]&lt;=j){
+                dp[j]=Math.max(dp[j],dp[j-nums[i-1]]+nums[i-1]);
             }
         }
     }
-    return ans;
+    return dp[target]==target;
 }
 </code></pre>
-<h2 id="1143-longest-common-subsequence-medium">1143. Longest Common Subsequence (Medium)</h2>
-<p>We can use dp to solve this problem. We have two strings so we use 2D array for dp. dp[i][j] means the length of the longest common subsequence of text1 with first i characters and text2 with first j characters.
-We return the last value in 2D array. dp function is</p>
-<pre><code>dp[i][j] = dp[i-1][j-1]+1 if text1[i]=text2[j]
-dp[i][j] = Math.max(dp[i][j-1],dp[i-1][j])
+<h2 id="494-target-sum-medium">494. Target Sum (Medium)</h2>
+<p>I think this problem should be difficult but not medium. When I saw this problem, my first thought is recursion and backtracking. But the below solution is very nice and it&rsquo;s difficult for me to get this solution.</p>
+<p>Assume we have nums={a,b,c,d} and a+b-c-d=S. Assume a+b+c+d=total. We can get below relationships.</p>
+<pre><code>a+b-c-d=S
+a+b=S+c+d
+a+b+c+d=S+2*(c+d)
+c+d=(total-S)/2
 </code></pre>
-<p>Assume text1 = &lsquo;abc&rsquo; and text2 = &lsquo;ac&rsquo;. When we find text1[2] = text2[1] = &lsquo;c&rsquo;, we need to know the length of the longest common subsequence of text1 = &lsquo;ab&rsquo; and text2 = &lsquo;a&rsquo;. And plus 1 to this length.
-Assume text1[i]!=text2[j]. This means we cannot get a longer common subsequence with ith character in text1 and jth character in text2. Therefore, we can check two situations without these two characters separately.
-And use the larger value as the value of dp[i][j].</p>
-<p>Time complexity is O(mn). Space complexity is O(mn). m is the length of text1. n is the length of text2. Here is the <a href="https://leetcode.com/problems/longest-common-subsequence/">link</a>.</p>
-<pre><code>    public int longestCommonSubsequence(String text1, String text2) {
-        int[][]dp = new int[text1.length()+1][text2.length()+1];
-        for(int i =0;i&lt;text1.length();i++){
-            for(int j =0;j&lt;text2.length();j++){
-                dp[i+1][j+1] = Math.max(dp[i][j+1],dp[i+1][j]);
-                if(text1.charAt(i)==text2.charAt(j)){
-                    dp[i+1][j+1] = dp[i][j]+1;
-                }
-            }
+<p>We can also get a+b=(total+S)/2. Both ways are correct. Now, we change the original problem to another problem which we are familiar with.
+Find the target sum in the input array. This time is a little different. We don&rsquo;t want the sum but the number of ways to get the sum.
+dp[i] means the number of ways to get the sum i for all elements in nums. At first, let&rsquo;s treat dp as 2D array. For nums[i]&lt;=target, we can add it or not add it to the sum.
+If we add it, there are dp[i-1][j-nums[i]] ways to get the sum. If we don&rsquo;t add it, there are dp[i-1][j] to get the sum. Therefore, dp[i][j] = dp[i-1][j]+dp[i-1][j-nums[i]].
+And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
+<p>If the value of target is m. Time complexity is O(mn). Space complexity is O(m). Here is the <a href="https://leetcode.com/problems/target-sum/">link</a>.</p>
+<pre><code>public int findTargetSumWays(int[] nums, int S) {
+    int total = 0;
+    for(int num:nums)total+=num;
+    if((total+S)%2!=0||total&lt;S)return 0;
+    int target = (total+S)/2;
+    int[]dp = new int[target+1];
+    dp[0]=1;
+    int ans = 0;
+    for(int i =0;i&lt;nums.length;i++){
+        for(int j = target;j&gt;=nums[i];j--){
+            dp[j] = dp[j]+dp[j-nums[i]];
         }
-        return dp[text1.length()][text2.length()];
-    }</code></pre>
+    }
+
+    return dp[target];
+}
+</code></pre>
 
               
             </div>
@@ -362,9 +331,7 @@ And use the larger value as the value of dp[i][j].</p>
                     
   <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
 
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/dp/">dp</a>
-
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/fibonacci/">Fibonacci</a>
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/backtracking/">backtracking</a>
 
                   </div>
                 
@@ -377,7 +344,7 @@ And use the larger value as the value of dp[i][j].</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/" data-tooltip="Leetcode-0/1 knapsack problem">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -385,7 +352,7 @@ And use the larger value as the value of dp[i][j].</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/" data-tooltip="What I learned in Intuit">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/" data-tooltip="Leetcode-Longest Increasing Subsequence">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -403,19 +370,19 @@ And use the larger value as the value of dp[i][j].</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -463,7 +430,7 @@ And use the larger value as the value of dp[i][j].</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/" data-tooltip="Leetcode-0/1 knapsack problem">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -471,7 +438,7 @@ And use the larger value as the value of dp[i][j].</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/" data-tooltip="What I learned in Intuit">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/" data-tooltip="Leetcode-Longest Increasing Subsequence">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -489,19 +456,19 @@ And use the larger value as the value of dp[i][j].</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -531,19 +498,19 @@ And use the larger value as the value of dp[i][j].</p>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-longest-increasing-subsequence%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-longest-increasing-subsequence%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-longest-increasing-subsequence%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -635,9 +602,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-longest-increasing-subsequence\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-0\/1-knapsack-problem\/';
           
-            this.page.identifier = '\/2020\/05\/leetcode-longest-increasing-subsequence\/'
+            this.page.identifier = '\/2020\/05\/leetcode-0\/1-knapsack-problem\/'
           
         };
         (function() {
