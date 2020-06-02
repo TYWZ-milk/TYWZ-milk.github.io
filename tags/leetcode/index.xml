@@ -6,10 +6,19 @@
     <description>Recent content in Leetcode on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2020 16:26:02 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2020 22:22:31 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leetcode-Transform your problem to some other problems to get the solution.</title>
+      <link>https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./</link>
+      <pubDate>Sun, 31 May 2020 22:22:31 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./</guid>
+      <description>There are some problems which are not easy to get the solution quickly. But we can transform these problems to other problems to get the solution. This article will introduce some problems which are easy to get the solution. Try to transform your problem to these problems.</description>
+    </item>
     
     <item>
       <title>Leetcode-0/1 knapsack problem</title>
