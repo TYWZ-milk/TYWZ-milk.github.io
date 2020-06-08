@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on Yitong Wang&#39;s Blog</title>
+    <link>https://tywz-milk.github.io/categories/java/</link>
+    <description>Recent content in Java on Yitong Wang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Jun 2020 10:10:37 -0500</lastBuildDate>
+    
+	<atom:link href="https://tywz-milk.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Study Notes of Java</title>
+      <link>https://tywz-milk.github.io/2020/06/study-notes-of-java/</link>
+      <pubDate>Thu, 04 Jun 2020 10:10:37 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2020/06/study-notes-of-java/</guid>
+      <description>My study notes of Java.</description>
+    </item>
+    
+  </channel>
+</rss>

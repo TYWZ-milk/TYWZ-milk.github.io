@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2020 22:22:31 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2020 10:10:37 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java</title>
+      <link>https://tywz-milk.github.io/tags/java/</link>
+      <pubDate>Thu, 04 Jun 2020 10:10:37 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/tags/java/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Leetcode</title>

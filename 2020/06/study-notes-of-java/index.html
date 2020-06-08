@@ -7,40 +7,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="dp, Leetcode, 0/1 knapsack">
-<meta name="description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
+<meta name="keywords" content="Java">
+<meta name="description" content="My study notes of Java.">
 
 
-<meta property="og:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
+<meta property="og:description" content="My study notes of Java.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-0/1 knapsack problem">
-<meta name="twitter:title" content="Leetcode-0/1 knapsack problem">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+<meta property="og:title" content="Study Notes of Java">
+<meta name="twitter:title" content="Study Notes of Java">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/06/study-notes-of-java/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/06/study-notes-of-java/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
-<meta name="twitter:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
+<meta property="og:description" content="My study notes of Java.">
+<meta name="twitter:description" content="My study notes of Java.">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-31T16:26:02">
+    <meta property="article:published_time" content="2020-06-04T10:10:37">
   
   
-    <meta property="article:modified_time" content="2020-05-31T16:26:02">
+    <meta property="article:modified_time" content="2020-06-04T10:10:37">
   
-  
-  
-    
-      <meta property="article:section" content="Leetcode">
-    
   
   
     
-      <meta property="article:tag" content="Leetcode">
+      <meta property="article:section" content="Notes">
     
-      <meta property="article:tag" content="dp">
+      <meta property="article:section" content="Java">
     
-      <meta property="article:tag" content="0/1 knapsack">
+  
+  
+    
+      <meta property="article:tag" content="Java">
     
   
 
@@ -53,8 +51,8 @@
 
 
 
-  <meta property="og:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
-  <meta property="twitter:image" content="https://leetcode.com/static/images/LeetCode_logo.png">
+  <meta property="og:image" content="https://www.oracle.com/a/ocom/img/cb71-java-logo.png">
+  <meta property="twitter:image" content="https://www.oracle.com/a/ocom/img/cb71-java-logo.png">
 
 
 
@@ -64,14 +62,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Leetcode-0/1 knapsack problem</title>
+    <title>Study Notes of Java</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/06/study-notes-of-java/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -221,19 +219,19 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Leetcode-0/1 knapsack problem
+      Study Notes of Java
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-31T16:26:02-05:00">
+      <time itemprop="datePublished" datetime="2020-06-04T10:10:37-05:00">
         
   
   
   
   
-    31 May 2020
+    4 June 2020
   
 
       </time>
@@ -243,7 +241,9 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://tywz-milk.github.io/categories/leetcode">Leetcode</a>
+      <a class="category-link" href="https://tywz-milk.github.io/categories/notes">Notes</a>, 
+    
+      <a class="category-link" href="https://tywz-milk.github.io/categories/java">Java</a>
     
   
 
@@ -256,91 +256,147 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#416-partition-equal-subset-sum-medium">416. Partition Equal Subset Sum (Medium)</a></li>
-    <li><a href="#494-target-sum-medium">494. Target Sum (Medium)</a></li>
-    <li><a href="#474-ones-and-zeroes-medium">474. Ones and Zeroes (Medium)</a></li>
+    <li><a href="#primitive-data-types">Primitive Data Types</a></li>
+    <li><a href="#error-handling-in-javaexceptions-in-java">Error Handling in Java(Exceptions in Java)</a></li>
+    <li><a href="#java-interface-class">Java Interface Class</a></li>
+    <li><a href="#enums">Enums</a></li>
   </ul>
 </nav>
               </aside>
-              <blockquote>
-<p>Ref:<a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md#0-1-%E8%83%8C%E5%8C%85">link</a></p>
+              <h2 id="primitive-data-types">Primitive Data Types</h2>
+<blockquote>
+<p>Ref: <a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html</a></p>
 </blockquote>
-<h2 id="416-partition-equal-subset-sum-medium">416. Partition Equal Subset Sum (Medium)</h2>
-<p><strong>If you see a problem asks you to find two equal sums in the array, this means you need to find the half of all elements&rsquo; sum in the array.</strong>
-For this problem, we need to partition equal subset sum. At first, we calculate the sum of all elements. If we can find the half of sum in the input array, we can partition it into equal subset sum.
-Therefore, the problem is find the sum of elements which is equal to the target value. Obviously, this is 0/1 knapsack problem.</p>
-<p>Here we use 1D array to represent dp array instead of 2D array. dp[i] means if the sum of some elements in the input array is i.
-For the second for loop, we iterate from the end of the array, because this can guarantee the value will not be larger. If we start from the start of the array,
-values will be larger than the correct answer.</p>
-<p>If the sum of the whole array is m. Time complexity is O(mn). Space complexity is O(m). Here is the <a href="https://leetcode.com/problems/partition-equal-subset-sum/">link</a>.</p>
-<pre><code>public boolean canPartition(int[] nums) {
-    int ans =0;
-    for(int num:nums)ans+=num;
-    if(ans%2!=0)return false;
-    int target = ans/2;
-    int[]dp = new int[target+1];
-    for(int i =1;i&lt;nums.length+1;i++){
-        for(int j =target;j&gt;=1;j--){
-            if(nums[i-1]&lt;=j){
-                dp[j]=Math.max(dp[j],dp[j-nums[i-1]]+nums[i-1]);
-            }
-        }
-    }
-    return dp[target]==target;
+<p>byte: The byte data type is an 8-bit signed two&rsquo;s complement integer. It has a minimum value of -128 and a maximum value of 127 (inclusive). The byte data type can be useful for saving memory in large arrays, where the memory savings actually matters. They can also be used in place of int where their limits help to clarify your code; the fact that a variable&rsquo;s range is limited can serve as a form of documentation.</p>
+<p>short: The short data type is a 16-bit signed two&rsquo;s complement integer. It has a minimum value of -32,768 and a maximum value of 32,767 (inclusive). As with byte, the same guidelines apply: you can use a short to save memory in large arrays, in situations where the memory savings actually matters.</p>
+<p>int: By default, the int data type is a 32-bit signed two&rsquo;s complement integer, which has a minimum value of -231 and a maximum value of 231-1. In Java SE 8 and later, you can use the int data type to represent an unsigned 32-bit integer, which has a minimum value of 0 and a maximum value of 232-1. <strong>Use the Integer class to use int data type as an unsigned integer.</strong> See the section The Number Classes for more information. Static methods like compareUnsigned, divideUnsigned etc have been added to the Integer class to support the arithmetic operations for unsigned integers.</p>
+<p>long: The long data type is a 64-bit two&rsquo;s complement integer. The signed long has a minimum value of -263 and a maximum value of 263-1. In Java SE 8 and later, you can use the long data type to represent an unsigned 64-bit long, which has a minimum value of 0 and a maximum value of 264-1. Use this data type when you need a range of values wider than those provided by int. The Long class also contains methods like compareUnsigned, divideUnsigned etc to support arithmetic operations for unsigned long.</p>
+<p>float: The float data type is a single-precision 32-bit IEEE 754 floating point. Its range of values is beyond the scope of this discussion, but is specified in the Floating-Point Types, Formats, and Values section of the Java Language Specification. As with the recommendations for byte and short, <strong>use a float (instead of double) if you need to save memory in large arrays of floating point numbers. This data type should never be used for precise values, such as currency. For that, you will need to use the java.math.BigDecimal class instead.</strong> Numbers and Strings covers BigDecimal and other useful classes provided by the Java platform.</p>
+<p>double: The double data type is a double-precision 64-bit IEEE 754 floating point. Its range of values is beyond the scope of this discussion, but is specified in the Floating-Point Types, Formats, and Values section of the Java Language Specification. For decimal values, this data type is generally the default choice. As mentioned above, this data type should never be used for precise values, such as currency.</p>
+<p>boolean: The boolean data type has only two possible values: true and false. Use this data type for simple flags that track true/false conditions. This data type represents one bit of information, but its &ldquo;size&rdquo; isn&rsquo;t something that&rsquo;s precisely defined.</p>
+<p>char: The char data type is a single 16-bit Unicode character. It has a minimum value of &lsquo;\u0000&rsquo; (or 0) and a maximum value of &lsquo;\uffff&rsquo; (or 65,535 inclusive).</p>
+<h2 id="error-handling-in-javaexceptions-in-java">Error Handling in Java(Exceptions in Java)</h2>
+<p>Normal one:</p>
+<pre><code>try{
+    // your logic
+} catch(Exception e) {
+    System.out.println(e.getMessage());
 }
 </code></pre>
-<h2 id="494-target-sum-medium">494. Target Sum (Medium)</h2>
-<p>I think this problem should be difficult but not medium. When I saw this problem, my first thought is recursion and backtracking. But the below solution is very nice and it&rsquo;s difficult for me to get this solution.</p>
-<p>Assume we have nums={a,b,c,d} and a+b-c-d=S. Assume a+b+c+d=total. We can get below relationships.</p>
-<pre><code>a+b-c-d=S
-a+b=S+c+d
-a+b+c+d=S+2*(c+d)
-c+d=(total-S)/2
+<p><code>NumberFormatException</code>: Thrown to indicate that the application has attempted to convert a string to one of the numeric types, but that the string does not have the appropriate format.</p>
+<pre><code>try{
+    // your logic
+} catch(Exception e) {
+    System.out.println(e.getMessage());
+} catch(NumberFormatException e) {
+    System.out.println(e.getMessage());
+}
 </code></pre>
-<p>We can also get a+b=(total+S)/2. Both ways are correct. Now, we change the original problem to another problem which we are familiar with.
-Find the target sum in the input array. This time is a little different. We don&rsquo;t want the sum but the number of ways to get the sum.
-dp[i] means the number of ways to get the sum i for all elements in nums. At first, let&rsquo;s treat dp as 2D array. For nums[i]&lt;=target, we can add it or not add it to the sum.
-If we add it, there are dp[i-1][j-nums[i]] ways to get the sum. If we don&rsquo;t add it, there are dp[i-1][j] to get the sum. Therefore, dp[i][j] = dp[i-1][j]+dp[i-1][j-nums[i]].
-And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
-<p>If the value of target is m. Time complexity is O(mn). Space complexity is O(m). Here is the <a href="https://leetcode.com/problems/target-sum/">link</a>.</p>
-<pre><code>public int findTargetSumWays(int[] nums, int S) {
-    int total = 0;
-    for(int num:nums)total+=num;
-    if((total+S)%2!=0||total&lt;S)return 0;
-    int target = (total+S)/2;
-    int[]dp = new int[target+1];
-    dp[0]=1;
-    int ans = 0;
-    for(int i =0;i&lt;nums.length;i++){
-        for(int j = target;j&gt;=nums[i];j--){
-            dp[j] = dp[j]+dp[j-nums[i]];
-        }
+<p><code>ArithmeticException</code>: Thrown when an exceptional arithmetic condition has occurred. For example, an integer &ldquo;divide by zero&rdquo; throws an instance of this class.</p>
+<pre><code>try{
+    // your logic
+} catch(Exception e) {
+    System.out.println(e.getMessage());
+} catch(NumberFormatException e) {
+    System.out.println(e.getMessage());
+}catch(ArithmeticException e) {
+    System.out.println(e.getMessage());
+}
+</code></pre>
+<p><code>ArrayIndexOutOfBoundsException</code>: Thrown to indicate that an array has been accessed with an illegal index. The index is either negative or greater than or equal to the size of the array.</p>
+<pre><code>    try{
+        // your logic
+    } catch(ArrayIndexOutOfBoundsException e) {
+        System.out.println(e.getMessage());
     }
+</code></pre>
+<p><code>finally</code>: will always run</p>
+<pre><code>    try{
+        // your logic
+    } catch(ArrayIndexOutOfBoundsException e) {
+        System.out.println(e.getMessage());
+    } finally {
+        //always run. e.g. disconnect database.
+    }
+</code></pre>
+<h2 id="java-interface-class">Java Interface Class</h2>
+<p>An <code>interface</code> is a completely &ldquo;abstract class&rdquo; that is used to group related methods with empty bodies:</p>
+<pre><code>interface Animal {
+  public void animalSound(); // interface method (does not have a body)
+  public void run(); // interface method (does not have a body)
+}
+</code></pre>
+<p>To access the interface methods, the interface must be &ldquo;implemented&rdquo; (kinda like inherited) by another class with the implements keyword (instead of extends). The body of the interface method is provided by the &ldquo;implement&rdquo; class:</p>
+<pre><code>// Interface
+interface Animal {
+  public void animalSound(); // interface method (does not have a body)
+  public void sleep(); // interface method (does not have a body)
+}
 
-    return dp[target];
+// Pig &quot;implements&quot; the Animal interface
+class Pig implements Animal {
+  @Override
+  public void animalSound() {
+    // The body of animalSound() is provided here
+    System.out.println(&quot;The pig says: wee wee&quot;);
+  }
+  @Override
+  public void sleep() {
+    // The body of sleep() is provided here
+    System.out.println(&quot;Zzz&quot;);
+  }
+}
+
+class MyMainClass {
+  public static void main(String[] args) {
+    Pig myPig = new Pig();  // Create a Pig object
+    myPig.animalSound();
+    myPig.sleep();
+  }
 }
 </code></pre>
-<h2 id="474-ones-and-zeroes-medium">474. Ones and Zeroes (Medium)</h2>
-<pre><code>public int findMaxForm(String[] strs, int m, int n) {
-   int[][]dp = new int[m+1][n+1];
-    for(String str:strs){
-        int zero = 0;
-        int one = 0;
-        for (char c : str.toCharArray()){
-            if(c == '0')
-                ++zero;
-            else
-                ++one;
-        } 
-        for(int i = m;i&gt;=0;i--){
-            for(int j =n;j&gt;=0;j--){
-                if(i&gt;=zero &amp;&amp; j&gt;=one)
-                    dp[i][j] = Math.max(dp[i][j],dp[i-zero][j-one]+1);
-                
-            }
-        }
-    }
-    return dp[m][n];
+<p>Notes on Interfaces:</p>
+<ul>
+<li>Like abstract classes, interfaces cannot be used to create objects (in the example above, it is not possible to create an &ldquo;Animal&rdquo; object in the MyMainClass)</li>
+<li>Interface methods do not have a body - the body is provided by the &ldquo;implement&rdquo; class</li>
+<li>On implementation of an interface, you must override all of its methods</li>
+<li>Interface methods are by default abstract and public</li>
+<li>Interface attributes are by default public, static and final</li>
+<li>An interface cannot contain a constructor (as it cannot be used to create objects)</li>
+</ul>
+<p>Why And When To Use Interfaces?</p>
+<ol>
+<li>
+<p>To achieve security - hide certain details and only show the important details of an object (interface).</p>
+</li>
+<li>
+<p>Java does not support &ldquo;multiple inheritance&rdquo; (a class can only inherit from one superclass). However, it can be achieved with interfaces, because the class can implement multiple interfaces. Note: To implement multiple interfaces, separate them with a comma (see example below).</p>
+<pre><code> interface FirstInterface {
+   public void myMethod(); // interface method
+ }
+    
+ interface SecondInterface {
+   public void myOtherMethod(); // interface method
+ }
+    
+ class DemoClass implements FirstInterface, SecondInterface {
+   public void myMethod() {
+     System.out.println(&quot;Some text..&quot;);
+   }
+   public void myOtherMethod() {
+     System.out.println(&quot;Some other text...&quot;);
+   }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="enums">Enums</h2>
+<p>An enum is a special &ldquo;class&rdquo; that represents a group of constants (unchangeable variables, like final variables).</p>
+<p>To create an enum, use the enum keyword (instead of class or interface), and separate the constants with a comma. Note that they should be in uppercase letters:</p>
+<pre><code>enum Level {
+  LOW,
+  MEDIUM,
+  HIGH
 }</code></pre>
 
               
@@ -354,11 +410,7 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
-
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/dp/">dp</a>
-
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/0/1-knapsack/">0/1 knapsack</a>
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/java/">Java</a>
 
                   </div>
                 
@@ -371,7 +423,7 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./" data-tooltip="Leetcode-Transform your problem to some other problems to get the solution.">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -379,7 +431,7 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/" data-tooltip="Leetcode-Longest Increasing Subsequence">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./" data-tooltip="Leetcode-Transform your problem to some other problems to get the solution.">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -397,19 +449,19 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/06/study-notes-of-java/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/06/study-notes-of-java/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/06/study-notes-of-java/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -457,7 +509,7 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./" data-tooltip="Leetcode-Transform your problem to some other problems to get the solution.">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -465,7 +517,7 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/" data-tooltip="Leetcode-Longest Increasing Subsequence">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./" data-tooltip="Leetcode-Transform your problem to some other problems to get the solution.">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -483,19 +535,19 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/06/study-notes-of-java/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/06/study-notes-of-java/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/06/study-notes-of-java/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -525,19 +577,19 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fstudy-notes-of-java%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fstudy-notes-of-java%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fstudy-notes-of-java%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -629,9 +681,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-0\/1-knapsack-problem\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/06\/study-notes-of-java\/';
           
-            this.page.identifier = '\/2020\/05\/leetcode-0\/1-knapsack-problem\/'
+            this.page.identifier = '\/2020\/06\/study-notes-of-java\/'
           
         };
         (function() {
