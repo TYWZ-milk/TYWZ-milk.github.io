@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jun 2020 10:10:37 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 10:47:56 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leetcode</title>
+      <link>https://tywz-milk.github.io/categories/leetcode/</link>
+      <pubDate>Sun, 14 Jun 2020 10:47:56 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/categories/leetcode/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Java</title>
@@ -26,15 +35,6 @@
       <pubDate>Thu, 04 Jun 2020 10:10:37 -0500</pubDate>
       
       <guid>https://tywz-milk.github.io/categories/notes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Leetcode</title>
-      <link>https://tywz-milk.github.io/categories/leetcode/</link>
-      <pubDate>Sun, 31 May 2020 22:22:31 -0500</pubDate>
-      
-      <guid>https://tywz-milk.github.io/categories/leetcode/</guid>
       <description></description>
     </item>
     

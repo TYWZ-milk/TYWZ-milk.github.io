@@ -8,25 +8,25 @@
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
 <meta name="keywords" content="dp, Leetcode, 0/1 knapsack">
-<meta name="description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
+<meta name="description" content="Some Leetcode problems can be solved by dp effectively">
 
 
-<meta property="og:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
+<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-0/1 knapsack problem">
-<meta name="twitter:title" content="Leetcode-0/1 knapsack problem">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+<meta property="og:title" content="Leetcode-Buy and sell stock">
+<meta name="twitter:title" content="Leetcode-Buy and sell stock">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
-<meta name="twitter:description" content="Some Leetcode problems can be solved by 0/1 knapsack effectively">
+<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by dp effectively">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-31T16:26:02">
+    <meta property="article:published_time" content="2020-06-14T10:47:56">
   
   
-    <meta property="article:modified_time" content="2020-05-31T16:26:02">
+    <meta property="article:modified_time" content="2020-06-14T10:47:56">
   
   
   
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Leetcode-0/1 knapsack problem</title>
+    <title>Leetcode-Buy and sell stock</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -221,19 +221,19 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Leetcode-0/1 knapsack problem
+      Leetcode-Buy and sell stock
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-31T16:26:02-05:00">
+      <time itemprop="datePublished" datetime="2020-06-14T10:47:56-05:00">
         
   
   
   
   
-    31 May 2020
+    14 June 2020
   
 
       </time>
@@ -256,177 +256,86 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#416-partition-equal-subset-sum-medium">416. Partition Equal Subset Sum (Medium)</a></li>
-    <li><a href="#494-target-sum-medium">494. Target Sum (Medium)</a></li>
-    <li><a href="#474-ones-and-zeroes-medium">474. Ones and Zeroes (Medium)</a></li>
-    <li><a href="#322-coin-change-medium">322. Coin Change (Medium)</a></li>
-    <li><a href="#518-coin-change-2-medium">518. Coin Change 2 (Medium)</a></li>
-    <li><a href="#139-word-break-medium">139. Word Break (Medium)</a></li>
-    <li><a href="#377-combination-sum-iv-medium">377. Combination Sum IV (Medium)</a></li>
+    <li><a href="#309-best-time-to-buy-and-sell-stock-with-cooldownmedium">309. Best Time to Buy and Sell Stock with Cooldown(Medium)</a></li>
+    <li><a href="#714-best-time-to-buy-and-sell-stock-with-transaction-fee-medium">714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)</a></li>
+    <li><a href="#123-best-time-to-buy-and-sell-stock-iii-hard">123. Best Time to Buy and Sell Stock III (Hard)</a></li>
   </ul>
 </nav>
               </aside>
               <blockquote>
-<p>Ref:<a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md#0-1-%E8%83%8C%E5%8C%85">link</a></p>
+<p>Ref:<a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md#%E8%82%A1%E7%A5%A8%E4%BA%A4%E6%98%93">link</a>
+Ref:<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems">Most consistent ways of dealing with the series of stock problems</a></p>
 </blockquote>
-<h2 id="416-partition-equal-subset-sum-medium">416. Partition Equal Subset Sum (Medium)</h2>
-<p><strong>If you see a problem asks you to find two equal sums in the array, this means you need to find the half of all elements&rsquo; sum in the array.</strong>
-For this problem, we need to partition equal subset sum. At first, we calculate the sum of all elements. If we can find the half of sum in the input array, we can partition it into equal subset sum.
-Therefore, the problem is find the sum of elements which is equal to the target value. Obviously, this is 0/1 knapsack problem.</p>
-<p>Here we use 1D array to represent dp array instead of 2D array. dp[i] means if the sum of some elements in the input array is i.
-For the second for loop, we iterate from the end of the array, because this can guarantee the value will not be larger. If we start from the start of the array,
-values will be larger than the correct answer.</p>
-<p>If the sum of the whole array is m. Time complexity is O(mn). Space complexity is O(m). Here is the <a href="https://leetcode.com/problems/partition-equal-subset-sum/">link</a>.</p>
-<pre><code>public boolean canPartition(int[] nums) {
-    int ans =0;
-    for(int num:nums)ans+=num;
-    if(ans%2!=0)return false;
-    int target = ans/2;
-    int[]dp = new int[target+1];
-    for(int i =1;i&lt;nums.length+1;i++){
-        for(int j =target;j&gt;=1;j--){
-            if(nums[i-1]&lt;=j){
-                dp[j]=Math.max(dp[j],dp[j-nums[i-1]]+nums[i-1]);
-            }
-        }
+<p>The equation for all these problems are:</p>
+<p>Base cases:  <br>
+T[-1][k][0] = 0, T[-1][k][1] = -Infinity     <br>
+T[i][0][0] = 0, T[i][0][1] = -Infinity</p>
+<p>Recurrence relations:    <br>
+T[i][k][0] = max(T[i-1][k][0], T[i-1][k][1] + prices[i])     <br>
+T[i][k][1] = max(T[i-1][k][1], T[i-1][k-1][0] - prices[i])</p>
+<p>See the above link for more details. And below is all related problems.</p>
+<p>121.Best Time to Buy and Sell Stock  <br>
+122.Best Time to Buy and Sell Stock II   <br>
+123.Best Time to Buy and Sell Stock III  <br>
+188.Best Time to Buy and Sell Stock IV   <br>
+309.Best Time to Buy and Sell Stock with Cooldown    <br>
+714.Best Time to Buy and Sell Stock with Transaction Fee</p>
+<h2 id="309-best-time-to-buy-and-sell-stock-with-cooldownmedium">309. Best Time to Buy and Sell Stock with Cooldown(Medium)</h2>
+<p>In this problem, we have to buy and sell with cooldown. If we want to buy on the i-th day, we need to make sure we didn&rsquo;t sell on (i-1)th day.
+Therefor, we need to change <code>T[i][k][1] = max(T[i-1][k][1], T[i-1][k-1][0] - prices[i])</code> to <code>T[i][k][1] = max(T[i-1][k][1], T[i-2][k-1][0] - prices[i])</code>.
+We need to consider about (i-2)th day&rsquo;s profit. Remember to update the value of previous one.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">link</a>.</p>
+<pre><code>public int maxProfit(int[] prices) {
+    if(prices.length&lt;=1)return 0;
+    int T_ik0 = 0;
+    int T_ik1 = Integer.MIN_VALUE;
+    int T_ik2 = 0;
+    for(int i =0;i&lt;prices.length;i++){
+        int old = T_ik0;
+        T_ik0 = Math.max(T_ik0,T_ik1+prices[i]);
+        T_ik1 = Math.max(T_ik1,T_ik2-prices[i]);
+        T_ik2 = old;
     }
-    return dp[target]==target;
+    return T_ik0;
 }
 </code></pre>
-<h2 id="494-target-sum-medium">494. Target Sum (Medium)</h2>
-<p>I think this problem should be difficult but not medium. When I saw this problem, my first thought is recursion and backtracking. But the below solution is very nice and it&rsquo;s difficult for me to get this solution.</p>
-<p>Assume we have nums={a,b,c,d} and a+b-c-d=S. Assume a+b+c+d=total. We can get below relationships.</p>
-<pre><code>a+b-c-d=S
-a+b=S+c+d
-a+b+c+d=S+2*(c+d)
-c+d=(total-S)/2
-</code></pre>
-<p>We can also get a+b=(total+S)/2. Both ways are correct. Now, we change the original problem to another problem which we are familiar with.
-Find the target sum in the input array. This time is a little different. We don&rsquo;t want the sum but the number of ways to get the sum.
-dp[i] means the number of ways to get the sum i for all elements in nums. At first, let&rsquo;s treat dp as 2D array. For nums[i]&lt;=target, we can add it or not add it to the sum.
-If we add it, there are dp[i-1][j-nums[i]] ways to get the sum. If we don&rsquo;t add it, there are dp[i-1][j] to get the sum. Therefore, dp[i][j] = dp[i-1][j]+dp[i-1][j-nums[i]].
-And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
-<p>If the value of target is m. Time complexity is O(mn). Space complexity is O(m). Here is the <a href="https://leetcode.com/problems/target-sum/">link</a>.</p>
-<pre><code>public int findTargetSumWays(int[] nums, int S) {
-    int total = 0;
-    for(int num:nums)total+=num;
-    if((total+S)%2!=0||total&lt;S)return 0;
-    int target = (total+S)/2;
-    int[]dp = new int[target+1];
-    dp[0]=1;
-    int ans = 0;
-    for(int i =0;i&lt;nums.length;i++){
-        for(int j = target;j&gt;=nums[i];j--){
-            dp[j] = dp[j]+dp[j-nums[i]];
-        }
+<h2 id="714-best-time-to-buy-and-sell-stock-with-transaction-fee-medium">714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)</h2>
+<p>In this problem, we need to pay transaction fee. The recurrence relations should be:     <br>
+T[i][k][0] = max(T[i-1][k][0], T[i-1][k][1] + prices[i] - fee)             <br>
+T[i][k][1] = max(T[i-1][k][1], T[i-1][k-1][0] - prices[i])</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/">link</a>.</p>
+<pre><code>public int maxProfit(int[] prices, int fee) {
+    if(prices.length&lt;=1)return 0;
+    int T_ik0 = 0;
+    int T_ik1 = Integer.MIN_VALUE;
+    for(int price:prices){
+        T_ik1 = Math.max(T_ik1,T_ik0-price);
+        T_ik0 = Math.max(T_ik0,T_ik1+price-fee);
     }
-
-    return dp[target];
+    return T_ik0;
 }
 </code></pre>
-<h2 id="474-ones-and-zeroes-medium">474. Ones and Zeroes (Medium)</h2>
-<pre><code>public int findMaxForm(String[] strs, int m, int n) {
-   int[][]dp = new int[m+1][n+1];
-    for(String str:strs){
-        int zero = 0;
-        int one = 0;
-        for (char c : str.toCharArray()){
-            if(c == '0')
-                ++zero;
-            else
-                ++one;
-        } 
-        for(int i = m;i&gt;=0;i--){
-            for(int j =n;j&gt;=0;j--){
-                if(i&gt;=zero &amp;&amp; j&gt;=one)
-                    dp[i][j] = Math.max(dp[i][j],dp[i-zero][j-one]+1);
-                
-            }
-        }
-    }
-    return dp[m][n];
-}
-</code></pre>
-<h2 id="322-coin-change-medium">322. Coin Change (Medium)</h2>
-<p>This is a 01-backpack problem. <code>coins</code> are items we have. <code>amount</code> is the value we need to achieve. The difference is we can use coins without limitation.
-But we need to achieve the exact value of <code>amount</code>.</p>
-<p>First of all, we need to initialize all values except dp[0] to <code>amount+1</code>. dp[0]=0, because according to this problem&rsquo;s description, if <code>amount</code> is 0, we need to return 0.
-Why do we initialize all values to <code>amount+1</code>? Because this is the value that we cannot take as the answer. This problem assumes the minimal value of one coin is 1.
-Therefore, the number of coins to get the value <code>amount</code> is at most <code>amount</code>(each coin&rsquo;s value is 1). If we find dp[amount]==amount+1, this means that amount of money cannot be made up by any combination of the coins, we need to return -1.</p>
-<p>dp[i] means the fewest number of coins that we can make up amount i, so dp[amount] is our answer. dp function is dp[i] = Math.min(dp[i],dp[i-coins[j]]+1).
-For each amount, we iterate three icons to check if we can get a fewer number for this amount. If we can&rsquo;t, dp[i] is still dp[i]. If we can, dp[i] will be updated to dp[i-coins[j]]+1.</p>
-<p>Time complexity is O(amount*n). Space complexity is O(amount). Here is the <a href="https://leetcode.com/problems/coin-change/">link</a>.</p>
-<pre><code>public int coinChange(int[] coins, int amount) {
-    int[]dp = new int[amount+1];
-    for(int i =1;i&lt;amount+1;i++)dp[i]=amount+1;
-    for(int i =1;i&lt;amount+1;i++){
-        for(int j = 0 ;j&lt;coins.length;j++){
-            if(coins[j]&lt;=i){
-                dp[i] = Math.min(dp[i],dp[i-coins[j]]+1);
-            }
-        }
+<h2 id="123-best-time-to-buy-and-sell-stock-iii-hard">123. Best Time to Buy and Sell Stock III (Hard)</h2>
+<p>In this problem, we can only do two transactions. The recurrence relations are:  <br>
+T[i][2][0] = max(T[i-1][2][0], T[i-1][2][1] + prices[i])     <br>
+T[i][2][1] = max(T[i-1][2][1], T[i-1][1][0] - prices[i])     <br>
+T[i][1][0] = max(T[i-1][1][0], T[i-1][1][1] + prices[i])     <br>
+T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
+<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/">link</a></p>
+<pre><code>public int maxProfit(int[] prices) {
+    int T_i20 = 0;
+    int T_i10 = 0;
+    int T_i21 = Integer.MIN_VALUE;
+    int T_i11 = Integer.MIN_VALUE;
+    if(prices.length&lt;=1)return 0;
+    for(int price:prices){
+        T_i20 = Math.max(T_i20,T_i21+price);
+        T_i21 = Math.max(T_i21,T_i10-price);
+        T_i10 = Math.max(T_i10,T_i11+price);
+        T_i11 = Math.max(T_i11,-price);
     }
     
-    return dp[amount]==amount+1?-1:dp[amount];
-}
-</code></pre>
-<h2 id="518-coin-change-2-medium">518. Coin Change 2 (Medium)</h2>
-<p>In last problem, we find the fewest number of coins to make up amount. In this problem, we need to find all possible ways to make up amount. Obviously, we can use backtrack to solve this problem. But we can also use dp to solve it.</p>
-<p>At first, let&rsquo;s build a 2D dp array. dp[i][j] means the number of combinations that make up j with first i icons. For dp[i][j] and coins[i], there are two ways to get amount j: use coins[i] at least once or don&rsquo;t use coins[i].
-If we use coins[i], there are dp[i][j-coins[i]] ways. If not, there are dp[i-1][j] ways. Therefore, dp function should be: dp[i][j] = dp[i][j-coins[i]] + dp[i-1][j].
-But we also need to consider about the situation that j==coins[i]. If j==coins[i], we can also use this dp function, but we need to make sure the value of dp[i][j-coins[i]] is 1. dp[i][j-coins[i]] is dp[i][0].</p>
-<p>Now, we find we only need dp[i-1] for dp[i], so we can use 1D array to solve this problem.</p>
-<p>Time complexity is O(amount*n). Space complexity is O(amount). Here is the <a href="https://leetcode.com/problems/coin-change-2/">link</a>.</p>
-<pre><code>public int change(int amount, int[] coins) {
-    int[]dp = new int[amount+1];
-    dp[0]=1;
-    for(int j =0;j&lt;coins.length;j++){
-        for(int i =1;i&lt;amount+1;i++){
-            if(i&gt;=coins[j])
-                dp[i] += dp[i-coins[j]];
-        }
-    }
-    return dp[amount];
-}
-</code></pre>
-<h2 id="139-word-break-medium">139. Word Break (Medium)</h2>
-<p>This problem is similar to the last problem. In this problem, we need to use some words to make up a string.</p>
-<p>At first, let&rsquo;s build a 2D array. dp[i][j] means whether we can use first i words to make up s.substring(0,j).
-If we can, we need to check the value of dp[i-1][j-word[i].length()]. If it&rsquo;s true, we can make it.
-So we can also use 1D array. Dp function is dp[i] = dp[i-word[i].length()].</p>
-<p>But let&rsquo;s think about from another way. We still use dp and 1D array. In each iteration of the input string, we check if we can make up this substring.
-We check from the tail of the substring. If we find <code>wordDict</code> contains s.substring(j,i) and dp[j]=true, this means we can make up this substring. dp[i]=true.</p>
-<p>Time complexity is O(n^2). n is the length of input string. Space complexity is O(m+n). m is the size of input list. Here is the <a href="https://leetcode.com/problems/word-break/">link</a>.</p>
-<pre><code>public boolean wordBreak(String s, List&lt;String&gt; wordDict) {
-    boolean[]dp = new boolean[s.length()+1];
-    dp[0]=true;
-    HashSet&lt;String&gt;set = new HashSet();
-    for(String word:wordDict)set.add(word);
-    for(int i=1;i&lt;s.length()+1;i++){
-        for(int j =i;j&gt;=0;j--){
-            if(dp[j] &amp;&amp; set.contains(s.substring(j,i)))
-                dp[i] = true;
-        }
-    }
-    return dp[s.length()];
-}
-</code></pre>
-<h2 id="377-combination-sum-iv-medium">377. Combination Sum IV (Medium)</h2>
-<p>Obviously, we can also use dp and backtrack to solve this problem. This problem is similar to 518. The difference is we need to reverse two for loops.
-If we don&rsquo;t reverse these two for loops, the answer is corresponding to the situation that different sequences are counted as one combination.</p>
-<p>Therefor, for each value, we need to consider all dp[i-num]. This will cover all sequences.</p>
-<p>Time complexity is O(target*n). Space complexity is O(target). Here is the <a href="https://leetcode.com/problems/combination-sum-iv/">link</a>.</p>
-<pre><code>public int combinationSum4(int[] nums, int target) {
-    int[]dp = new int[target+1];
-    dp[0] = 1;
-    for(int i = 1;i&lt;target+1;i++){
-        for(int num:nums){
-            if(num&lt;=i)
-                dp[i]+=dp[i-num];
-
-        }
-    }
-    return dp[target];
+    return T_i20;
 }
 </code></pre>
 
@@ -458,7 +367,7 @@ If we don&rsquo;t reverse these two for loops, the answer is corresponding to th
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./" data-tooltip="Leetcode-Transform your problem to some other problems to get the solution.">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -466,7 +375,7 @@ If we don&rsquo;t reverse these two for loops, the answer is corresponding to th
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/" data-tooltip="Leetcode-Longest Increasing Subsequence">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/06/study-notes-of-java/" data-tooltip="Study Notes of Java">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -484,19 +393,19 @@ If we don&rsquo;t reverse these two for loops, the answer is corresponding to th
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -544,7 +453,7 @@ If we don&rsquo;t reverse these two for loops, the answer is corresponding to th
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./" data-tooltip="Leetcode-Transform your problem to some other problems to get the solution.">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -552,7 +461,7 @@ If we don&rsquo;t reverse these two for loops, the answer is corresponding to th
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-longest-increasing-subsequence/" data-tooltip="Leetcode-Longest Increasing Subsequence">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/06/study-notes-of-java/" data-tooltip="Study Notes of Java">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -570,19 +479,19 @@ If we don&rsquo;t reverse these two for loops, the answer is corresponding to th
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -612,19 +521,19 @@ If we don&rsquo;t reverse these two for loops, the answer is corresponding to th
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fleetcode-buy-and-sell-stock%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fleetcode-buy-and-sell-stock%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-0%2F1-knapsack-problem%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fleetcode-buy-and-sell-stock%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -716,9 +625,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-0\/1-knapsack-problem\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/06\/leetcode-buy-and-sell-stock\/';
           
-            this.page.identifier = '\/2020\/05\/leetcode-0\/1-knapsack-problem\/'
+            this.page.identifier = '\/2020\/06\/leetcode-buy-and-sell-stock\/'
           
         };
         (function() {
