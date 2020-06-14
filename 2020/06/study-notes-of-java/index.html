@@ -260,6 +260,7 @@
     <li><a href="#error-handling-in-javaexceptions-in-java">Error Handling in Java(Exceptions in Java)</a></li>
     <li><a href="#java-interface-class">Java Interface Class</a></li>
     <li><a href="#enums">Enums</a></li>
+    <li><a href="#readwrite-file">Read/Write File</a></li>
   </ul>
 </nav>
               </aside>
@@ -397,7 +398,36 @@ class MyMainClass {
   LOW,
   MEDIUM,
   HIGH
-}</code></pre>
+}
+</code></pre>
+<h2 id="readwrite-file">Read/Write File</h2>
+<p>There are so many ways to read and write files. <a href="https://stackabuse.com/reading-and-writing-files-in-java/">Reading and Writing Files in Java</a>.</p>
+<pre><code>String directory = System.getProperty(&quot;user.home&quot;);
+String fileName = &quot;sample.txt&quot;;
+String absolutePath = directory + File.separator + fileName;
+
+// Write the content in file 
+try(FileWriter fileWriter = new FileWriter(absolutePath)) {
+    String fileContent = &quot;This is a sample text.&quot;;
+    fileWriter.write(fileContent);
+    fileWriter.close();
+} catch (IOException e) {
+    // Cxception handling
+}
+
+// Read the content from file
+try(FileReader fileReader = new FileReader(absolutePath)) {
+    int ch = fileReader.read();
+    while(ch != -1) {
+        System.out.print((char)ch);
+        fileReader.close();
+    }
+} catch (FileNotFoundException e) {
+    // Exception handling
+} catch (IOException e) {
+    // Exception handling
+}
+</code></pre>
 
               
             </div>

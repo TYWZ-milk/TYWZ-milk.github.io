@@ -259,6 +259,9 @@
     <li><a href="#416-partition-equal-subset-sum-medium">416. Partition Equal Subset Sum (Medium)</a></li>
     <li><a href="#494-target-sum-medium">494. Target Sum (Medium)</a></li>
     <li><a href="#474-ones-and-zeroes-medium">474. Ones and Zeroes (Medium)</a></li>
+    <li><a href="#322-coin-change-medium">322. Coin Change (Medium)</a></li>
+    <li><a href="#518-coin-change-2-medium">518. Coin Change 2 (Medium)</a></li>
+    <li><a href="#139-word-break-medium">139. Word Break (Medium)</a></li>
   </ul>
 </nav>
               </aside>
@@ -341,6 +344,70 @@ And we transform it to 1D dp array. It will be dp[j] = dp[j]+dp[j-nums[i]].</p>
         }
     }
     return dp[m][n];
+}
+</code></pre>
+<h2 id="322-coin-change-medium">322. Coin Change (Medium)</h2>
+<p>This is a 01-backpack problem. <code>coins</code> are items we have. <code>amount</code> is the value we need to achieve. The difference is we can use coins without limitation.
+But we need to achieve the exact value of <code>amount</code>.</p>
+<p>First of all, we need to initialize all values except dp[0] to <code>amount+1</code>. dp[0]=0, because according to this problem&rsquo;s description, if <code>amount</code> is 0, we need to return 0.
+Why do we initialize all values to <code>amount+1</code>? Because this is the value that we cannot take as the answer. This problem assumes the minimal value of one coin is 1.
+Therefore, the number of coins to get the value <code>amount</code> is at most <code>amount</code>(each coin&rsquo;s value is 1). If we find dp[amount]==amount+1, this means that amount of money cannot be made up by any combination of the coins, we need to return -1.</p>
+<p>dp[i] means the fewest number of coins that we can make up amount i, so dp[amount] is our answer. dp function is dp[i] = Math.min(dp[i],dp[i-coins[j]]+1).
+For each amount, we iterate three icons to check if we can get a fewer number for this amount. If we can&rsquo;t, dp[i] is still dp[i]. If we can, dp[i] will be updated to dp[i-coins[j]]+1.</p>
+<p>Time complexity is O(amount*n). Space complexity is O(amount). Here is the <a href="https://leetcode.com/problems/coin-change/">link</a>.</p>
+<pre><code>public int coinChange(int[] coins, int amount) {
+    int[]dp = new int[amount+1];
+    for(int i =1;i&lt;amount+1;i++)dp[i]=amount+1;
+    for(int i =1;i&lt;amount+1;i++){
+        for(int j = 0 ;j&lt;coins.length;j++){
+            if(coins[j]&lt;=i){
+                dp[i] = Math.min(dp[i],dp[i-coins[j]]+1);
+            }
+        }
+    }
+    
+    return dp[amount]==amount+1?-1:dp[amount];
+}
+</code></pre>
+<h2 id="518-coin-change-2-medium">518. Coin Change 2 (Medium)</h2>
+<p>In last problem, we find the fewest number of coins to make up amount. In this problem, we need to find all possible ways to make up amount. Obviously, we can use backtrack to solve this problem. But we can also use dp to solve it.</p>
+<p>At first, let&rsquo;s build a 2D dp array. dp[i][j] means the number of combinations that make up j with first i icons. For dp[i][j] and coins[i], there are two ways to get amount j: use coins[i] at least once or don&rsquo;t use coins[i].
+If we use coins[i], there are dp[i][j-coins[i]] ways. If not, there are dp[i-1][j] ways. Therefore, dp function should be: dp[i][j] = dp[i][j-coins[i]] + dp[i-1][j].
+But we also need to consider about the situation that j==coins[i]. If j==coins[i], we can also use this dp function, but we need to make sure the value of dp[i][j-coins[i]] is 1. dp[i][j-coins[i]] is dp[i][0].</p>
+<p>Now, we find we only need dp[i-1] for dp[i], so we can use 1D array to solve this problem.</p>
+<p>Time complexity is O(amount*n). Space complexity is O(amount). Here is the <a href="https://leetcode.com/problems/coin-change-2/">link</a>.</p>
+<pre><code>public int change(int amount, int[] coins) {
+    int[]dp = new int[amount+1];
+    dp[0]=1;
+    for(int j =0;j&lt;coins.length;j++){
+        for(int i =1;i&lt;amount+1;i++){
+            if(i&gt;=coins[j])
+                dp[i] += dp[i-coins[j]];
+        }
+    }
+    return dp[amount];
+}
+</code></pre>
+<h2 id="139-word-break-medium">139. Word Break (Medium)</h2>
+<p>This problem is similar to the last problem. In this problem, we need to use some words to make up a string.</p>
+<p>At first, let&rsquo;s build a 2D array. dp[i][j] means whether we can use first i words to make up s.substring(0,j).
+If we can, we need to check the value of dp[i-1][j-word[i].length()]. If it&rsquo;s true, we can make it.
+So we can also use 1D array. Dp function is dp[i] = dp[i-word[i].length()].</p>
+<p>But let&rsquo;s think about from another way. We still use dp and 1D array. In each iteration of the input string, we check if we can make up this substring.
+We check from the tail of the substring. If we find <code>wordDict</code> contains s.substring(j,i) and dp[j]=true, this means we can make up this substring. dp[i]=true.</p>
+<p>Time complexity is O(n^2). n is the length of input string. Space complexity is O(m+n). m is the size of input list. Here is the <a href="https://leetcode.com/problems/word-break/">link</a>.</p>
+<pre><code>public boolean wordBreak(String s, List&lt;String&gt; wordDict) {
+    boolean[]dp = new boolean[s.length()+1];
+    dp[0]=true;
+    HashSet&lt;String&gt;set = new HashSet();
+    for(String word:wordDict)set.add(word);
+    for(int i=1;i&lt;s.length()+1;i++){
+        for(int j =i;j&gt;=0;j--){
+            if(dp[j] &amp;&amp; set.contains(s.substring(j,i)))
+                dp[i] = true;
+        }
+    }
+    return dp[s.length()];
 }</code></pre>
 
               
