@@ -49,8 +49,8 @@
 
 
 
-  <meta property="og:image" content="https://pbs.twimg.com/profile_images/1145667210901372929/nIzSlggg_400x400.png">
-  <meta property="twitter:image" content="https://pbs.twimg.com/profile_images/1145667210901372929/nIzSlggg_400x400.png">
+  <meta property="og:image" content="https://tywz-milk.github.io/img/semester-summary/intuitlogo.png">
+  <meta property="twitter:image" content="https://tywz-milk.github.io/img/semester-summary/intuitlogo.png">
 
 
 
@@ -254,6 +254,8 @@
   <ul>
     <li><a href="#d4d">D4D</a></li>
     <li><a href="#marketing-automation">Marketing Automation</a></li>
+    <li><a href="#aws-msk">AWS MSK</a></li>
+    <li><a href="#make-program-keep-running-in-ec2-instance">Make Program Keep Running in ec2 Instance</a></li>
   </ul>
 </nav>
               </aside>
@@ -294,6 +296,20 @@ Why: So companies like yours can increase operational efficiency and grow revenu
 <li>A solution that only benefits marketing.</li>
 <li>A solution that delivers value without effort.</li>
 </ul>
+<h2 id="aws-msk">AWS MSK</h2>
+<p>AWS MSK is Amazon Managed Streaming for Apache Kafka. For my twitter project, we got data from twitter by using twitter API. Our data is related to Intuit products and from users&rsquo; tweets.
+We want to do sentiments analysis for all these tweets and store results in the Postgres database. Finally, we want to use some visualization tools to show our data.</p>
+<p>Here is the link about how to setup AWS MSK: <a href="https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html">https://docs.aws.amazon.com/msk/latest/developerguide/getting-started.html</a></p>
+<p>After setup, you may have some permission error, like</p>
+<p><code>An error occurred (AccessDeniedException) when calling the DescribeCluster operation:  User: arn:aws:iam::111122223333:user/user_name is not authorized to perform:  eks:DescribeCluster on resource: arn:aws:eks:region:111122223333:cluster/cluster_name</code></p>
+<p>Please refer to this <a href="https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting_iam.html">page</a> to solve your issue.
+If you have <code>AccessDeniedException</code> error, please go to IAM console and add a new policy for your role of the ec2 instance.
+If you don&rsquo;t have DescribeCluster access, please add the below inline policy</p>
+<p><code>{ &quot;Version&quot;: &quot;2012-10-17&quot;,     &quot;Statement&quot;: [{  &quot;Effect&quot;: &quot;Allow&quot;,  &quot;Action&quot;: &quot;kafka:DescribeCluster&quot;,  &quot;Resource&quot;: &quot;*&quot;     }]    }  </code></p>
+<p>If you don&rsquo;t have any issues, you can change the bootstrap_servers of your program to the cluster ARN of your kafka cluster.
+Then you are able to connect to kafka server.</p>
+<h2 id="make-program-keep-running-in-ec2-instance">Make Program Keep Running in ec2 Instance</h2>
+<p>I used tmux to keep twitter project running in our ec2 instance. Here is the doc of <a href="https://github.com/tmux/tmux/wiki/Getting-Started">tmux</a>.</p>
 
               
             </div>
