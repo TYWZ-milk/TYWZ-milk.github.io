@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="dp, Leetcode, 0/1 knapsack">
-<meta name="description" content="Some Leetcode problems can be solved by dp effectively">
+<meta name="keywords" content="Leetcode, dp, String">
+<meta name="description" content="Some Leetcode problems can be solved by dp effectively. All problems ask you to edit strings.">
 
 
-<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively">
+<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively. All problems ask you to edit strings.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-Buy and sell stock">
-<meta name="twitter:title" content="Leetcode-Buy and sell stock">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+<meta property="og:title" content="Leetcode-Edit String">
+<meta name="twitter:title" content="Leetcode-Edit String">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively">
-<meta name="twitter:description" content="Some Leetcode problems can be solved by dp effectively">
+<meta property="og:description" content="Some Leetcode problems can be solved by dp effectively. All problems ask you to edit strings.">
+<meta name="twitter:description" content="Some Leetcode problems can be solved by dp effectively. All problems ask you to edit strings.">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-06-14T10:47:56">
+    <meta property="article:published_time" content="2020-08-02T15:14:29">
   
   
-    <meta property="article:modified_time" content="2020-06-14T10:47:56">
+    <meta property="article:modified_time" content="2020-08-02T15:14:29">
   
   
   
@@ -40,7 +40,7 @@
     
       <meta property="article:tag" content="dp">
     
-      <meta property="article:tag" content="0/1 knapsack">
+      <meta property="article:tag" content="String">
     
   
 
@@ -64,14 +64,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Leetcode-Buy and sell stock</title>
+    <title>Leetcode-Edit String</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -221,19 +221,19 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Leetcode-Buy and sell stock
+      Leetcode-Edit String
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-06-14T10:47:56-05:00">
+      <time itemprop="datePublished" datetime="2020-08-02T15:14:29-05:00">
         
   
   
   
   
-    14 June 2020
+    2 August 2020
   
 
       </time>
@@ -256,87 +256,77 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#309-best-time-to-buy-and-sell-stock-with-cooldownmedium">309. Best Time to Buy and Sell Stock with Cooldown(Medium)</a></li>
-    <li><a href="#714-best-time-to-buy-and-sell-stock-with-transaction-fee-medium">714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)</a></li>
-    <li><a href="#123-best-time-to-buy-and-sell-stock-iii-hard">123. Best Time to Buy and Sell Stock III (Hard)</a></li>
+    <li><a href="#583-delete-operation-for-two-strings-medium">583. Delete Operation for Two Strings (Medium)</a></li>
+    <li><a href="#72-edit-distance-hard">72. Edit Distance (Hard)</a></li>
   </ul>
 </nav>
               </aside>
               <blockquote>
-<p>Ref:<a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md#%E8%82%A1%E7%A5%A8%E4%BA%A4%E6%98%93">link</a>
-Ref:<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems">Most consistent ways of dealing with the series of stock problems</a></p>
+<p>Reference: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.md#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BC%96%E8%BE%91">Link</a></p>
 </blockquote>
-<p>The equation for all these problems are:</p>
-<p>Base cases:  <br>
-T[-1][k][0] = 0, T[-1][k][1] = -Infinity     <br>
-T[i][0][0] = 0, T[i][0][1] = -Infinity</p>
-<p>Recurrence relations:    <br>
-T[i][k][0] = max(T[i-1][k][0], T[i-1][k][1] + prices[i])     <br>
-T[i][k][1] = max(T[i-1][k][1], T[i-1][k-1][0] - prices[i])</p>
-<p>See the above link for more details. And below is all related problems.</p>
-<p>121.Best Time to Buy and Sell Stock  <br>
-122.Best Time to Buy and Sell Stock II   <br>
-123.Best Time to Buy and Sell Stock III  <br>
-188.Best Time to Buy and Sell Stock IV   <br>
-309.Best Time to Buy and Sell Stock with Cooldown    <br>
-714.Best Time to Buy and Sell Stock with Transaction Fee</p>
-<h2 id="309-best-time-to-buy-and-sell-stock-with-cooldownmedium">309. Best Time to Buy and Sell Stock with Cooldown(Medium)</h2>
-<p>In this problem, we have to buy and sell with cooldown. If we want to buy on the i-th day, we need to make sure we didn&rsquo;t sell on (i-1)th day.
-Therefor, we need to change <code>T[i][k][1] = max(T[i-1][k][1], T[i-1][k-1][0] - prices[i])</code> to <code>T[i][k][1] = max(T[i-1][k][1], T[i-2][k-1][0] - prices[i])</code>.
-We need to consider about (i-2)th day&rsquo;s profit. Remember to update the value of previous one.</p>
-<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">link</a>.</p>
-<pre><code>public int maxProfit(int[] prices) {
-    if(prices.length&lt;=1)return 0;
-    int T_ik0 = 0;
-    int T_ik1 = Integer.MIN_VALUE;
-    int T_ik2 = 0;
-    for(int i =0;i&lt;prices.length;i++){
-        int old = T_ik0;
-        T_ik0 = Math.max(T_ik0,T_ik1+prices[i]);
-        T_ik1 = Math.max(T_ik1,T_ik2-prices[i]);
-        T_ik2 = old;
+<h2 id="583-delete-operation-for-two-strings-medium">583. Delete Operation for Two Strings (Medium)</h2>
+<p>My first idea is to use longest common string to solve this problem. At first, we find the longest common string, and then we calculate how many steps we need to delete
+these two strings to the target string.</p>
+<p>But the most effective way is to use dp. dp[m][n] means how many steps required to make word1 and word2 the same. m and n are the index of two strings.
+There are two cases:</p>
+<ol>
+<li>
+<p>word1[i] = word2[j]. If the current two characters are same, we don&rsquo;t need to delete any one, so the result is same as dp[i-1][j-1].</p>
+</li>
+<li>
+<p>word1[i] != word2[j]. If the current two characters are different, we need to delete either the current character of s1 or s2. Thus, we need to plus 1 to the steps.
+The two options available at this moment are dp[i−1][j] and dp[i][j−1]. Since, we are keeping track of the minimum number of deletions required, we pick up the minimum out of these two values.</p>
+</li>
+</ol>
+<p>Since we only needs data from dp[i-1], we can use 1D array to represent 2D array. We also need a temp array to record value. And initial values are i or j.</p>
+<p>Space complexity is O(m) or O(n). Time complexity is O(m+n). Here is the <a href="https://leetcode.com/problems/delete-operation-for-two-strings/">link</a>.</p>
+<pre><code>    class Solution {
+        public int minDistance(String word1, String word2) {
+            int[]dp = new int[word1.length()+1];
+            for(int i = 0;i&lt;=word2.length();i++){
+                int []temp = new int[word1.length()+1];
+                for(int j =0;j&lt;=word1.length();j++){
+                    if(i==0||j==0){
+                        temp[j] = i+j;
+                    }
+                    else if(word2.charAt(i-1)==word1.charAt(j-1)){
+                        temp[j] = dp[j-1];
+                    }
+                    else{
+                        temp[j] = Math.min(dp[j],temp[j-1])+1;
+                    }
+                }
+                dp = temp;
+            }
+            return dp[dp.length-1];
+        }
     }
-    return T_ik0;
-}
 </code></pre>
-<h2 id="714-best-time-to-buy-and-sell-stock-with-transaction-fee-medium">714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)</h2>
-<p>In this problem, we need to pay transaction fee. The recurrence relations should be:     <br>
-T[i][k][0] = max(T[i-1][k][0], T[i-1][k][1] + prices[i] - fee)             <br>
-T[i][k][1] = max(T[i-1][k][1], T[i-1][k-1][0] - prices[i])</p>
-<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/">link</a>.</p>
-<pre><code>public int maxProfit(int[] prices, int fee) {
-    if(prices.length&lt;=1)return 0;
-    int T_ik0 = 0;
-    int T_ik1 = Integer.MIN_VALUE;
-    for(int price:prices){
-        T_ik1 = Math.max(T_ik1,T_ik0-price);
-        T_ik0 = Math.max(T_ik0,T_ik1+price-fee);
-    }
-    return T_ik0;
-}
-</code></pre>
-<h2 id="123-best-time-to-buy-and-sell-stock-iii-hard">123. Best Time to Buy and Sell Stock III (Hard)</h2>
-<p>In this problem, we can only do two transactions. The recurrence relations are:  <br>
-T[i][2][0] = max(T[i-1][2][0], T[i-1][2][1] + prices[i])     <br>
-T[i][2][1] = max(T[i-1][2][1], T[i-1][1][0] - prices[i])     <br>
-T[i][1][0] = max(T[i-1][1][0], T[i-1][1][1] + prices[i])     <br>
-T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
-<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/">link</a></p>
-<pre><code>public int maxProfit(int[] prices) {
-    int T_i20 = 0;
-    int T_i10 = 0;
-    int T_i21 = Integer.MIN_VALUE;
-    int T_i11 = Integer.MIN_VALUE;
-    if(prices.length&lt;=1)return 0;
-    for(int price:prices){
-        T_i20 = Math.max(T_i20,T_i21+price);
-        T_i21 = Math.max(T_i21,T_i10-price);
-        T_i10 = Math.max(T_i10,T_i11+price);
-        T_i11 = Math.max(T_i11,-price);
-    }
-    
-    return T_i20;
-}
+<h2 id="72-edit-distance-hard">72. Edit Distance (Hard)</h2>
+<p>This problem is similar to the last problem. In this problem, we have three options: insert, delete or replace. We are gonna to use delete and replace.
+I don&rsquo;t use insert because it can be done by using delete. Thus, we simplify this problem to two options: delete or replace.</p>
+<p>We still use dp to solve this problem. dp[i][j] means how many steps we need to make two strings same. The solution is very similar to the last problem. We only have a new option: replace. Thus, except delete one of character, we can
+replace one with the other one. And the result will be dp[i-1][j-1]+1. so we need to find the minimum steps between dp[i-1][j-1] and dp[i][j-1] and dp[i-1][j].</p>
+<p>Time complexity is O(m+n). Space complexity is O(m) or O(n). Here is the <a href="https://leetcode.com/problems/edit-distance/">link</a>.</p>
+<pre><code>        public int minDistance(String word1, String word2) {
+            int []dp = new int[word2.length()+1];
+            for(int i =0;i&lt;=word1.length();i++){
+                int []temp = new int[word2.length()+1];
+                for(int j =0;j&lt;=word2.length();j++){
+                    if(i==0||j==0){
+                        temp[j] = i+j;
+                    }
+                    else if(word1.charAt(i-1)==word2.charAt(j-1)){
+                        temp[j] = dp[j-1];
+                    }
+                    else{
+                        temp[j] = Math.min(dp[j-1],Math.min(dp[j],temp[j-1]))+1;
+                    }
+                }
+                dp = temp;
+            }
+            return dp[word2.length()];
+        }
 </code></pre>
 
               
@@ -354,7 +344,7 @@ T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
 
   <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/dp/">dp</a>
 
-  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/0/1-knapsack/">0/1 knapsack</a>
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/string/">String</a>
 
                   </div>
                 
@@ -367,7 +357,7 @@ T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/08/leetcode-edit-string/" data-tooltip="Leetcode-Edit String">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -375,7 +365,7 @@ T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/06/study-notes-of-java/" data-tooltip="Study Notes of Java">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/" data-tooltip="Leetcode-Buy and sell stock">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -393,19 +383,19 @@ T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -453,7 +443,7 @@ T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/08/leetcode-edit-string/" data-tooltip="Leetcode-Edit String">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -461,7 +451,7 @@ T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/06/study-notes-of-java/" data-tooltip="Study Notes of Java">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/" data-tooltip="Leetcode-Buy and sell stock">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -479,19 +469,19 @@ T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/06/leetcode-buy-and-sell-stock/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/08/leetcode-edit-string/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -521,19 +511,19 @@ T[i][1][1] = max(T[i-1][1][1], -prices[i])</p>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fleetcode-buy-and-sell-stock%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F08%2Fleetcode-edit-string%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fleetcode-buy-and-sell-stock%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F08%2Fleetcode-edit-string%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F06%2Fleetcode-buy-and-sell-stock%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F08%2Fleetcode-edit-string%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -625,9 +615,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/06\/leetcode-buy-and-sell-stock\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/08\/leetcode-edit-string\/';
           
-            this.page.identifier = '\/2020\/06\/leetcode-buy-and-sell-stock\/'
+            this.page.identifier = '\/2020\/08\/leetcode-edit-string\/'
           
         };
         (function() {
