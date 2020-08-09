@@ -261,6 +261,8 @@
     <li><a href="#java-interface-class">Java Interface Class</a></li>
     <li><a href="#enums">Enums</a></li>
     <li><a href="#readwrite-file">Read/Write File</a></li>
+    <li><a href="#static-and-final">Static and final</a></li>
+    <li><a href="#shallow-copy-and-deep-copy">Shallow copy and deep copy</a></li>
   </ul>
 </nav>
               </aside>
@@ -428,6 +430,53 @@ try(FileReader fileReader = new FileReader(absolutePath)) {
     // Exception handling
 }
 </code></pre>
+<h2 id="static-and-final">Static and final</h2>
+<blockquote>
+<p>Ref: <a href="https://stackoverflow.com/questions/13772827/difference-between-static-and-final">https://stackoverflow.com/questions/13772827/difference-between-static-and-final</a></p>
+</blockquote>
+<p><strong>The static keyword can be used in 4 scenarios</strong></p>
+<ul>
+<li>static variables</li>
+<li>static methods</li>
+<li>static blocks of code</li>
+<li>static nested class</li>
+</ul>
+<p><strong>Static variable</strong></p>
+<ul>
+<li>It is a variable which belongs to the class and not to object (instance).</li>
+<li>Static variables are initialized only once, at the start of the execution. These variables will be initialized first, before the initialization of any instance variables.</li>
+<li>A single copy to be shared by all instances of the class.</li>
+<li>A static variable can be accessed directly by the class name and doesn’t need any object.</li>
+<li>Syntax: Class.variable</li>
+</ul>
+<p><strong>Static method</strong></p>
+<ul>
+<li>It is a method which belongs to the class and not to the object (instance).</li>
+<li>A static method can access only static data. It can not access non-static data (instance variables) unless it has/creates an instance of the class.</li>
+<li>A static method can call only other static methods and can not call a non-static method from it unless it has/creates an instance of the class.</li>
+<li>A static method can be accessed directly by the class name and doesn’t need any object.</li>
+<li>Syntax: Class.methodName()</li>
+<li>A static method cannot refer to this or super keywords in anyway.</li>
+</ul>
+<p><strong>Static class</strong></p>
+<p>Java also has &ldquo;static nested classes&rdquo;. A static nested class is just one which doesn&rsquo;t implicitly have a reference to an instance of the outer class.</p>
+<p>Static nested classes can have instance methods and static methods.</p>
+<p>There&rsquo;s no such thing as a top-level static class in Java.</p>
+<blockquote>
+<p>main method is static since it must be be accessible for an application to run before any instantiation takes place.</p>
+</blockquote>
+<p><strong><code>final</code> keyword is used in several different contexts to define an entity which cannot later be changed.</strong></p>
+<ul>
+<li>A final class cannot be subclassed. This is done for reasons of security and efficiency. Accordingly, many of the Java standard library classes are final, for example java.lang.System and java.lang.String. All methods in a final class are implicitly final.</li>
+<li>A final method can&rsquo;t be overridden by subclasses. This is used to prevent unexpected behavior from a subclass altering a method that may be crucial to the function or consistency of the class.</li>
+<li>A final variable can only be initialized once, either via an initializer or an assignment statement. It does not need to be initialized at the point of declaration: this is called a blank final variable. A blank final instance variable of a class must be definitely assigned at the end of every constructor of the class in which it is declared; similarly, a blank final static variable must be definitely assigned in a static initializer of the class in which it is declared; otherwise, a compile-time error occurs in both cases.</li>
+</ul>
+<h2 id="shallow-copy-and-deep-copy">Shallow copy and deep copy</h2>
+<blockquote>
+<p>Ref: <a href="https://dzone.com/articles/java-copy-shallow-vs-deep-in-which-you-will-swim">https://dzone.com/articles/java-copy-shallow-vs-deep-in-which-you-will-swim</a></p>
+</blockquote>
+<p>A shallow copy of an object copies the ‘main’ object, but doesn’t copy the inner objects. The ‘inner objects’ are shared between the original object and its copy.</p>
+<p>Unlike the shallow copy, a deep copy is a fully independent copy of an object. If we copied our Person object, we would copy the entire object structure.</p>
 
               
             </div>
