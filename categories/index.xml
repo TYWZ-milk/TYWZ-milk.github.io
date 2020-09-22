@@ -6,35 +6,44 @@
     <description>Recent content in Categories on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Aug 2020 15:14:29 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2020 11:16:38 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Leetcode</title>
-      <link>https://tywz-milk.github.io/categories/leetcode/</link>
-      <pubDate>Sun, 02 Aug 2020 15:14:29 -0500</pubDate>
-      
-      <guid>https://tywz-milk.github.io/categories/leetcode/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Java</title>
       <link>https://tywz-milk.github.io/categories/java/</link>
-      <pubDate>Thu, 04 Jun 2020 10:10:37 -0500</pubDate>
+      <pubDate>Mon, 21 Sep 2020 11:16:38 -0500</pubDate>
       
       <guid>https://tywz-milk.github.io/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>JavaScript</title>
+      <link>https://tywz-milk.github.io/categories/javascript/</link>
+      <pubDate>Mon, 21 Sep 2020 11:16:38 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/categories/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Notes</title>
       <link>https://tywz-milk.github.io/categories/notes/</link>
-      <pubDate>Thu, 04 Jun 2020 10:10:37 -0500</pubDate>
+      <pubDate>Mon, 21 Sep 2020 11:16:38 -0500</pubDate>
       
       <guid>https://tywz-milk.github.io/categories/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leetcode</title>
+      <link>https://tywz-milk.github.io/categories/leetcode/</link>
+      <pubDate>Sun, 06 Sep 2020 11:39:30 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/categories/leetcode/</guid>
       <description></description>
     </item>
     

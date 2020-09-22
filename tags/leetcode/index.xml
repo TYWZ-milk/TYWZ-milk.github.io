@@ -6,10 +6,19 @@
     <description>Recent content in Leetcode on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Aug 2020 15:14:29 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2020 11:39:30 -0500</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leetcode-Math</title>
+      <link>https://tywz-milk.github.io/2020/09/leetcode-math/</link>
+      <pubDate>Sun, 06 Sep 2020 11:39:30 -0500</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2020/09/leetcode-math/</guid>
+      <description>Some Math problems on Leetcode.</description>
+    </item>
     
     <item>
       <title>Leetcode-Edit String</title>

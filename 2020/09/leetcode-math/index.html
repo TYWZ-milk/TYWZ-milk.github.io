@@ -7,26 +7,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Yitong Wang">
-<meta name="keywords" content="Leetcode">
-<meta name="description" content="There are some problems which are not easy to get the solution quickly. But we can transform these problems to other problems to get the solution. This article will introduce some problems which are easy to get the solution. Try to transform your problem to these problems.">
+<meta name="keywords" content="Leetcode, math">
+<meta name="description" content="Some Math problems on Leetcode.">
 
 
-<meta property="og:description" content="There are some problems which are not easy to get the solution quickly. But we can transform these problems to other problems to get the solution. This article will introduce some problems which are easy to get the solution. Try to transform your problem to these problems.">
+<meta property="og:description" content="Some Math problems on Leetcode.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode-Transform your problem to some other problems to get the solution.">
-<meta name="twitter:title" content="Leetcode-Transform your problem to some other problems to get the solution.">
-<meta property="og:url" content="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
-<meta property="twitter:url" content="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
+<meta property="og:title" content="Leetcode-Math">
+<meta name="twitter:title" content="Leetcode-Math">
+<meta property="og:url" content="https://tywz-milk.github.io/2020/09/leetcode-math/">
+<meta property="twitter:url" content="https://tywz-milk.github.io/2020/09/leetcode-math/">
 <meta property="og:site_name" content="Yitong Wang&#39;s Blog">
-<meta property="og:description" content="There are some problems which are not easy to get the solution quickly. But we can transform these problems to other problems to get the solution. This article will introduce some problems which are easy to get the solution. Try to transform your problem to these problems.">
-<meta name="twitter:description" content="There are some problems which are not easy to get the solution quickly. But we can transform these problems to other problems to get the solution. This article will introduce some problems which are easy to get the solution. Try to transform your problem to these problems.">
+<meta property="og:description" content="Some Math problems on Leetcode.">
+<meta name="twitter:description" content="Some Math problems on Leetcode.">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2020-05-31T22:22:31">
+    <meta property="article:published_time" content="2020-09-06T11:39:30">
   
   
-    <meta property="article:modified_time" content="2020-05-31T22:22:31">
+    <meta property="article:modified_time" content="2020-09-06T11:39:30">
   
   
   
@@ -37,6 +37,8 @@
   
     
       <meta property="article:tag" content="Leetcode">
+    
+      <meta property="article:tag" content="math">
     
   
 
@@ -60,14 +62,14 @@
   <meta property="twitter:image" content="https://i.ibb.co/qxmSKVk/Wechat-IMG245.jpg">
 
 
-    <title>Leetcode-Transform your problem to some other problems to get the solution.</title>
+    <title>Leetcode-Math</title>
 
     <link rel="icon" href="https://tywz-milk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
+    <link rel="canonical" href="https://tywz-milk.github.io/2020/09/leetcode-math/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -217,19 +219,19 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Leetcode-Transform your problem to some other problems to get the solution.
+      Leetcode-Math
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2020-05-31T22:22:31-05:00">
+      <time itemprop="datePublished" datetime="2020-09-06T11:39:30-05:00">
         
   
   
   
   
-    31 May 2020
+    6 September 2020
   
 
       </time>
@@ -252,27 +254,89 @@
               <aside>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#find-the-target-sumfind-two-equal-sums">Find the target sum/Find two equal sums</a></li>
-    <li><a href="#find-the-first-or-the-last-value-which-is-smaller-or-larger-or-equal-to-the-target-find-the-closest-kk123-elements">Find the first or the last value which is smaller or larger or equal to the target/ Find the closest k(k=1,2,3&hellip;) elements/</a></li>
-    <li><a href="#kth-largest-element-top-k-elements">Kth largest element/ Top k elements.</a></li>
-    <li><a href="#find-the-path-in-a-binary-tree">Find the path in a binary tree</a></li>
+    <li><a href="#204-count-primes-easy">204. Count Primes (Easy)</a></li>
+    <li><a href="#504-base-7-easy">504. Base 7 (Easy)</a></li>
+    <li><a href="#405-convert-a-number-to-hexadecimal-easy">405. Convert a Number to Hexadecimal (Easy)</a></li>
+    <li><a href="#168-excel-sheet-column-title-easy">168. Excel Sheet Column Title (Easy)</a></li>
+    <li><a href="#172-factorial-trailing-zeroes-easy">172. Factorial Trailing Zeroes (Easy)</a></li>
   </ul>
 </nav>
               </aside>
-              <p>There are some problems which are not easy to get the solution quickly. But we can transform these problems to other problems to get the solution. This article will introduce some problems which are easy to get the solution. Try to transform your problem to these problems.</p>
-<h2 id="find-the-target-sumfind-two-equal-sums">Find the target sum/Find two equal sums</h2>
-<p>For this kind of problem, the number of elements for the answer is not determined, so it&rsquo;s not 2Sum problem.
-Two equal sums means the half of the sum of all elements. If you need to find the target sum from the input array, you need to use 0/1 knapsack to solve this problem.</p>
-<p>Leetcode 416,494.</p>
-<h2 id="find-the-first-or-the-last-value-which-is-smaller-or-larger-or-equal-to-the-target-find-the-closest-kk123-elements">Find the first or the last value which is smaller or larger or equal to the target/ Find the closest k(k=1,2,3&hellip;) elements/</h2>
-<p>Binary Search. See this article <a href="https://tywz-milk.github.io/2020/05/leetcode-binary-search/">Leetcode-Binary Search</a>.</p>
-<h2 id="kth-largest-element-top-k-elements">Kth largest element/ Top k elements.</h2>
-<p>HeapSort. See this article <a href="https://tywz-milk.github.io/2020/05/leetcode-heapsort-quick-select/">Leetcode-HeapSort &amp; Quick Select</a>.</p>
-<h2 id="find-the-path-in-a-binary-tree">Find the path in a binary tree</h2>
-<p>If we are asked to find a path in a binary tree, we can use recursion to solve this problem. For example, we need to find the path which sum is target value.
-We can call our solution this way: sumUp(root,sum,0)+tranverse(root.left,sum)+tranverse(root.right,sum). In our sumUp functions, we will calculate all sums which start from the root and end in the leaf nodes.
-If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum) will help us cover all paths where the start is not root.</p>
-<p>Leetcode 437.</p>
+              <blockquote>
+<p>Ref: <a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E6%95%B0%E5%AD%A6.md">link</a></p>
+</blockquote>
+<h2 id="204-count-primes-easy">204. Count Primes (Easy)</h2>
+<p>This problem is easy but we need to take care of run time. You may want to check all numbers whether are prime numbers which are less than n.
+Sure, we need to check all numbers less than n. But when we find a prime number, we can skip some numbers which can be divided by this prime number.
+We need an array to store whether the number i is a prime number. If number[i] is a prime number, we need to know number[i]*j, 1&lt;=j &amp;&amp; number[i]*j&lt;n is not a prime number.
+We can use a for loop to skip these numbers to accelerate the algorithm.</p>
+<p>Time complexity is O(n^2). Space complexity is O(n).</p>
+<pre><code>    class Solution {
+        public int countPrimes(int n) {
+            int ans = 0;
+            int[]array = new int[n];
+            for(int i = 2;i&lt;n;i++){
+                if(array[i]==1)continue;
+                ans++;
+                for(int j = 1;j*i&lt;n;j++){
+                    array[j*i]=1;
+                }
+            }
+            return ans;
+        }
+    }
+</code></pre>
+<h2 id="504-base-7-easy">504. Base 7 (Easy)</h2>
+<p>For example, we can use 100 divided by 7 at first. We get 14 and remainder 2. And we use 14 divided by 7. We get 2 and remainder 0, so we get 202.</p>
+<p>The time complexity depends on the value of input number. The space complexity is O(1). Here is the <a href="https://leetcode.com/problems/base-7/">link</a>.</p>
+<pre><code>    class Solution {
+        public String convertToBase7(int num) {
+            if(num&lt;0)return &quot;-&quot;+convertToBase7(0-num);
+            if(num&lt;7)return String.valueOf(num);
+            return convertToBase7(num/7)+ String.valueOf(num%7);
+        }
+    } 
+</code></pre>
+<h2 id="405-convert-a-number-to-hexadecimal-easy">405. Convert a Number to Hexadecimal (Easy)</h2>
+<p>This problem is similar to the last problem. But we need to consider letters this time, so we can have an array or a string to store the integer value of letters from a to f.
+In each iteration, we deal with the most right 4 digits. We use <code>num &amp; 0xf</code> to find the value of the most 4 digits. And then we move to right with 4 digits. Until the value of num is 0 or we have done 8 operations, we stop.</p>
+<p>Time complexity is O(1). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/convert-a-number-to-hexadecimal/">link</a>.</p>
+<pre><code>    class Solution {
+        public String toHex(int num) {
+            String res = &quot;&quot;; String str= &quot;0123456789abcdef&quot;;
+            int cnt = 0;
+            while (num != 0 &amp;&amp; cnt++ &lt; 8) {
+                res = str.charAt(num &amp; 0xf) + res;
+                num &gt;&gt;= 4;
+            }
+            return res.length()==0 ? &quot;0&quot; : res;
+        }
+    }
+</code></pre>
+<h2 id="168-excel-sheet-column-title-easy">168. Excel Sheet Column Title (Easy)</h2>
+<p>We need to delete 1 in each iteration because we start from 1, not 0.</p>
+<p>Time complexity depends on the value of n. Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/excel-sheet-column-title/">link</a>.</p>
+<pre><code>    public String convertToTitle(int n) {
+        if (n == 0) {
+            return &quot;&quot;;
+        }
+        n--;
+        return convertToTitle(n / 26) + (char) (n % 26 + 'A');
+    }
+</code></pre>
+<h2 id="172-factorial-trailing-zeroes-easy">172. Factorial Trailing Zeroes (Easy)</h2>
+<p>We need to find how many 5 does value n contain. In order to get trailing zeroes, we need 5 and 2. If we can find a trailing 5, we can also find a trailing 2, like 15 and 12, 25 and 22.</p>
+<p>Time complexity is O(n). Space complexity is O(1). Actually, we can use binary solution to reduce time complexity to O(logn). Here is the <a href="https://leetcode.com/problems/factorial-trailing-zeroes/">link</a>.</p>
+<pre><code>    class Solution {
+        public int trailingZeroes(int n) {
+            int ans = 0;
+            while(n&gt;0){
+                ans+=n/5;
+                n/=5;
+            }
+            return ans;
+        }
+    }</code></pre>
 
               
             </div>
@@ -287,6 +351,8 @@ If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum
                     
   <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/leetcode/">Leetcode</a>
 
+  <a class="tag tag--primary tag--small" href="https://tywz-milk.github.io/tags/math/">math</a>
+
                   </div>
                 
               
@@ -298,7 +364,7 @@ If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/06/study-notes-of-java/" data-tooltip="Study Notes of Java">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/09/study-notes-of-javascript/" data-tooltip="Study Notes of JavaScript">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -306,7 +372,7 @@ If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/" data-tooltip="Leetcode-0/1 knapsack problem">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/08/leetcode-edit-string/" data-tooltip="Leetcode-Edit String">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -324,19 +390,19 @@ If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/09/leetcode-math/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/09/leetcode-math/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/09/leetcode-math/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -384,7 +450,7 @@ If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/06/study-notes-of-java/" data-tooltip="Study Notes of Java">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/09/study-notes-of-javascript/" data-tooltip="Study Notes of JavaScript">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -392,7 +458,7 @@ If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/05/leetcode-0/1-knapsack-problem/" data-tooltip="Leetcode-0/1 knapsack problem">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2020/08/leetcode-edit-string/" data-tooltip="Leetcode-Edit String">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -410,19 +476,19 @@ If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://tywz-milk.github.io/2020/09/leetcode-math/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://tywz-milk.github.io/2020/09/leetcode-math/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/05/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution./">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://tywz-milk.github.io/2020/09/leetcode-math/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -452,19 +518,19 @@ If we find target sum, plus 1. tranverse(root.left,sum)+tranverse(root.right,sum
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-transform-your-problem-to-some-other-problems-to-get-the-solution.%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F09%2Fleetcode-math%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-transform-your-problem-to-some-other-problems-to-get-the-solution.%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F09%2Fleetcode-math%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F05%2Fleetcode-transform-your-problem-to-some-other-problems-to-get-the-solution.%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Ftywz-milk.github.io%2F2020%2F09%2Fleetcode-math%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -556,9 +622,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/05\/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution.\/';
+          this.page.url = 'https:\/\/tywz-milk.github.io\/2020\/09\/leetcode-math\/';
           
-            this.page.identifier = '\/2020\/05\/leetcode-transform-your-problem-to-some-other-problems-to-get-the-solution.\/'
+            this.page.identifier = '\/2020\/09\/leetcode-math\/'
           
         };
         (function() {
