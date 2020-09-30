@@ -271,6 +271,17 @@
       <ul>
         <li><a href="#literals-and-properties">Literals and properties</a></li>
         <li><a href="#computed-properties">Computed properties</a></li>
+        <li><a href="#cloning-and-merging-objectassign">Cloning and merging, Object.assign</a></li>
+        <li><a href="#garbage-collection">Garbage Collection</a></li>
+        <li><a href="#constructor-operator-new">Constructor, operator &ldquo;new&rdquo;</a></li>
+        <li><a href="#optional-chaining">Optional chaining</a></li>
+        <li><a href="#symbol-types">Symbol types</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-types">Data Types</a>
+      <ul>
+        <li><a href="#methods-of-primitives">Methods of primitives</a></li>
+        <li><a href="#numbers">Numbers</a></li>
       </ul>
     </li>
   </ul>
@@ -462,6 +473,134 @@ And after all Function Declarations are processed, the code is executed. So it h
 <p>So, if a visitor enters <code>&quot;apple&quot;</code>, <code>bag</code> will become {apple: 5}.</p>
 <p>Square brackets are much more powerful than the dot notation. They allow any property names and variables. But they are also more cumbersome to write.
 So most of the time, when property names are known and simple, the dot is used. And if we need something more complex, then we switch to square brackets.</p>
+<h3 id="cloning-and-merging-objectassign">Cloning and merging, Object.assign</h3>
+<p>The syntax is:</p>
+<pre><code>    Object.assign(dest, [src1, src2, src3...])
+</code></pre>
+<ul>
+<li>The first argument <code>dest</code> is a target object.</li>
+<li>Further arguments <code>src1, ..., srcN</code> (can be as many as needed) are source objects.</li>
+<li>It copies the properties of all source objects <code>src1, ..., srcN</code> into the target <code>dest</code>. In other words, properties of all arguments starting from the second are copied into the first object.</li>
+<li>The call returns <code>dest</code>.</li>
+</ul>
+<p>For instance, we can use it to merge several objects into one:</p>
+<pre><code>let user = { name: &quot;John&quot; };
+
+let permissions1 = { canView: true };
+let permissions2 = { canEdit: true };
+
+// copies all properties from permissions1 and permissions2 into user
+Object.assign(user, permissions1, permissions2);
+
+// now user = { name: &quot;John&quot;, canView: true, canEdit: true }
+</code></pre>
+<h3 id="garbage-collection">Garbage Collection</h3>
+<blockquote>
+<p>Ref:https://javascript.info/garbage-collection#reachability</p>
+</blockquote>
+<p>The main things to know:</p>
+<ul>
+<li>Garbage collection is performed automatically. We cannot force or prevent it.</li>
+<li>Objects are retained in memory while they are reachable.</li>
+<li>Being referenced is not the same as being reachable (from a root): a pack of interlinked objects can become unreachable as a whole.</li>
+</ul>
+<h3 id="constructor-operator-new">Constructor, operator &ldquo;new&rdquo;</h3>
+<p>The <code>regular {...}</code> syntax allows to create one object. But often we need to create many similar objects, like multiple users or menu items and so on.</p>
+<p>That can be done using constructor functions and the &ldquo;new&rdquo; operator.</p>
+<p>Constructor functions technically are regular functions. There are two conventions though:</p>
+<ol>
+<li>
+<p>They are named with capital letter first.</p>
+</li>
+<li>
+<p>They should be executed only with &ldquo;new&rdquo; operator.</p>
+<pre><code> function User(name) {
+   this.name = name;
+   this.isAdmin = false;
+ }
+    
+ let user = new User(&quot;Jack&quot;);
+    
+ alert(user.name); // Jack
+ alert(user.isAdmin); // false
+</code></pre>
+</li>
+</ol>
+<p>When a function is executed with <code>new</code>, it does the following steps:</p>
+<ol>
+<li>A new empty object is created and assigned to <code>this</code>.</li>
+<li>The function body executes. Usually it modifies <code>this</code>, adds new properties to it.</li>
+<li>The value of <code>this</code> is returned.</li>
+</ol>
+<p>In other words, <code>new User(...)</code> does something like:</p>
+<pre><code>    function User(name) {
+      // this = {};  (implicitly)
+    
+      // add properties to this
+      this.name = name;
+      this.isAdmin = false;
+    
+      // return this;  (implicitly)
+    }
+</code></pre>
+<h3 id="optional-chaining">Optional chaining</h3>
+<p>The optional chaining <code>?.</code> stops the evaluation and returns undefined if the part before <code>?.</code> is undefined or null.</p>
+<pre><code>let user = {}; // user has no address
+
+alert( user?.address?.street ); // undefined (no error)
+</code></pre>
+<p>The <code>?.</code> syntax has three forms:</p>
+<p><code>obj?.prop</code> – returns <code>obj.prop</code> if obj exists, otherwise undefined.</p>
+<p><code>obj?.[prop]</code> – returns <code>obj[prop]</code> if obj exists, otherwise undefined.</p>
+<p><code>obj?.method()</code> – calls <code>obj.method()</code> if obj exists, otherwise returns undefined.</p>
+<h3 id="symbol-types">Symbol types</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/symbol">https://javascript.info/symbol</a></p>
+</blockquote>
+<p>Symbol is a primitive type for unique identifiers.</p>
+<p>Symbols are created with Symbol() call with an optional description (name).</p>
+<p>Symbols are always different values, even if they have the same name. If we want same-named symbols to be equal, then we should use the global registry: Symbol.for(key) returns (creates if needed) a global symbol with key as the name. Multiple calls of Symbol.for with the same key return exactly the same symbol.</p>
+<p>Symbols have two main use cases:</p>
+<p>“Hidden” object properties. If we want to add a property into an object that “belongs” to another script or a library, we can create a symbol and use it as a property key. A symbolic property does not appear in for..in, so it won’t be accidentally processed together with other properties. Also it won’t be accessed directly, because another script does not have our symbol. So the property will be protected from accidental use or overwrite.</p>
+<p>So we can “covertly” hide something into objects that we need, but others should not see, using symbolic properties.</p>
+<p>There are many system symbols used by JavaScript which are accessible as Symbol.*. We can use them to alter some built-in behaviors. For instance, later in the tutorial we’ll use Symbol.iterator for iterables, Symbol.toPrimitive to setup object-to-primitive conversion and so on.</p>
+<h2 id="data-types">Data Types</h2>
+<h3 id="methods-of-primitives">Methods of primitives</h3>
+<p>JavaScript allows us to work with primitives (strings, numbers, etc.) as if they were objects. They also provide methods to call as such. We will study those soon, but first we’ll see how it works because, of course, primitives are not objects (and here we will make it even clearer).</p>
+<ol>
+<li>Primitives are still primitive. A single value, as desired.</li>
+<li>The language allows access to methods and properties of strings, numbers, booleans and symbols.</li>
+<li>In order for that to work, a special “object wrapper” that provides the extra functionality is created, and then is destroyed.</li>
+</ol>
+<p>Here’s what actually happens in str.toUpperCase():</p>
+<pre><code>let str = &quot;Hello&quot;;
+
+alert( str.toUpperCase() ); // HELLO
+</code></pre>
+<ol>
+<li>The string str is a primitive. So in the moment of accessing its property, a special object is created that knows the value of the string, and has useful methods, like toUpperCase().</li>
+<li>That method runs and returns a new string (shown by alert).</li>
+<li>The special object is destroyed, leaving the primitive str alone.</li>
+</ol>
+<p>So primitives can provide methods, but they still remain lightweight.</p>
+<p>The JavaScript engine highly optimizes this process. It may even skip the creation of the extra object at all. But it must still adhere to the specification and behave as if it creates one.</p>
+<h3 id="numbers">Numbers</h3>
+<p>To write numbers with many zeroes:</p>
+<p>Append &ldquo;e&rdquo; with the zeroes count to the number. Like: 123e6 is the same as 123 with 6 zeroes 123000000.
+A negative number after &ldquo;e&rdquo; causes the number to be divided by 1 with given zeroes. E.g. 123e-6 means 0.000123 (123 millionths).</p>
+<p>For different numeral systems:</p>
+<p>Can write numbers directly in hex (0x), octal (0o) and binary (0b) systems.
+parseInt(str, base) parses the string str into an integer in numeral system with given base, 2 ≤ base ≤ 36.
+num.toString(base) converts a number to a string in the numeral system with the given base.</p>
+<p>Rounding:</p>
+<p>Math.floor
+Rounds down: 3.1 becomes 3, and -1.1 becomes -2.</p>
+<p>Math.ceil
+Rounds up: 3.1 becomes 4, and -1.1 becomes -1.</p>
+<p>Math.round
+Rounds to the nearest integer: 3.1 becomes 3, 3.6 becomes 4 and -1.1 becomes -1.</p>
+<p>Math.trunc (not supported by Internet Explorer)
+Removes anything after the decimal point without rounding: 3.1 becomes 3, -1.1 becomes -1.</p>
 
               
             </div>
