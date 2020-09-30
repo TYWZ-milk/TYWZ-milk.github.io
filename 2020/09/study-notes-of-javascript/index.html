@@ -282,6 +282,8 @@
       <ul>
         <li><a href="#methods-of-primitives">Methods of primitives</a></li>
         <li><a href="#numbers">Numbers</a></li>
+        <li><a href="#strings">Strings</a></li>
+        <li><a href="#arrays">Arrays</a></li>
       </ul>
     </li>
   </ul>
@@ -299,7 +301,7 @@
 <li>Backticks: `Hello`.</li>
 </ol>
 <p>Double and single quotes are “simple” quotes. There’s practically no difference between them in JavaScript.</p>
-<p>Backticks are “extended functionality” quotes. They allow us to embed variables and expressions into a string by wrapping them in ${…}, for example:</p>
+<p>Backticks are “extended functionality” quotes. They allow us to embed variables and expressions into a string by wrapping them in ${…}, they allow a string to span multiple lines, for example:</p>
 <pre><code>    let name = &quot;John&quot;;
     
     // embed a variable
@@ -307,6 +309,14 @@
     
     // embed an expression
     alert( `the result is ${1 + 2}` ); // the result is 3
+    
+    let guestList = `Guests:
+     * John
+     * Pete
+     * Mary
+    `;
+    
+    alert(guestList); // a list of guests, multiple lines
 </code></pre>
 <h3 id="basic-types">Basic types</h3>
 <p>There are 8 basic data types in JavaScript.</p>
@@ -601,6 +611,41 @@ Rounds up: 3.1 becomes 4, and -1.1 becomes -1.</p>
 Rounds to the nearest integer: 3.1 becomes 3, 3.6 becomes 4 and -1.1 becomes -1.</p>
 <p>Math.trunc (not supported by Internet Explorer)
 Removes anything after the decimal point without rounding: 3.1 becomes 3, -1.1 becomes -1.</p>
+<p>For converting values like 12pt and 100px to a number:</p>
+<p>Use parseInt/parseFloat for the “soft” conversion, which reads a number from a string and then returns the value they could read before the error.</p>
+<p>isFinite(value) converts its argument to a number and returns true if it’s a regular number, not NaN/Infinity/-Infinity:</p>
+<pre><code>alert( isFinite(&quot;15&quot;) ); // true
+alert( isFinite(&quot;str&quot;) ); // false, because a special value: NaN
+alert( isFinite(Infinity) ); // false, because a special value: Infinity
+</code></pre>
+<p>Avoid equality checks when working with decimal fractions.</p>
+<h3 id="strings">Strings</h3>
+<ul>
+<li>There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions ${…}.</li>
+<li>Strings in JavaScript are encoded using UTF-16.</li>
+<li>We can use special characters like \n and insert letters by their unicode using \u&hellip;.</li>
+<li>To get a character, use: [].</li>
+<li>To get a substring, use: slice or substring.</li>
+<li>To lowercase/uppercase a string, use: toLowerCase/toUpperCase.</li>
+<li>To look for a substring, use: indexOf, or includes/startsWith/endsWith for simple checks.</li>
+<li>To compare strings according to the language, use: localeCompare, otherwise they are compared by character codes.</li>
+</ul>
+<p>There are several other helpful methods in strings:</p>
+<ul>
+<li>str.trim() – removes (“trims”) spaces from the beginning and end of the string.</li>
+<li>str.repeat(n) – repeats the string n times.</li>
+</ul>
+<h3 id="arrays">Arrays</h3>
+<ul>
+<li>If we shorten length manually, the array is truncated.</li>
+</ul>
+<p>We can use an array as a deque with the following operations:</p>
+<ul>
+<li>push(&hellip;items) adds items to the end.</li>
+<li>pop() removes the element from the end and returns it.</li>
+<li>shift() removes the element from the beginning and returns it.</li>
+<li>unshift(&hellip;items) adds items to the beginning.</li>
+</ul>
 
               
             </div>
