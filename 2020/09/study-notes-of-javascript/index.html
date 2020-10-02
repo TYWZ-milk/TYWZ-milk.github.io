@@ -645,6 +645,32 @@ alert( isFinite(Infinity) ); // false, because a special value: Infinity
 <li>pop() removes the element from the end and returns it.</li>
 <li>shift() removes the element from the beginning and returns it.</li>
 <li>unshift(&hellip;items) adds items to the beginning.</li>
+<li>splice(pos, deleteCount, &hellip;items) – at index pos delete deleteCount elements and insert items.</li>
+<li>slice(start, end) – creates a new array, copies elements from index start till end (not inclusive) into it.</li>
+<li>concat(&hellip;items) – returns a new array: copies all members of the current one and adds items to it. If any of items is an array, then its elements are taken.</li>
+</ul>
+<p>To search among elements:</p>
+<ul>
+<li>indexOf/lastIndexOf(item, pos) – look for item starting from position pos, return the index or -1 if not found.</li>
+<li>includes(value) – returns true if the array has value, otherwise false.</li>
+<li>find/filter(func) – filter elements through the function, return first/all values that make it return true.</li>
+<li>findIndex is like find, but returns the index instead of a value.</li>
+</ul>
+<p>To iterate over elements:</p>
+<ul>
+<li>forEach(func) – calls func for every element, does not return anything.</li>
+</ul>
+<p>To transform the array:</p>
+<ul>
+<li>map(func) – creates a new array from results of calling func for every element.</li>
+<li>sort(func) – sorts the array in-place, then returns it.</li>
+<li>reverse() – reverses the array in-place, then returns it.</li>
+<li>split/join – convert a string to array and back.</li>
+<li>reduce(func, initial) – calculate a single value over the array by calling func for each element and passing an intermediate result between the calls.</li>
+</ul>
+<p>Additionally:</p>
+<ul>
+<li>Array.isArray(arr) checks arr for being an array.</li>
 </ul>
 
               
