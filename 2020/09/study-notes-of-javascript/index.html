@@ -284,6 +284,10 @@
         <li><a href="#numbers">Numbers</a></li>
         <li><a href="#strings">Strings</a></li>
         <li><a href="#arrays">Arrays</a></li>
+        <li><a href="#iterable">Iterable</a></li>
+        <li><a href="#set-and-map">Set and Map</a></li>
+        <li><a href="#weakmap-and-weakset">WeakMap and WeakSet</a></li>
+        <li><a href="#objectkeys-values-entries">Object.keys, values, entries</a></li>
       </ul>
     </li>
   </ul>
@@ -671,6 +675,74 @@ alert( isFinite(Infinity) ); // false, because a special value: Infinity
 <p>Additionally:</p>
 <ul>
 <li>Array.isArray(arr) checks arr for being an array.</li>
+</ul>
+<h3 id="iterable">Iterable</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/iterable">https://javascript.info/iterable</a></p>
+</blockquote>
+<p>Objects that can be used in <code>for..of</code> are called iterable.</p>
+<ul>
+<li>Technically, iterables must implement the method named <code>Symbol.iterator</code>.
+<ul>
+<li>The result of <code>obj[Symbol.iterator]()</code> is called an iterator. It handles the further iteration process.</li>
+<li>An iterator must have the method named <code>next()</code> that returns an object <code>{done: Boolean, value: any}</code>, here <code>done:true</code> denotes the end of the iteration process, otherwise the value is the next value.</li>
+</ul>
+</li>
+<li>The <code>Symbol.iterator</code> method is called automatically by <code>for..of</code>, but we also can do it directly.</li>
+<li>Built-in iterables like strings or arrays, also implement Symbol.iterator.</li>
+<li>String iterator knows about surrogate pairs.</li>
+</ul>
+<p>Objects that have indexed properties and length are called array-like. Such objects may also have other properties and methods, but lack the built-in methods of arrays.</p>
+<p>If we look inside the specification – we’ll see that most built-in methods assume that they work with iterables or array-likes instead of “real” arrays, because that’s more abstract.</p>
+<p>Array.from(obj[, mapFn, thisArg]) makes a real Array from an iterable or array-like obj, and we can then use array methods on it. The optional arguments mapFn and thisArg allow us to apply a function to each item.</p>
+<h3 id="set-and-map">Set and Map</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/map-set">https://javascript.info/map-set</a></p>
+</blockquote>
+<p>Map – is a collection of keyed values.</p>
+<p>Methods and properties:</p>
+<ul>
+<li><code>new Map([iterable])</code> – creates the map, with optional iterable (e.g. array) of <code>[key,value]</code> pairs for initialization.</li>
+<li><code>map.set(key, value)</code> – stores the value by the key.</li>
+<li><code>map.get(key)</code> – returns the value by the key, undefined if key doesn’t exist in map.</li>
+<li><code>map.has(key)</code> – returns true if the key exists, false otherwise.</li>
+<li><code>map.delete(key)</code> – removes the value by the key.</li>
+<li><code>map.clear()</code> – removes everything from the map.</li>
+<li><code>map.size</code> – returns the current element count.</li>
+</ul>
+<p>The differences from a regular Object:</p>
+<ul>
+<li>Any keys, objects can be keys.</li>
+<li>Additional convenient methods, the <code>size</code> property.</li>
+</ul>
+<p>Set – is a collection of unique values.</p>
+<p>Methods and properties:</p>
+<ul>
+<li><code>new Set([iterable])</code> – creates the set, with optional iterable (e.g. array) of values for initialization.</li>
+<li><code>set.add(value)</code> – adds a value (does nothing if value exists), returns the set itself.</li>
+<li><code>set.delete(value)</code> – removes the value, returns true if value existed at the moment of the call, otherwise false.</li>
+<li><code>set.has(value)</code> – returns true if the value exists in the set, otherwise false.</li>
+<li><code>set.clear()</code> – removes everything from the set.</li>
+<li><code>set.size</code> – is the elements count.</li>
+</ul>
+<p>Iteration over Map and Set is always in the insertion order, so we can’t say that these collections are unordered, but we can’t reorder elements or directly get an element by its number.</p>
+<h3 id="weakmap-and-weakset">WeakMap and WeakSet</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/weakmap-weakset">https://javascript.info/weakmap-weakset</a></p>
+</blockquote>
+<p>WeakMap is Map-like collection that allows only objects as keys and removes them together with associated value once they become inaccessible by other means.</p>
+<p>WeakSet is Set-like collection that stores only objects and removes them once they become inaccessible by other means.</p>
+<p>Both of them do not support methods and properties that refer to all keys or their count. Only individual operations are allowed.</p>
+<p>WeakMap and WeakSet are used as “secondary” data structures in addition to the “main” object storage. Once the object is removed from the main storage, if it is only found as the key of WeakMap or in a WeakSet, it will be cleaned up automatically.</p>
+<h3 id="objectkeys-values-entries">Object.keys, values, entries</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/keys-values-entries">https://javascript.info/keys-values-entries</a></p>
+</blockquote>
+<p>For plain objects, the following methods are available:</p>
+<ul>
+<li>Object.keys(obj) – returns an array of keys.</li>
+<li>Object.values(obj) – returns an array of values.</li>
+<li>Object.entries(obj) – returns an array of <code>[key, value]</code> pairs.</li>
 </ul>
 
               
