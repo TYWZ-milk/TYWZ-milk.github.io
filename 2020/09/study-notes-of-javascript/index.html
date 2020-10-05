@@ -288,6 +288,18 @@
         <li><a href="#set-and-map">Set and Map</a></li>
         <li><a href="#weakmap-and-weakset">WeakMap and WeakSet</a></li>
         <li><a href="#objectkeys-values-entries">Object.keys, values, entries</a></li>
+        <li><a href="#destructing-assignments">Destructing assignments</a></li>
+        <li><a href="#date-and-time">Date and time</a></li>
+        <li><a href="#jsonstringify">JSON.stringify</a></li>
+        <li><a href="#excluding-and-transforming-replacer">Excluding and transforming: replacer</a></li>
+        <li><a href="#jsonparse">JSON.parse</a></li>
+      </ul>
+    </li>
+    <li><a href="#advanced-working-with-functions">Advanced working with functions</a>
+      <ul>
+        <li><a href="#rest-parameters-">Rest parameters &hellip;</a></li>
+        <li><a href="#spread-syntax">Spread syntax</a></li>
+        <li><a href="#closure-and-lexical-environment">Closure and Lexical Environment</a></li>
       </ul>
     </li>
   </ul>
@@ -744,6 +756,286 @@ alert( isFinite(Infinity) ); // false, because a special value: Infinity
 <li>Object.values(obj) – returns an array of values.</li>
 <li>Object.entries(obj) – returns an array of <code>[key, value]</code> pairs.</li>
 </ul>
+<h3 id="destructing-assignments">Destructing assignments</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/destructuring-assignment">https://javascript.info/destructuring-assignment</a></p>
+</blockquote>
+<ul>
+<li>
+<p>Destructuring assignment allows for instantly mapping an object or array onto many variables.</p>
+</li>
+<li>
+<p>The full object syntax:</p>
+<pre><code>  let {prop : varName = default, ...rest} = object
+</code></pre>
+<p>This means that property prop should go into the variable varName and, if no such property exists, then the default value should be used.</p>
+<p>Object properties that have no mapping are copied to the rest object.</p>
+</li>
+<li>
+<p>The full array syntax:</p>
+<pre><code>  let [item1 = default, item2, ...rest] = array
+</code></pre>
+<p>The first item goes to item1; the second goes into item2, all the rest makes the array rest.</p>
+</li>
+<li>
+<p>It’s possible to extract data from nested arrays/objects, for that the left side must have the same structure as the right one.</p>
+</li>
+</ul>
+<h3 id="date-and-time">Date and time</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/date">https://javascript.info/date</a></p>
+</blockquote>
+<ul>
+<li>Date and time in JavaScript are represented with the <code>Date</code> object. We can’t create “only date” or “only time”: Date objects always carry both.</li>
+<li>Months are counted from zero (yes, January is a zero month).</li>
+<li>Days of week in getDay() are also counted from zero (that’s Sunday).</li>
+<li>Date auto-corrects itself when out-of-range components are set. Good for adding/subtracting days/months/hours.</li>
+<li>Dates can be subtracted, giving their difference in milliseconds. That’s because a Date becomes the timestamp when converted to a number.</li>
+<li>Use Date.now() to get the current timestamp fast.</li>
+</ul>
+<p>Note that unlike many other systems, timestamps in JavaScript are in milliseconds, not in seconds.</p>
+<p>Sometimes we need more precise time measurements. JavaScript itself does not have a way to measure time in microseconds (1 millionth of a second), but most environments provide it. For instance, browser has performance.now() that gives the number of milliseconds from the start of page loading with microsecond precision (3 digits after the point):</p>
+<pre><code> alert(`Loading started ${performance.now()}ms ago`);
+// Something like: &quot;Loading started 34731.26000000001ms ago&quot;
+// .26 is microseconds (260 microseconds)
+// more than 3 digits after the decimal point are precision errors, but only the first 3 are correct
+</code></pre>
+<p>Node.js has microtime module and other ways. Technically, almost any device and environment allows to get more precision, it’s just not in Date.</p>
+<h3 id="jsonstringify">JSON.stringify</h3>
+<p>The JSON (JavaScript Object Notation) is a general format to represent values and objects. It is described as in RFC 4627 standard. Initially it was made for JavaScript, but many other languages have libraries to handle it as well. So it’s easy to use JSON for data exchange when the client uses JavaScript and the server is written on Ruby/PHP/Java/Whatever.</p>
+<p>JavaScript provides methods:</p>
+<ul>
+<li>JSON.stringify to convert objects into JSON.</li>
+<li>JSON.parse to convert JSON back into an object.</li>
+</ul>
+<p>For instance, here we JSON.stringify a student:</p>
+<pre><code>    let student = {
+      name: 'John',
+      age: 30,
+      isAdmin: false,
+      courses: ['html', 'css', 'js'],
+      wife: null
+    };
+    
+    let json = JSON.stringify(student);
+    
+    alert(typeof json); // we've got a string!
+    
+    alert(json);
+    /* JSON-encoded object:
+    {
+      &quot;name&quot;: &quot;John&quot;,
+      &quot;age&quot;: 30,
+      &quot;isAdmin&quot;: false,
+      &quot;courses&quot;: [&quot;html&quot;, &quot;css&quot;, &quot;js&quot;],
+      &quot;wife&quot;: null
+    }
+    */
+</code></pre>
+<p>The resulting json string is called a JSON-encoded or serialized or stringified or marshalled object. We are ready to send it over the wire or put into a plain data store.</p>
+<p>Please note that a JSON-encoded object has several important differences from the object literal:</p>
+<ul>
+<li>Strings use double quotes. No single quotes or backticks in JSON. So &lsquo;John&rsquo; becomes &ldquo;John&rdquo;.</li>
+<li>Object property names are double-quoted also. That’s obligatory. So age:30 becomes &ldquo;age&rdquo;:30.</li>
+</ul>
+<p>JSON.stringify can be applied to primitives as well.</p>
+<p>JSON supports following data types:</p>
+<ul>
+<li>Objects <code>{ ... }</code></li>
+<li>Arrays <code>[ ... ]</code></li>
+<li>Primitives:
+<ul>
+<li>strings,</li>
+<li>numbers,</li>
+<li>boolean values true/false,</li>
+<li>null.</li>
+</ul>
+</li>
+</ul>
+<p>JSON is data-only language-independent specification, so some JavaScript-specific object properties are skipped by JSON.stringify.</p>
+<p>Namely:</p>
+<ul>
+<li>
+<p>Function properties (methods).</p>
+</li>
+<li>
+<p>Symbolic properties.</p>
+</li>
+<li>
+<p>Properties that store undefined.</p>
+<pre><code>  let user = {
+    sayHi() { // ignored
+      alert(&quot;Hello&quot;);
+    },
+    [Symbol(&quot;id&quot;)]: 123, // ignored
+    something: undefined // ignored
+  };
+    
+  alert( JSON.stringify(user) ); // {} (empty object)
+</code></pre>
+</li>
+</ul>
+<h3 id="excluding-and-transforming-replacer">Excluding and transforming: replacer</h3>
+<p>The full syntax of JSON.stringify is:</p>
+<pre><code>    let json = JSON.stringify(value[, replacer, space])
+</code></pre>
+<p><strong>value</strong>
+A value to encode.</p>
+<p><strong>replacer</strong>
+Array of properties to encode or a mapping function function(key, value).</p>
+<p><strong>space</strong>
+Amount of space to use for formatting</p>
+<p>Most of the time, JSON.stringify is used with the first argument only. But if we need to fine-tune the replacement process, like to filter out circular references, we can use the second argument of JSON.stringify.</p>
+<p>If we pass an array of properties to it, only these properties will be encoded.</p>
+<p>For instance:</p>
+<pre><code>    let room = {
+      number: 23
+    };
+    
+    let meetup = {
+      title: &quot;Conference&quot;,
+      participants: [{name: &quot;John&quot;}, {name: &quot;Alice&quot;}],
+      place: room // meetup references room
+    };
+    
+    room.occupiedBy = meetup; // room references meetup
+    
+    alert( JSON.stringify(meetup, ['title', 'participants', 'place', 'name', 'number']) );
+    /*
+    {
+      &quot;title&quot;:&quot;Conference&quot;,
+      &quot;participants&quot;:[{&quot;name&quot;:&quot;John&quot;},{&quot;name&quot;:&quot;Alice&quot;}],
+      &quot;place&quot;:{&quot;number&quot;:23}
+    }
+    */
+</code></pre>
+<p>Now everything except occupiedBy is serialized. But the list of properties is quite long.</p>
+<p>Fortunately, we can use a function instead of an array as the replacer.</p>
+<p>The function will be called for every (key, value) pair and should return the “replaced” value, which will be used instead of the original one. Or undefined if the value is to be skipped.</p>
+<p>In our case, we can return value “as is” for everything except occupiedBy. To ignore occupiedBy, the code below returns undefined:</p>
+<pre><code>    let room = {
+      number: 23
+    };
+    
+    let meetup = {
+      title: &quot;Conference&quot;,
+      participants: [{name: &quot;John&quot;}, {name: &quot;Alice&quot;}],
+      place: room // meetup references room
+    };
+    
+    room.occupiedBy = meetup; // room references meetup
+    
+    alert( JSON.stringify(meetup, function replacer(key, value) {
+      alert(`${key}: ${value}`);
+      return (key == 'occupiedBy') ? undefined : value;
+    }));
+    
+    /* key:value pairs that come to replacer:
+    :             [object Object]
+    title:        Conference
+    participants: [object Object],[object Object]
+    0:            [object Object]
+    name:         John
+    1:            [object Object]
+    name:         Alice
+    place:        [object Object]
+    number:       23
+    */
+</code></pre>
+<p>Please note that replacer function gets every key/value pair including nested objects and array items. It is applied recursively. The value of this inside replacer is the object that contains the current property.</p>
+<p>The first call is special. It is made using a special “wrapper object”: {&quot;&quot;: meetup}. In other words, the first (key, value) pair has an empty key, and the value is the target object as a whole. That’s why the first line is &ldquo;:[object Object]&rdquo; in the example above.</p>
+<p>The idea is to provide as much power for replacer as possible: it has a chance to analyze and replace/skip even the whole object if necessary.</p>
+<h3 id="jsonparse">JSON.parse</h3>
+<p>To decode a JSON-string, we need another method named JSON.parse.</p>
+<p>The syntax:</p>
+<pre><code>    let value = JSON.parse(str, [reviver]);
+</code></pre>
+<p><strong>str</strong>
+JSON-string to parse.</p>
+<p><strong>reviver</strong>
+Optional function(key,value) that will be called for each (key, value) pair and can transform the value.</p>
+<pre><code>    let userData = '{ &quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 35, &quot;isAdmin&quot;: false, &quot;friends&quot;: [0,1,2,3] }';
+    
+    let user = JSON.parse(userData);
+    
+    alert( user.friends[1] ); // 1
+</code></pre>
+<p>Let’s pass to JSON.parse the reviving function as the second argument, that returns all values “as is”, but date will become a Date:</p>
+<pre><code>    let str = '{&quot;title&quot;:&quot;Conference&quot;,&quot;date&quot;:&quot;2017-11-30T12:00:00.000Z&quot;}';
+    
+    let meetup = JSON.parse(str, function(key, value) {
+      if (key == 'date') return new Date(value);
+      return value;
+    });
+    
+    alert( meetup.date.getDate() ); // now works!
+</code></pre>
+<h2 id="advanced-working-with-functions">Advanced working with functions</h2>
+<h3 id="rest-parameters-">Rest parameters &hellip;</h3>
+<p>There will be no error because of “excessive” arguments. But of course in the result only the first two will be counted.</p>
+<p>The rest of the parameters can be included in the function definition by using three dots &hellip; followed by the name of the array that will contain them. The dots literally mean “gather the remaining parameters into an array”.</p>
+<p>For instance, to gather all arguments into array args:</p>
+<pre><code>    function sumAll(...args) { // args is the name for the array
+      let sum = 0;
+    
+      for (let arg of args) sum += arg;
+    
+      return sum;
+    }
+    
+    alert( sumAll(1) ); // 1
+    alert( sumAll(1, 2) ); // 3
+    alert( sumAll(1, 2, 3) ); // 6
+</code></pre>
+<p>The rest parameters must be at the end. The rest parameters gather all remaining arguments, so the following does not make sense and causes an error:</p>
+<pre><code>    function f(arg1, ...rest, arg2) { // arg2 after ...rest ?!
+      // error
+    }
+</code></pre>
+<h3 id="spread-syntax">Spread syntax</h3>
+<p>When &hellip;arr is used in the function call, it “expands” an iterable object arr into the list of arguments.</p>
+<p>For Math.max:</p>
+<pre><code>    let arr = [3, 5, 1];
+    
+    alert( Math.max(...arr) ); // 5 (spread turns array into a list of arguments)
+</code></pre>
+<p>We also can pass multiple iterables this way:</p>
+<pre><code>    let arr1 = [1, -2, 3, 4];
+    let arr2 = [8, 3, -8, 1];
+    
+    alert( Math.max(...arr1, ...arr2) ); // 8
+</code></pre>
+<p>Also, the spread syntax can be used to merge arrays:</p>
+<pre><code>    let arr = [3, 5, 1];
+    let arr2 = [8, 9, 15];
+    
+    let merged = [0, ...arr, 2, ...arr2];
+    
+    alert(merged); // 0,3,5,1,2,8,9,15 (0, then arr, then 2, then arr2)
+</code></pre>
+<p>The spread syntax internally uses iterators to gather elements, the same way as for..of does.</p>
+<p>So, for a string, for..of returns characters and &hellip;str becomes &ldquo;H&rdquo;,&ldquo;e&rdquo;,&ldquo;l&rdquo;,&ldquo;l&rdquo;,&ldquo;o&rdquo;. The list of characters is passed to array initializer <code>[...str]</code>.</p>
+<p>We can copy array or object by using <code>...</code> like:</p>
+<pre><code>    let arr = [1, 2, 3];
+    let arrCopy = [...arr]; // spread the array into a list of parameters
+                            // then put the result into a new array
+                            
+    let obj = { a: 1, b: 2, c: 3 };
+    let objCopy = { ...obj }; // spread the object into a list of parameters
+                              // then return the result in a new object
+</code></pre>
+<p>This way of copying an object is much shorter than let objCopy = Object.assign({}, obj); or for an array let arrCopy = Object.assign([], arr); so we prefer to use it whenever we can.</p>
+<p>When we see &ldquo;&hellip;&rdquo; in the code, it is either rest parameters or the spread syntax.</p>
+<p>There’s an easy way to distinguish between them:</p>
+<p>When &hellip; is at the end of function parameters, it’s “rest parameters” and gathers the rest of the list of arguments into an array.
+When &hellip; occurs in a function call or alike, it’s called a “spread syntax” and expands an array into a list.
+Use patterns:</p>
+<p>Rest parameters are used to create functions that accept any number of arguments.
+The spread syntax is used to pass an array to functions that normally require a list of many arguments.</p>
+<h3 id="closure-and-lexical-environment">Closure and Lexical Environment</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/closure">https://javascript.info/closure</a></p>
+</blockquote>
 
               
             </div>
