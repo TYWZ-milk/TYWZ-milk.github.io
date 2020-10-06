@@ -300,6 +300,10 @@
         <li><a href="#rest-parameters-">Rest parameters &hellip;</a></li>
         <li><a href="#spread-syntax">Spread syntax</a></li>
         <li><a href="#closure-and-lexical-environment">Closure and Lexical Environment</a></li>
+        <li><a href="#var">&ldquo;var&rdquo;</a></li>
+        <li><a href="#global-object">Global Object</a></li>
+        <li><a href="#function-object-named-function-expression">Function object, Named Function Expression</a></li>
+        <li><a href="#the-new-function-syntax">The &ldquo;new Function&rdquo; syntax</a></li>
       </ul>
     </li>
   </ul>
@@ -1036,6 +1040,47 @@ The spread syntax is used to pass an array to functions that normally require a 
 <blockquote>
 <p>Ref: <a href="https://javascript.info/closure">https://javascript.info/closure</a></p>
 </blockquote>
+<h3 id="var">&ldquo;var&rdquo;</h3>
+<p>There are two main differences of var compared to let/const:</p>
+<p>var variables have no block scope; their visibility is scoped to current function, or global, if declared outside function.</p>
+<p>var declarations are processed at function start (script start for globals).</p>
+<h3 id="global-object">Global Object</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/global-object">https://javascript.info/global-object</a></p>
+</blockquote>
+<p>The global object holds variables that should be available everywhere.</p>
+<p>That includes JavaScript built-ins, such as Array and environment-specific values, such as window.innerHeight – the window height in the browser.</p>
+<p>The global object has a universal name globalThis.</p>
+<p>…But more often is referred by “old-school” environment-specific names, such as window (browser) and global (Node.js).</p>
+<p>We should store values in the global object only if they’re truly global for our project. And keep their number at minimum.</p>
+<p>In-browser, unless we’re using modules, global functions and variables declared with var become a property of the global object.</p>
+<p>To make our code future-proof and easier to understand, we should access properties of the global object directly, as window.x.</p>
+<h3 id="function-object-named-function-expression">Function object, Named Function Expression</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/function-object">https://javascript.info/function-object</a></p>
+</blockquote>
+<p>Functions are objects.</p>
+<p>Here we covered their properties:</p>
+<p>name – the function name. Usually taken from the function definition, but if there’s none, JavaScript tries to guess it from the context (e.g. an assignment).</p>
+<p>length – the number of arguments in the function definition. Rest parameters are not counted.</p>
+<p>If the function is declared as a Function Expression (not in the main code flow), and it carries the name, then it is called a Named Function Expression. The name can be used inside to reference itself, for recursive calls or such.</p>
+<p>Also, functions may carry additional properties. Many well-known JavaScript libraries make great use of this feature.</p>
+<p>They create a “main” function and attach many other “helper” functions to it. For instance, the jQuery library creates a function named $. The lodash library creates a function _, and then adds _.clone, _.keyBy and other properties to it (see the docs when you want learn more about them). Actually, they do it to lessen their pollution of the global space, so that a single library gives only one global variable. That reduces the possibility of naming conflicts.</p>
+<p>So, a function can do a useful job by itself and also carry a bunch of other functionality in properties.</p>
+<h3 id="the-new-function-syntax">The &ldquo;new Function&rdquo; syntax</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/new-function">https://javascript.info/new-function</a></p>
+</blockquote>
+<p>The syntax:</p>
+<pre><code>let func = new Function ([arg1, arg2, ...argN], functionBody);
+</code></pre>
+<p>For historical reasons, arguments can also be given as a comma-separated list.</p>
+<p>These three declarations mean the same:</p>
+<pre><code>new Function('a', 'b', 'return a + b'); // basic syntax
+new Function('a,b', 'return a + b'); // comma-separated
+new Function('a , b', 'return a + b'); // comma-separated with spaces
+</code></pre>
+<p>Functions created with new Function, have [[Environment]] referencing the global Lexical Environment, not the outer one. Hence, they cannot use outer variables. But that’s actually good, because it insures us from errors. Passing parameters explicitly is a much better method architecturally and causes no problems with minifiers.</p>
 
               
             </div>
