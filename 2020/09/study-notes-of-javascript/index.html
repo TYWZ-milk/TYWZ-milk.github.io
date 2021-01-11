@@ -304,6 +304,8 @@
         <li><a href="#global-object">Global Object</a></li>
         <li><a href="#function-object-named-function-expression">Function object, Named Function Expression</a></li>
         <li><a href="#the-new-function-syntax">The &ldquo;new Function&rdquo; syntax</a></li>
+        <li><a href="#scheduling-settimeout-and-setinterval">Scheduling: setTimeout and setInterval</a></li>
+        <li><a href="#callapply">call/apply</a></li>
       </ul>
     </li>
   </ul>
@@ -1081,6 +1083,22 @@ new Function('a,b', 'return a + b'); // comma-separated
 new Function('a , b', 'return a + b'); // comma-separated with spaces
 </code></pre>
 <p>Functions created with new Function, have [[Environment]] referencing the global Lexical Environment, not the outer one. Hence, they cannot use outer variables. But that’s actually good, because it insures us from errors. Passing parameters explicitly is a much better method architecturally and causes no problems with minifiers.</p>
+<h3 id="scheduling-settimeout-and-setinterval">Scheduling: setTimeout and setInterval</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/settimeout-setinterval">https://javascript.info/settimeout-setinterval</a></p>
+</blockquote>
+<ul>
+<li>Methods setTimeout(func, delay, &hellip;args) and setInterval(func, delay, &hellip;args) allow us to run the func once/regularly after delay milliseconds.</li>
+<li>To cancel the execution, we should call clearTimeout/clearInterval with the value returned by setTimeout/setInterval.</li>
+<li>Nested setTimeout calls are a more flexible alternative to setInterval, allowing us to set the time between executions more precisely.</li>
+<li>Zero delay scheduling with setTimeout(func, 0) (the same as setTimeout(func)) is used to schedule the call “as soon as possible, but after the current script is complete”.</li>
+<li>The browser limits the minimal delay for five or more nested call of setTimeout or for setInterval (after 5th call) to 4ms. That’s for historical reasons.</li>
+<li>Any setTimeout will run only after the current code has finished.</li>
+</ul>
+<h3 id="callapply">call/apply</h3>
+<blockquote>
+<p>Ref: <a href="https://javascript.info/call-apply-decorators">https://javascript.info/call-apply-decorators</a></p>
+</blockquote>
 
               
             </div>
@@ -1106,7 +1124,7 @@ new Function('a , b', 'return a + b'); // comma-separated with spaces
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2021/01/udemy-course-spring-hibernate-for-beginners-including-spring-boot/" data-tooltip="Udemy Course: Spring &amp; Hibernate for Beginners (including Spring Boot)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -1179,7 +1197,7 @@ new Function('a , b', 'return a + b'); // comma-separated with spaces
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2020 Yitong Wang. All Rights Reserved
+    &copy; 2021 Yitong Wang. All Rights Reserved
   </span>
 </footer>
 
@@ -1192,7 +1210,7 @@ new Function('a , b', 'return a + b'); // comma-separated with spaces
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://tywz-milk.github.io/2021/01/udemy-course-spring-hibernate-for-beginners-including-spring-boot/" data-tooltip="Udemy Course: Spring &amp; Hibernate for Beginners (including Spring Boot)">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>

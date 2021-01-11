@@ -6,10 +6,19 @@
     <description>Recent content in Spring Boot on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 May 2020 15:21:43 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 10 Jan 2021 16:40:46 -0600</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Udemy Course: Spring &amp; Hibernate for Beginners (including Spring Boot)</title>
+      <link>https://tywz-milk.github.io/2021/01/udemy-course-spring-hibernate-for-beginners-including-spring-boot/</link>
+      <pubDate>Sun, 10 Jan 2021 16:40:46 -0600</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2021/01/udemy-course-spring-hibernate-for-beginners-including-spring-boot/</guid>
+      <description>Online Udemy Course of Spring</description>
+    </item>
     
     <item>
       <title>Quick start of Spring Boot</title>
