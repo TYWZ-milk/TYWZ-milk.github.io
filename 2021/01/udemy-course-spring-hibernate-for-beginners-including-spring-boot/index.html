@@ -278,6 +278,21 @@
         <li><a href="#inversion-of-control">Inversion of Control</a></li>
         <li><a href="#spring-container">Spring Container</a></li>
         <li><a href="#spring-development-process">Spring Development Process</a></li>
+        <li><a href="#what-is-a-spring-bean">What is a Spring Bean?</a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-dependency-injection---xml-configuration">Spring Dependency Injection - XML Configuration</a>
+      <ul>
+        <li><a href="#spring-development-process---constructor-injection">Spring Development Process - Constructor Injection</a></li>
+        <li><a href="#spring-development-process---setter-injection">Spring Development Process - Setter Injection</a></li>
+        <li><a href="#injection-values-from-a-properties-file">Injection Values from a Properties file</a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-bean-scopes-and-lifecycle">Spring Bean Scopes and Lifecycle</a>
+      <ul>
+        <li><a href="#bean-scopes">Bean Scopes</a></li>
+        <li><a href="#additional-spring-bean-scopes">Additional Spring Bean Scopes</a></li>
+        <li><a href="#bean-lifecycle">Bean Lifecycle</a></li>
       </ul>
     </li>
   </ul>
@@ -310,6 +325,7 @@
 <h2 id="spring-inversion-of-control---xml-configuration">Spring Inversion of Control - XML Configuration</h2>
 <h3 id="inversion-of-control">Inversion of Control</h3>
 <p>Inversion of Control(IoC): The approach of the outsourcing the construction and management of objects.</p>
+<p>In my words, we used to write code to control our program. But IoC gives the framework(spring) to control our program(bean)</p>
 <h3 id="spring-container">Spring Container</h3>
 <p>Spring Container has two main functions:</p>
 <ul>
@@ -324,15 +340,90 @@
 </ul>
 <h3 id="spring-development-process">Spring Development Process</h3>
 <ol>
-<li>Configure your Spring Beans
-<img src="https://tywz-milk.github.io/img/udemy-spring/step1_ConfigureSpringBeans.png" alt="RUNOOB UdemySpring"></li>
-<li>Create a Spring Container
-<img src="https://tywz-milk.github.io/img/udemy-spring/step2createspringcontainer.png" alt="RUNOOB UdemySpring">
-<img src="https://tywz-milk.github.io/img/udemy-spring/exampleofspringcontainer.png" alt="RUNOOB UdemySpring"></li>
-<li>Retrieve Beans from Spring Container
-<img src="https://tywz-milk.github.io/img/udemy-spring/step3getbeans.png" alt="RUNOOB UdemySpring">
-<img src="https://tywz-milk.github.io/img/udemy-spring/step3example.png" alt="RUNOOB UdemySpring"></li>
+<li>Configure your Spring Beans</li>
 </ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step1_ConfigureSpringBeans.png" alt="RUNOOB UdemySpring"></p>
+<ol start="2">
+<li>Create a Spring Container</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step2createspringcontainer.png" alt="RUNOOB UdemySpring">
+<img src="https://tywz-milk.github.io/img/udemy-spring/exampleofspringcontainer.png" alt="RUNOOB UdemySpring"></p>
+<ol start="3">
+<li>Retrieve Beans from Spring Container</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step3getbeans.png" alt="RUNOOB UdemySpring">
+<img src="https://tywz-milk.github.io/img/udemy-spring/step3example.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="what-is-a-spring-bean">What is a Spring Bean?</h3>
+<p>A &ldquo;Spring Bean&rdquo; is simply a Java object.</p>
+<p>When Java objects are created by the Spring Container, then Spring refers to them as &ldquo;Spring Beans&rdquo;.</p>
+<p>Spring Beans are created from normal Java classes &hellip;. just like Java objects.</p>
+<h2 id="spring-dependency-injection---xml-configuration">Spring Dependency Injection - XML Configuration</h2>
+<p>In my words, the framework(spring) will add all dependencies you need to the object.</p>
+<h3 id="spring-development-process---constructor-injection">Spring Development Process - Constructor Injection</h3>
+<ol>
+<li>Define the dependency interface and class</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step1injection.png" alt="RUNOOB UdemySpring"></p>
+<ol start="2">
+<li>Create a constructor in your class for injections.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step2injection.png" alt="RUNOOB UdemySpring"></p>
+<ol start="3">
+<li>Configure the dependency injection in your Spring config file</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step3injection.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="spring-development-process---setter-injection">Spring Development Process - Setter Injection</h3>
+<ol>
+<li>Create setter method(s) in your class for injections</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step1setterinjection.png" alt="RUNOOB UdemySpring"></p>
+<ol start="2">
+<li>Configure the dependency injection in the Spring config file.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step2setterinjection.png" alt="RUNOOB UdemySpring"></p>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step2name.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="injection-values-from-a-properties-file">Injection Values from a Properties file</h3>
+<ol>
+<li>Create Properties file</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step1propertyfile.png" alt="RUNOOB UdemySpring"></p>
+<ol start="2">
+<li>Load Properties file in Spring config file</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step2loadproperties.png" alt="RUNOOB UdemySpring"></p>
+<ol start="3">
+<li>Reference Values from Properties files</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step3reference.png" alt="RUNOOB UdemySpring"></p>
+<h2 id="spring-bean-scopes-and-lifecycle">Spring Bean Scopes and Lifecycle</h2>
+<h3 id="bean-scopes">Bean Scopes</h3>
+<ul>
+<li>Spring Container only creates one instance of the bean, by default</li>
+<li>It is cached in the memory.</li>
+<li>All requests for the bean will return a SHARED reference to the SAME bean</li>
+</ul>
+<h3 id="additional-spring-bean-scopes">Additional Spring Bean Scopes</h3>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/beanscopes.png" alt="RUNOOB UdemySpring"></p>
+<p>example:
+<img src="https://tywz-milk.github.io/img/udemy-spring/examplebeanscope.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="bean-lifecycle">Bean Lifecycle</h3>
+<p>You can add custom code during bean initialization and destruction.
+<img src="https://tywz-milk.github.io/img/udemy-spring/beanlifecycle.png" alt="RUNOOB UdemySpring"></p>
+<p>Init method example:</p>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/initmethodexample.png" alt="RUNOOB UdemySpring"></p>
+<p>Destroy method example:</p>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/destroymethodexample.png" alt="RUNOOB UdemySpring"></p>
+<p><strong>Access modifier</strong></p>
+<p>The method can have any access modifier (public, protected, private)</p>
+<p><strong>Return type</strong></p>
+<p>The method can have any return type. However, &ldquo;void&rsquo; is most commonly used. If you give a return type just note that you will not be able to capture the return value. As a result, &ldquo;void&rdquo; is commonly used.</p>
+<p><strong>Method name</strong></p>
+<p>The method can have any method name.</p>
+<p><strong>Arguments</strong></p>
+<p>The method can not accept any arguments. The method should be no-arg.</p>
+<p><strong>No destroy method for prototype scope bean</strong></p>
+<p>In contrast to the other scopes, Spring does not manage the complete lifecycle of a prototype bean: the container instantiates, configures, and otherwise assembles a prototype object, and hands it to the client, with no further record of that prototype instance.</p>
+<p>Thus, although initialization lifecycle callback methods are called on all objects regardless of scope, in the case of prototypes, configured destruction lifecycle callbacks are not called. The client code must clean up prototype-scoped objects and release expensive resources that the prototype bean(s) are holding.</p>
 
               
             </div>
