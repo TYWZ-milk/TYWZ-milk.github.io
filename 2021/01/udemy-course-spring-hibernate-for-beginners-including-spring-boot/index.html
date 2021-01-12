@@ -295,6 +295,23 @@
         <li><a href="#bean-lifecycle">Bean Lifecycle</a></li>
       </ul>
     </li>
+    <li><a href="#spring-configuration-with-java-annotations---inversion-of-control">Spring Configuration with Java Annotations - Inversion of Control</a>
+      <ul>
+        <li><a href="#component-scanning">Component Scanning</a></li>
+        <li><a href="#component-scanning---development-process">Component Scanning - Development Process</a></li>
+        <li><a href="#default-bean-id">Default Bean id</a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-configuration-with-java-annotations---dependency-injection">Spring Configuration with Java Annotations - Dependency Injection</a>
+      <ul>
+        <li><a href="#constructor-injection---development-process">Constructor Injection - Development Process</a></li>
+        <li><a href="#autowired-is-optional">Autowired is optional</a></li>
+        <li><a href="#setter-injection---development-process">Setter Injection - Development Process</a></li>
+        <li><a href="#field-injection---development-process">Field Injection - Development Process</a></li>
+        <li><a href="#multiple-implementations-of-one-interface">Multiple implementations of one interface</a></li>
+        <li><a href="#how-to-inject-properties-file-using-java-annotations">How to inject properties file using Java annotations</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
               </aside>
@@ -424,6 +441,99 @@
 <p><strong>No destroy method for prototype scope bean</strong></p>
 <p>In contrast to the other scopes, Spring does not manage the complete lifecycle of a prototype bean: the container instantiates, configures, and otherwise assembles a prototype object, and hands it to the client, with no further record of that prototype instance.</p>
 <p>Thus, although initialization lifecycle callback methods are called on all objects regardless of scope, in the case of prototypes, configured destruction lifecycle callbacks are not called. The client code must clean up prototype-scoped objects and release expensive resources that the prototype bean(s) are holding.</p>
+<h2 id="spring-configuration-with-java-annotations---inversion-of-control">Spring Configuration with Java Annotations - Inversion of Control</h2>
+<h3 id="component-scanning">Component Scanning</h3>
+<p>Spring will scan your java classes for special annotations. Then, automatically register Beans in the spring container.</p>
+<h3 id="component-scanning---development-process">Component Scanning - Development Process</h3>
+<ol>
+<li>Enable Component Scanning in Spring config file.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/stpe1enablecomponent.png" alt="RUNOOB UdemySpring"></p>
+<ol start="2">
+<li>Add the @Component Annotations to your java classes.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step2addthecomponent.png" alt="RUNOOB UdemySpring"></p>
+<ol start="3">
+<li>Retrieve beans from your spring container.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step3retrievebeans.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="default-bean-id">Default Bean id</h3>
+<p>We can specific Bean id for each java class by using @Component(&ldquo;Bean ID&rdquo;).</p>
+<p>Spring also supports default Bean ID. For example, if the class name is TennisCoach, the default bean id is tennisCoach
+It&rsquo;s the class name, but the first letter lower-case.</p>
+<h2 id="spring-configuration-with-java-annotations---dependency-injection">Spring Configuration with Java Annotations - Dependency Injection</h2>
+<p>Spring automatically inject all dependencies(Autowiring). Spring will scan all components and find the implementation of the interface and inject it.
+There are 3 kinds of dependency injection: constructor injection, setter injection, field injection.</p>
+<h3 id="constructor-injection---development-process">Constructor Injection - Development Process</h3>
+<ol>
+<li>Define the dependency class and interface.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step1definethedependency.png" alt="RUNOOB UdemySpring"></p>
+<ol start="2">
+<li>Create a constructor in your class for injection.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/createaconstructor.png" alt="RUNOOB UdemySpring"></p>
+<ol start="3">
+<li>Configure the dependency with <code>@Autowired</code> Annotation.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/configurethedependency.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="autowired-is-optional">Autowired is optional</h3>
+<p>As of Spring Framework 4.3, an @Autowired annotation on such a constructor is no longer necessary if the target bean only defines one constructor to begin with. However, if several constructors are available, at least one must be annotated to teach the container which one to use.</p>
+<p>I personally prefer to use the @Autowired annotation because it makes the code more readable. But as mentioned, the @Autowired is not required for this scenario.</p>
+<h3 id="setter-injection---development-process">Setter Injection - Development Process</h3>
+<ol>
+<li>Create Setter method(s) in your java classes for injections.</li>
+</ol>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/step1createsetter.png" alt="RUNOOB UdemySpring"></p>
+<ol start="2">
+<li>Configure the dependency injection with <code>@Autowired</code> Annotation.</li>
+</ol>
+<p>Add the @Autowired annotation on the setter method.</p>
+<p>The method name doesn&rsquo;t matter. It&rsquo;s not required to use setter methods. You can use any methods with @Autowired to inject dependencies.</p>
+<h3 id="field-injection---development-process">Field Injection - Development Process</h3>
+<p>Configure the dependency injection with <code>@Autowired</code> Annotation.</p>
+<ul>
+<li>Apply directly to the field.</li>
+<li>No need for setter methods.</li>
+</ul>
+<p>Example:</p>
+<pre><code>    @Autowired
+    private FortuneService fortuneService
+</code></pre>
+<h3 id="multiple-implementations-of-one-interface">Multiple implementations of one interface</h3>
+<p>Spring has special support to handle this case. Use the @Qualifier annotation. It can apply to all types of dependency injection.</p>
+<p>Example:</p>
+<pre><code>    @Autowired
+    @Qualifier(&quot;happyFortuneService&quot;) // Bean ID
+    private FortuneService fortuneService
+</code></pre>
+<h3 id="how-to-inject-properties-file-using-java-annotations">How to inject properties file using Java annotations</h3>
+<ol>
+<li>Create a properties file to hold your properties. It will be a name value pair.</li>
+</ol>
+<p>New text file:  src/sport.properties</p>
+<pre><code>    foo.email=myeasycoach@luv2code.com
+    foo.team=Silly Java Coders
+</code></pre>
+<p>Note the location of the properties file is very important. It must be stored in src/sport.properties</p>
+<ol start="2">
+<li>Load the properties file in the XML config file.</li>
+</ol>
+<p>File: applicationContext.xml</p>
+<p>Add the following lines:</p>
+<pre><code>&lt;context:property-placeholder location=&quot;classpath:sport.properties&quot;/&gt;  
+</code></pre>
+<p>This should appear just after the &lt;context:component-scan &hellip;/&gt; line</p>
+<ol start="3">
+<li>
+<p>Inject the properties values into your Swim Coach: SwimCoach.java
+@Value(&ldquo;${foo.email}&quot;)
+private String email;</p>
+<pre><code> @Value(&quot;${foo.team}&quot;)
+ private String team;
+</code></pre>
+</li>
+</ol>
 
               
             </div>
