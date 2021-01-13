@@ -312,6 +312,27 @@
         <li><a href="#how-to-inject-properties-file-using-java-annotations">How to inject properties file using Java annotations</a></li>
       </ul>
     </li>
+    <li><a href="#spring-configuration-with-java-annotations---bean-scopes-and-lifecycle">Spring Configuration with Java Annotations - Bean Scopes and Lifecycle</a>
+      <ul>
+        <li><a href="#specific-bean-scope-with-java-annotation">Specific Bean Scope with Java Annotation</a></li>
+        <li><a href="#specific-bean-lifecycle-method-with-java-annotation">Specific Bean Lifecycle method with Java Annotation</a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-configuration-with-java-codeno-xml">Spring Configuration with Java Code(no xml)</a>
+      <ul>
+        <li><a href="#3-ways-of-configuring-java-container">3 ways of configuring java container</a></li>
+        <li><a href="#development-process---spring-configuration-with-java-codeno-xml">Development Process - Spring Configuration with Java Code(no xml)</a></li>
+        <li><a href="#define-spring-beans-with-java-code-no-xml">Define Spring Beans with Java Code (no xml)</a></li>
+        <li><a href="#a-real-time-use-case-for-bean">A real-time use case for @Bean</a></li>
+        <li><a href="#injecting-values-from-properties-file">Injecting values from properties file</a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-mvc">Spring MVC</a>
+      <ul>
+        <li><a href="#spring-mvc-configuration">Spring MVC Configuration</a></li>
+        <li><a href="#bind-variable-using-requestparam-annotation">Bind variable using @RequestParam Annotation</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
               </aside>
@@ -534,6 +555,150 @@ private String email;</p>
 </code></pre>
 </li>
 </ol>
+<h2 id="spring-configuration-with-java-annotations---bean-scopes-and-lifecycle">Spring Configuration with Java Annotations - Bean Scopes and Lifecycle</h2>
+<h3 id="specific-bean-scope-with-java-annotation">Specific Bean Scope with Java Annotation</h3>
+<p>Example:</p>
+<pre><code>    @Component
+    @Scope(&quot;singleton&quot;) //@Scope(&quot;prototype&quot;)
+    public class TennisCoach implements Coach{}
+</code></pre>
+<h3 id="specific-bean-lifecycle-method-with-java-annotation">Specific Bean Lifecycle method with Java Annotation</h3>
+<p>Add @PostConstruct and @PreDestroy to your methods for init and destroy.</p>
+<p>If you are using Java 9 or higher, then you will encounter an error when using @PostConstruct and @PreDestroy in your code.</p>
+<p>Eclipse is unable to import @PostConstruct or @PreDestroy. This happens because of Java 9 and higher.
+When using Java 9 and higher, javax.annotation has been removed from its default classpath.</p>
+<h2 id="spring-configuration-with-java-codeno-xml">Spring Configuration with Java Code(no xml)</h2>
+<h3 id="3-ways-of-configuring-java-container">3 ways of configuring java container</h3>
+<ol>
+<li>Full XML Config file. We only use config file to configure spring container. We define all beans, dependencies in the xml file.</li>
+<li>XML Component Scan. We set component scan in the xml file and use java annotations in java classes.</li>
+<li>Java Configuration Class. No XML.</li>
+</ol>
+<h3 id="development-process---spring-configuration-with-java-codeno-xml">Development Process - Spring Configuration with Java Code(no xml)</h3>
+<ol>
+<li>
+<p>Create a java class and annotation as @Configuration</p>
+<pre><code> @Configuration
+ public class SpringConfig{}
+</code></pre>
+</li>
+<li>
+<p>Add component scanning support: @ComponentScan(optional)</p>
+<pre><code> @Configuration
+ @ComponentScan(&quot;com.luv2code.springcode&quot;)
+ public class SpringConfig{}  
+</code></pre>
+</li>
+<li>
+<p>Read Spring Java Configuration Class.</p>
+<pre><code>  AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+</code></pre>
+</li>
+<li>
+<p>Retrieve bean from Spring Container.</p>
+<pre><code>         Coach theCoach = context.getBean(&quot;tennisCoach&quot;, Coach.class);
+</code></pre>
+</li>
+</ol>
+<h3 id="define-spring-beans-with-java-code-no-xml">Define Spring Beans with Java Code (no xml)</h3>
+<ol>
+<li>
+<p>Define method to expose bean. In this step, we define all beans in our configuration class.
+The method name is bean id. Inside the method, we create an instance and return it.
+We don&rsquo;t need to scan components by this way, because all beans are inside configuration class.</p>
+<pre><code> @Configuration
+ public class SpringConfig{
+    
+     @Bean
+     public Coach swimCoach(){
+         SwimCoach mySwimCoach  = new SwimCoach();
+         return mySwimCoach;
+     }
+ }
+</code></pre>
+</li>
+<li>
+<p>Inject bean dependencies. We can create a method to return the dependency and use it for our bean.</p>
+<pre><code> @Configuration
+ @ComponentScan(&quot;com.luv2.springdemo&quot;)
+ public class SportConfig {
+    
+     @Bean
+     public FortuneService getFortuneService(){
+         return new SadFortuneService();
+     }
+    
+     @Bean
+     public SwimCoach swimCoach(){
+         return new SwimCoach(getFortuneService());
+     }
+    
+ }
+</code></pre>
+</li>
+<li>
+<p>Read Spring Java Configuration Class.</p>
+<pre><code>         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SportConfig.class);
+</code></pre>
+</li>
+<li>
+<p>Retrieve bean from Spring Container.</p>
+<pre><code> Coach theCoach = context.getBean(&quot;swimCoach&quot;, Coach.class);
+</code></pre>
+</li>
+</ol>
+<p>It is important to note that this method has the @Bean annotation. The annotation will intercept ALL calls to the method &ldquo;swimCoach()&quot;. Since no scope is specified the @Bean annotation uses singleton scope. Behind the scenes, during the @Bean interception, it will check in memory of the Spring container (applicationContext) and see if this given bean has already been created.</p>
+<p>If this is the first time the bean has been created then it will execute the method as normal. It will also register the bean in the application context. So that is knows that the bean has already been created before. Effectively setting a flag.</p>
+<p>The next time this method is called, the @Bean annotation will check in memory of the Spring container (applicationContext) and see if this given bean has already been created. Since the bean has already been created (previous paragraph) then it will immediately return the instance from memory. It will not execute the code inside of the method. Hence this is a singleton bean.</p>
+<p>The code for</p>
+<pre><code>     SwimCoach mySwimCoach = new SwimCoach(); 
+     return mySwimCoach;
+</code></pre>
+<p>is not executed for subsequent requests to the method public Coach swimCoach() . This code is only executed once during the initial bean creation since it is singleton scope.</p>
+<h3 id="a-real-time-use-case-for-bean">A real-time use case for @Bean</h3>
+<p>Here is a real-time use case of using @Bean: You can use @Bean to make an existing third-party class available to your Spring framework application context.</p>
+<p>For example, I was recently working on a global real-time project using Amazon Web Services. The project made use of the Amazon Simple Storage Service (AWS S3). This is remote service that provides object storage in the cloud. You can think of AWS S3 at a high-level as a remote file server for storing files (pdfs, pngs etc).</p>
+<p>Our Spring application needed to integrate with AWS S3 and store pdf documents. Amazon provides an AWS SDK for integrating with AWS S3. Their API provides a class, S3Client. This is a regular Java class that provides a client interface to the AWS S3 service. We needed to share the S3Client object in various services in our Spring application. However, the S3Client does not have the @Component annotation. The S3Client does not use Spring.</p>
+<p>Since the S3Client is part of the AWS framework, we can&rsquo;t modify the source code for the S3Client directly. We can&rsquo;t simply add the @Component annotation to the S3Client source code. As a result, we need an alternative solution.</p>
+<p>But no problem, by using the @Bean annotation, I can wrap this third-party class, S3Client, as a Spring bean. And then once it is wrapped using @Bean, it is as a singleton object and available in our Spring framework application context. I can now easily share this bean in my app using dependency injection and @Autowired. So think of the @Bean annotation was a wrapper / adapter for third-party classes. You want to make the third-party classes available to your Spring framework application context.</p>
+<h3 id="injecting-values-from-properties-file">Injecting values from properties file</h3>
+<p>Example:</p>
+<p>Spring Configuration file(sport.properties is the properties file):</p>
+<pre><code>    @Configuration
+    @PropertySource(&quot;classpath:sport.properties&quot;)
+    public class SportConfig{}
+</code></pre>
+<p>Use values in the properties file:</p>
+<pre><code>    @Value(&quot;${foo.eamil}&quot;)
+    private String email;
+</code></pre>
+<h2 id="spring-mvc">Spring MVC</h2>
+<h3 id="spring-mvc-configuration">Spring MVC Configuration</h3>
+<ol>
+<li>
+<p>Configure Spring DispatchServlet.
+Give the servlet reference by using <code>servlet-name</code> and <code>servlet-class</code>. Tell the location of Spring context configuration file by using
+<code>init-param</code>.
+<img src="https://tywz-milk.github.io/img/udemy-spring/step1configurespring.png" alt="RUNOOB UdemySpring"></p>
+</li>
+<li>
+<p>Set up URL Mappings to Spring MVC DispatchServlet. You can use slash for all requests. You can specific different pattern by <code>url-pattern</code>. But the <code>servlet-name</code> should be the
+same as the step 1.
+<img src="https://tywz-milk.github.io/img/udemy-spring/step2servleturl.png" alt="RUNOOB UdemySpring"></p>
+</li>
+<li>
+<p>Add support for Spring Component Scan.</p>
+</li>
+<li>
+<p>Add support for conversion, formatting and validation. You can perform these operations on your form data.</p>
+</li>
+<li>
+<p>Configure Spring MVC Resolver. This can enable Spring to find the view file.
+<img src="https://tywz-milk.github.io/img/udemy-spring/step5configurespringmvc.png" alt="RUNOOB UdemySpring"></p>
+</li>
+</ol>
+<h3 id="bind-variable-using-requestparam-annotation">Bind variable using @RequestParam Annotation</h3>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/bindvariable.png" alt="RUNOOB UdemySpring"></p>
 
               
             </div>
