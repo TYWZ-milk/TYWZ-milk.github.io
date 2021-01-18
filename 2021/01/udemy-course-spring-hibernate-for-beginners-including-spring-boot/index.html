@@ -333,6 +333,17 @@
         <li><a href="#bind-variable-using-requestparam-annotation">Bind variable using @RequestParam Annotation</a></li>
       </ul>
     </li>
+    <li><a href="#hibernate">Hibernate</a>
+      <ul>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#examples-of-using-hibernate">Examples of using Hibernate</a></li>
+        <li><a href="#map-class-to-database-table--map-fields-to-database-columns">Map class to database table &amp; map fields to database columns</a></li>
+        <li><a href="#session-and-sessionfactory-in-hibernate">Session and SessionFactory in Hibernate</a></li>
+        <li><a href="#generate-auto_increment-id">Generate auto_increment ID</a></li>
+        <li><a href="#querying-objects-with-hibernate">Querying objects with hibernate</a></li>
+        <li><a href="#cascade">Cascade</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
               </aside>
@@ -699,6 +710,64 @@ same as the step 1.
 </ol>
 <h3 id="bind-variable-using-requestparam-annotation">Bind variable using @RequestParam Annotation</h3>
 <p><img src="https://tywz-milk.github.io/img/udemy-spring/bindvariable.png" alt="RUNOOB UdemySpring"></p>
+<h2 id="hibernate">Hibernate</h2>
+<p>A framework for persisting/ saving java objects in a database.</p>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/hibernatejdbc.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="benefits">Benefits</h3>
+<ol>
+<li>Hibernate handles all of the low-level SQL</li>
+<li>Minimize the amount of JDBC code you have to develop</li>
+<li>Hibernate provides Object-to-Relational Mapping.</li>
+</ol>
+<h3 id="examples-of-using-hibernate">Examples of using Hibernate</h3>
+<pre><code>    //create java object
+    Student theStudent = new Student(&quot;John&quot;,&quot;email@email.com&quot;);
+    
+    //save it to database
+    int theId = (Integer) session.save(theStudent);
+    
+    //now retrieve from database using the primary key
+    Student mystudent =  session.get(Student.class, theId);
+    
+    //query all student objects
+    Query query = session.createQuery(&quot;from Student&quot;);
+    List&lt;Student&gt; students = query.list();
+</code></pre>
+<h3 id="map-class-to-database-table--map-fields-to-database-columns">Map class to database table &amp; map fields to database columns</h3>
+<pre><code>    @Entity
+    @Table(name=&quot;student&quot;) //database table name
+    public class Student{
+    
+        @Id  //primary key
+        @Column(name=&quot;id&quot;) //column name
+        private int id;
+    }
+</code></pre>
+<h3 id="session-and-sessionfactory-in-hibernate">Session and SessionFactory in Hibernate</h3>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/sessionfactory.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="generate-auto_increment-id">Generate auto_increment ID</h3>
+<p>At first you need to set your column in Mysql to AUTO_INCREMENT.</p>
+<p>Then, add @GeneratedValue. Mysql will follow this strategy to generate values.</p>
+<pre><code>    @Entity
+    @Table(name=&quot;student&quot;) //database table name
+    public class Student{
+    
+        @Id  //primary key
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name=&quot;id&quot;) //column name
+        private int id;
+    }
+</code></pre>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/generastrategy.png" alt="RUNOOB UdemySpring"></p>
+<h3 id="querying-objects-with-hibernate">Querying objects with hibernate</h3>
+<p><img src="https://tywz-milk.github.io/img/udemy-spring/retrieveallstudents.png" alt="RUNOOB UdemySpring">
+<img src="https://tywz-milk.github.io/img/udemy-spring/javaobjectnot.png" alt="RUNOOB UdemySpring">
+<img src="https://tywz-milk.github.io/img/udemy-spring/orpredict.png" alt="RUNOOB UdemySpring">
+<img src="https://tywz-milk.github.io/img/udemy-spring/liepredicate.png" alt="RUNOOB UdemySpring"></p>
+<p>If you are using Hibernate 5.2 or higher, you should replace <code>session.createQuery(&quot;from Student&quot;).list()</code> with <code>session.createQuery(&quot;from Student&quot;).getResultList()</code>.</p>
+<h3 id="cascade">Cascade</h3>
+<p>For example, you have an entity of <code>Instructor</code> and <code>InstructorDetail</code>, they have same ID. If you delete\save <code>Instructor</code>,
+you will do the same operation on <code>InstructorDetail</code>.</p>
 
               
             </div>
