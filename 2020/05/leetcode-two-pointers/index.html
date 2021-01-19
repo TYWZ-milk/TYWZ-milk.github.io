@@ -340,7 +340,7 @@ A pointer starts from left. The other starts from right. If we find 0 at the k, 
 </code></pre>
 <h2 id="392-is-subsequence-easy">392. Is Subsequence (Easy)</h2>
 <p>You need two pointers for these two strings. If you find the characters are same, move the pointer of s.</p>
-<p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/is-subsequence/">link</a>.</p>
+<p>Time complexity is O(n). n is the length of string t. Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/is-subsequence/">link</a>.</p>
 <pre><code>    public boolean isSubsequence(String s, String t) {
         int index =0;
         if(s.length()==0)return true;
@@ -352,6 +352,60 @@ A pointer starts from left. The other starts from right. If we find 0 at the k, 
         }
         return false;
     }
+</code></pre>
+<p>Follow up:</p>
+<p>I used javascript to solve the follow up question.</p>
+<p>If we use the first solution to solve the follow up question, the time complexity is O(nk). k is the number of string s.
+It&rsquo;s not time efficient.</p>
+<p>We can use binary search to solve this problem. Think about an example. Now we have a string s and a string t. For each character
+in string s, we need to find the same character in string t and the index should be larger than the previous one (the index
+of the previous matched character). That&rsquo;s why I use binary search. We are given an ascending order list and we need to find
+the first value which is larger than the target.</p>
+<ol>
+<li>At first, you need to build a list of arrays for 26 letters.</li>
+<li>Iterate string t. For each character in string t, push the index of the character to corresponding list in step 1.</li>
+<li>Iterate string s. Find the corresponding list for each character. If the corresponding list is empty, return false.</li>
+<li>Use binary search for the corresponding list. The corresponding list is consist of indices of the same character in string t.
+We need to find the first index which is larger than previous index.(The initial value of previous index is 0)</li>
+<li>If the result is equal to the size of list which means the previous index is larger than all indices in the list.
+This also means we can&rsquo;t find corresponding character after previous index in string t. We return false. Otherwise,
+we set the previous index to the result plus 1 and iterate next character of string s.</li>
+</ol>
+<p>let&rsquo;s say t&rsquo;s length is N, the binary search is O(logN), suppose the average length of the incoming strings is M, and the number of incoming strings is K,
+the total runtime would be O(MKlogN + N). Space complexity is O(N).</p>
+<pre><code>    var isSubsequence = function (s, t) {
+        let dict = [];
+        for (let i = 0; i &lt; 26; i++) {
+            dict.push([]);
+        }
+        for (let i = 0; i &lt; t.length; i++) {
+            dict[t.charCodeAt(i) - 97].push(i);
+        }
+    
+        let prev = 0;
+        for (let i = 0; i &lt; s.length; i++) {
+            if(dict[s.charCodeAt(i) - 97].length===0) return false;
+            let index = binarySearch(dict[s.charCodeAt(i) - 97], prev);
+            if(index === dict[s.charCodeAt(i) - 97].length) return false;
+            prev = dict[s.charCodeAt(i) - 97][index]+1;
+           // console.log(prev)
+        }
+        return true;
+    };
+    
+    var binarySearch = function (list, target) {
+        let left = 0;
+        let right = list.length - 1;
+        while (left &lt;= right) {
+            let mid = parseInt(left + (right - left) / 2);
+            if (list[mid] &lt; target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return left;
+    };
 </code></pre>
 <h2 id="summary">Summary</h2>
 <p>If you find you can use two pointers to solve a problem. this problem will be very easy. Two pointers are used to iterate array, list and string.
