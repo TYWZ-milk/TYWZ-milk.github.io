@@ -6,10 +6,19 @@
     <description>Recent content on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Jan 2021 16:40:46 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 17 Jul 2022 14:47:59 -0700</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>First Year in Intuit (2021.3-2020.7)</title>
+      <link>https://tywz-milk.github.io/2022/07/first-year-in-intuit-2021.3-2020.7/</link>
+      <pubDate>Sun, 17 Jul 2022 14:47:59 -0700</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2022/07/first-year-in-intuit-2021.3-2020.7/</guid>
+      <description>My first year in Intuit (2021.3-2020.7)</description>
+    </item>
     
     <item>
       <title>Udemy Course: Spring &amp; Hibernate for Beginners (including Spring Boot)</title>
@@ -93,11 +102,11 @@
     </item>
     
     <item>
-      <title>What I learned in Intuit</title>
-      <link>https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/</link>
+      <title>What I learned in Intuit in my internship</title>
+      <link>https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit-in-my-internship/</link>
       <pubDate>Fri, 29 May 2020 18:39:35 -0500</pubDate>
       
-      <guid>https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit/</guid>
+      <guid>https://tywz-milk.github.io/2020/05/what-i-learned-in-intuit-in-my-internship/</guid>
       <description>I appreciated my internship in Inuit. I learned a lot and made some notes in this article.</description>
     </item>
     

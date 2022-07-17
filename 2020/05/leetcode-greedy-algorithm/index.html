@@ -317,31 +317,30 @@ We want the minimum number, so we make sure our global interval is small enough.
     }
 </code></pre>
 <h2 id="452-minimum-number-of-arrows-to-burst-balloons-medium">452. Minimum Number of Arrows to Burst Balloons (Medium)</h2>
-<p>This problem is exactly same as the last problem. We need to calculate the non-overlap intervals.</p>
+<p>This problem is exactly same as the last problem. We need to calculate the non-overlap intervals.
+But remember, sometimes we may have a very large number like the test case [[-2147483646,-2147483645],[2147483646,2147483647]].
+Inside our override compare function, if we decide to use a1[1]-a2[1], this will lead to an error because the result
+of a1[1]-a2[1] is larger than the scope of integer. So we&rsquo;d better return -1, 1 or 0.</p>
 <p>Time complexity is O(nlogn). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/">link</a>.</p>
 <pre><code>    public int findMinArrowShots(int[][] points) {
         if(points.length==0)return 0;
-        
         Arrays.sort(points, new Comparator&lt;int[]&gt;(){
             @Override
-            public int compare(int[]a1,int[]a2){
-                return a1[0]-a2[0];
+            public int compare(int[]a1, int[]a2){
+                if(a1[1]&lt;a2[1])return -1;
+                else if(a1[1]&gt;a2[1])return 1;
+                else return 0;
             }
         });
-        
-        int end = points[0][1];
-        int ans = 1;
-        for(int i =1;i&lt;points.length;i++){
-            if(points[i][0]&lt;=end){
-                end = Math.min(end,points[i][1]);
-            }
-            else{
+        int high = points[0][1];
+        int ans = 0;
+        for(int i = 1;i&lt;points.length;i++){
+            if(points[i][0]&gt;high){
                 ans++;
-                end = points[i][1];
+                high = points[i][1];
             }
         }
-        return ans;
-        
+        return ans+1;
     }
 </code></pre>
 <h2 id="406-queue-reconstruction-by-heightmedium">406. Queue Reconstruction by Height(Medium)</h2>
@@ -366,6 +365,44 @@ Here is the <a href="https://leetcode.com/problems/queue-reconstruction-by-heigh
         }
         return list.toArray(new int[list.size()][]);
     }
+</code></pre>
+<p>We have a second solution. The center idea is same. But we can save space complexity to O(1). We don&rsquo;t create a new list.
+We operate the array <code>people</code> in place. We just move the data to the right position.</p>
+<pre><code>        public int[][] reconstructQueue(int[][] people) {
+            Arrays.sort(people,new Comparator&lt;int[]&gt;(){
+                @Override
+                public int compare(int []a1,int[]a2){
+                    if(a1[0]&gt;a2[0]){
+                        return -1;
+                    }
+                    else if(a1[0]&lt;a2[0]){
+                        return 1;
+                    }
+                    else{
+                        if(a1[1]&gt;a2[1]){
+                            return 1;
+                        }
+                        else
+                            return -1;
+                    }
+                }
+            });
+            
+            for(int i =0;i&lt;people.length;i++){
+                int supposedIndex = people[i][1];
+                int curIndex = i;
+                while(supposedIndex!=i){
+                    int[]temp = new int[]{people[i][0],people[i][1]};
+                    people[i][0] = people[i-1][0];
+                    people[i][1] = people[i-1][1];
+                    people[i-1][0] = temp[0];
+                    people[i-1][1] = temp[1];
+                    i--;
+                }
+                i = curIndex;
+            }
+            return people;
+        }        
 </code></pre>
 <h2 id="121-best-time-to-buy-and-sell-stock-easy">121. Best Time to Buy and Sell Stock (Easy)</h2>
 <p>You need to iterate the whole array. Record the minimum price as the buying price. Update the answer when you are iterating.</p>
@@ -416,6 +453,11 @@ Here is the <a href="https://leetcode.com/problems/queue-reconstruction-by-heigh
 If i == 0 &amp; [4,2,3], we need to replace 4 with 2.
 If [1,4,2,3], we should replace 4 with 2.
 If [3,4,2,4], we should replace 2 with 4.</p>
+<p>I did this problem again and I want to make some notes here. For this problem, we are iterating from left to right, so we are sure
+that nums[i-1]&lt;=nums[i] at the left of the current index(Assume current index is k, i&lt;=k, nums[i-1]&lt;=nums[i]).
+The left of the array is always non-ascending order. If we find nums[i]&gt;nums[i+1], we need to replace the value of nums[i] with nums[i+1],
+because we are not sure whether nums[i]&gt;nums[i+2]. If we replace nums[i+1] with nums[i], we need to do one more delete.
+But if nums[i-1]&gt;nums[i+1], we need to replace nums[i+1] with nums[i].</p>
 <p>Time complexity is O(n). Space complexity is O(1). Here is the <a href="https://leetcode.com/problems/non-decreasing-array/">link</a>.</p>
 <pre><code>    public boolean checkPossibility(int[] nums) {
         int cnt = 0;
@@ -603,7 +645,7 @@ Next, we use a variable to record the last value of pair chain.</p>
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2021 Yitong Wang. All Rights Reserved
+    &copy; 2022 Yitong Wang. All Rights Reserved
   </span>
 </footer>
 
