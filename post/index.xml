@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Jul 2022 14:47:59 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 21 Aug 2022 11:19:59 -0700</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes Typescript</title>
+      <link>https://tywz-milk.github.io/2022/08/notes-typescript/</link>
+      <pubDate>Sun, 21 Aug 2022 11:19:59 -0700</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2022/08/notes-typescript/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>First Year in Intuit (2021.3-2022.7)</title>

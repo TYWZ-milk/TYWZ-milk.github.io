@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tag1 on Yitong Wang&#39;s Blog</title>
+    <link>https://tywz-milk.github.io/tags/tag1/</link>
+    <description>Recent content in tag1 on Yitong Wang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Aug 2022 11:19:59 -0700</lastBuildDate>
+    
+	<atom:link href="https://tywz-milk.github.io/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes Typescript</title>
+      <link>https://tywz-milk.github.io/2022/08/notes-typescript/</link>
+      <pubDate>Sun, 21 Aug 2022 11:19:59 -0700</pubDate>
+      
+      <guid>https://tywz-milk.github.io/2022/08/notes-typescript/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

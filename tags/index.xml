@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Jul 2022 14:47:59 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 21 Aug 2022 11:19:59 -0700</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>tag1</title>
+      <link>https://tywz-milk.github.io/tags/tag1/</link>
+      <pubDate>Sun, 21 Aug 2022 11:19:59 -0700</pubDate>
+      
+      <guid>https://tywz-milk.github.io/tags/tag1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tag2</title>
+      <link>https://tywz-milk.github.io/tags/tag2/</link>
+      <pubDate>Sun, 21 Aug 2022 11:19:59 -0700</pubDate>
+      
+      <guid>https://tywz-milk.github.io/tags/tag2/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Intuit</title>
