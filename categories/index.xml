@@ -6,26 +6,26 @@
     <description>Recent content in Categories on Yitong Wang&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Aug 2022 11:19:59 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 27 Sep 2022 21:44:35 -0700</lastBuildDate>
     
 	<atom:link href="https://tywz-milk.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>category</title>
-      <link>https://tywz-milk.github.io/categories/category/</link>
-      <pubDate>Sun, 21 Aug 2022 11:19:59 -0700</pubDate>
+      <title>Notes</title>
+      <link>https://tywz-milk.github.io/categories/notes/</link>
+      <pubDate>Tue, 27 Sep 2022 21:44:35 -0700</pubDate>
       
-      <guid>https://tywz-milk.github.io/categories/category/</guid>
+      <guid>https://tywz-milk.github.io/categories/notes/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>subcategory</title>
-      <link>https://tywz-milk.github.io/categories/subcategory/</link>
-      <pubDate>Sun, 21 Aug 2022 11:19:59 -0700</pubDate>
+      <title>Typescript</title>
+      <link>https://tywz-milk.github.io/categories/typescript/</link>
+      <pubDate>Tue, 27 Sep 2022 21:44:35 -0700</pubDate>
       
-      <guid>https://tywz-milk.github.io/categories/subcategory/</guid>
+      <guid>https://tywz-milk.github.io/categories/typescript/</guid>
       <description></description>
     </item>
     
@@ -89,15 +89,6 @@
       <pubDate>Mon, 21 Sep 2020 11:16:38 -0500</pubDate>
       
       <guid>https://tywz-milk.github.io/categories/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Notes</title>
-      <link>https://tywz-milk.github.io/categories/notes/</link>
-      <pubDate>Mon, 21 Sep 2020 11:16:38 -0500</pubDate>
-      
-      <guid>https://tywz-milk.github.io/categories/notes/</guid>
       <description></description>
     </item>
     
